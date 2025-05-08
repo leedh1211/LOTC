@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiShotEffect : SkillEffect
+public class MultiShotEffect : IWeaponApplicable
 {
-    public override void Apply(Player player)
+
+    public void ApplyToWeapon(WeaponHandler weaponHandler)
     {
-       
+        weaponHandler.projectileCount += 1; //°ª Áõ°¡ 
     }
 
 }

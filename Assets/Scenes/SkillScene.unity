@@ -332,12 +332,12 @@ MonoBehaviour:
   delay: 1
   power: 1
   speed: 1
-  attackRange: 10
+  attackRange: 5
   targetlayer:
     serializedVersion: 2
     m_Bits: 128
   ArrowPrefabs: {fileID: 3072397918168628055, guid: 662dad48b0ceeef469c89132b2f7a67a, type: 3}
-  projectileCount: 1
+  projectileCount: 5
   firePoint: {fileID: 1856018949}
   spreadAngle: 15
 --- !u!4 &1856018949

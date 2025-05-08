@@ -18,4 +18,9 @@ public class SkillData : ScriptableObject
     public Sprite icon;
     public SkillType type;  
     
+
+
 }
+// 스킬 적용받는 대상 + 소스를 넣는다 -> 민혁님 조언
+
+//멀티샷 튕기는거 상태 관련 스킬만 먼저 만들어보자 

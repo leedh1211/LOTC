@@ -24,7 +24,7 @@ public class WeaponHandler : MonoBehaviour
     [Header("ArrowInfo")]
     [SerializeField]
     private GameObject ArrowPrefabs;
-    public int projectileCount = 1; //화살갯수
+    public int projectileCount = 2; //화살갯수
     [SerializeField]
     private Transform firePoint;
     [SerializeField]
@@ -56,34 +56,33 @@ public class WeaponHandler : MonoBehaviour
     public void Attack()
     {
         //적 탐색
-        Transform target = GetNearestEnemy(transform.position, attackRange, targetlayer);
+        float baseAngle = 90f;
 
-        float baseAngle = firePoint.eulerAngles.z;
-        if (target != null)
-        {
-            Vector3 dir = (target.position - firePoint.position).normalized; //각도를 계산해야하기 때문에 
-            baseAngle = Mathf.Atan2(dir.y, dir.x)* Mathf.Rad2Deg;
-            Debug.Log($"[WeaponHandler] 타겟 방향 벡터: {dir}, 회전 각도: {baseAngle}");
- 
-        }
-
-        //화살각도
+        // 화살 각도 범위 설정
         float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
         for (int i = 0; i < projectileCount; i++)
         {
-            float angle = -angleOffset + spreadAngle * i; //퍼져야하니까
+            float angle = -angleOffset + spreadAngle * i;
             Quaternion rot = Quaternion.Euler(0, 0, baseAngle + angle);
-            GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); //화살생성
+            GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // 화살 생성
 
-            Vector3 rotatedDir = rot * Vector3.right;
-            arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir); //없으면 등록 
+            Vector3 rotatedDir = rot * Vector3.right; // 항상 위로 쏘되 퍼트림
+            arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir);
         }
-        
+
     }
 
+
+    
     private void Update()
     {
-        Attack();
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+         //여기 적용시킬것
+            
+            
+
+        }
     }
 
     private void OnDrawGizmos()
