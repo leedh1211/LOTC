@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using Monster.AI;
+using Monster.ScriptableObject;
+using UnityEngine;
+
+public class MonsterController : MonoBehaviour
+{
+    private GameObject monsterPrefab;
+    private MonsterConfig monsterConfig;
+    private BaseAIController aiController;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Collider2D bodyCollider;
+    // Start is called before the first frame update
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void Init(MonsterConfig config, GameObject player)
+    {
+        monsterConfig = config;
+        aiController = GetComponent<BaseAIController>();
+        aiController.Init(monsterConfig, GetComponent<Rigidbody2D>(), player);
+        spriteRenderer.sprite = monsterConfig.SpriteOverride;
+        animator.runtimeAnimatorController = monsterConfig.AnimatorOverrideController.runtimeAnimatorController;
+        
+        if (bodyCollider is BoxCollider2D box)
+        {
+            box.size = spriteRenderer.bounds.size;
+        }
+    }
+}
