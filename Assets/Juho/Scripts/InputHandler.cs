@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class InputHandler : MonoSingleton<InputHandler>
 {
@@ -12,6 +11,7 @@ public class InputHandler : MonoSingleton<InputHandler>
     }
     private void Update()
     {
+        //전투 씬에서만 사용되도록, UI 클릭시에는 적용되지 않도록
         if(Input.GetMouseButtonDown(0))
         {
             joystick.gameObject.SetActive(true);
@@ -29,6 +29,7 @@ public class InputHandler : MonoSingleton<InputHandler>
             joystick.OnPointerUp();
             joystick.gameObject.SetActive(false);
         }
+        //테스트 용도
         if(Input.GetKeyDown(KeyCode.Keypad1))
         {
             customizeController.SetCustomizeByName("Angel");
