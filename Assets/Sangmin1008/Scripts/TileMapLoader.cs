@@ -14,6 +14,7 @@ public class TileMapLoader : MonoBehaviour
     [SerializeField] private StageData _stageData;
     [SerializeField] private int _currentMainStage;
 
+    // Start는 나중에 제거
     private void Start()
     {
         LoadRandomTileMap(_currentMainStage);

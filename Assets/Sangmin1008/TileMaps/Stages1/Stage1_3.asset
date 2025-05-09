@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Stage1_3
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
-  gridMap: {fileID: 604212123641570968, guid: b90b166dc285b714eae68a78e93db938, type: 3}
+  gridMap: {fileID: 6004217161692354329, guid: f5475ea3487c4144cb2d3d27c1bb880b, type: 3}
   spawnArea:
   - serializedVersion: 2
     x: 0
     y: 1.5
     width: 6
     height: 3
+  playerSpawnPosition: {x: 0, y: -4}
