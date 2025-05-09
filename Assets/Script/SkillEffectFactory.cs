@@ -9,7 +9,7 @@ public static class SkillEffectFactory
         switch (type)
         {
             case SkillType.State:
-                return null;
+                return new HealEffect();
             case SkillType.ChangeArrow:
                 return null;
             case SkillType.MultiShot:

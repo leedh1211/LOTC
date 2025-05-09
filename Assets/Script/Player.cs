@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     public int curHp;
 
     public SkillData skillData;
-    public SkillData Skilldata => skillData;
+    public List<SkillData> Skills; //유지되는 스킬인경우 
+   // public SkillData Skilldata => skillData;
 
     private WeaponHandler PlayerweaponHandler;
 
@@ -38,7 +39,7 @@ public class Player : MonoBehaviour
             };
 
 
-            SkillManager.instance.ApplySkill(effect, context);
+            SkillManager.Instance.ApplySkill(effect, context);
 #if UNITY_EDITOR
             Debug.Log("스킬이 들어왔습니다 " + skillData.name);
 #endif

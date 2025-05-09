@@ -374,8 +374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHp: 100
   curHp: 50
-  skillData: {fileID: 11400000, guid: 0e41dae886514604984291dec9432712, type: 2}
-  PlayerweaponHandler: {fileID: 1856018948}
+  skillData: {fileID: 11400000, guid: d029c9046ef6daa4c948fda591def9b0, type: 2}
+  Skills: []
 --- !u!4 &1686665467
 Transform:
   m_ObjectHideFlags: 0

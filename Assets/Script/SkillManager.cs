@@ -4,19 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class SkillManager : MonoBehaviour
+public class SkillManager : Singleton<SkillManager> //ΩÃ±€≈Ê
 {
-     public static SkillManager instance { get; private set; }
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-            Destroy(gameObject);
-    }
+    
+   
    
     public void ApplySkill(object effectInstance,SkillApplyContext context)
     {
