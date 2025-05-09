@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public int curHp;
 
     public SkillData skillData;
-    public List<SkillData> Skills; //유지되는 스킬인경우 
+    
    // public SkillData Skilldata => skillData;
 
     private WeaponHandler PlayerweaponHandler;

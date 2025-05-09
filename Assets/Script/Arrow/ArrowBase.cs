@@ -41,6 +41,8 @@ public class ArrowBase : MonoBehaviour
       
      
     }
+
+
     //코루틴으로 사거리 채크
 
     protected IEnumerator CheckArrowdistance()
