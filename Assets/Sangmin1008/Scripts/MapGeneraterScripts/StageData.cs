@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StageData", menuName = "ScriptableObject/StageData")]
+[CreateAssetMenu(fileName = "StageData", menuName = "ScriptableObjects/StageData")]
 public class StageData : ScriptableObject
 {
     [System.Serializable]
