@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "IntegerEvent", menuName = "Scriptable Object/Events/Integer Event")]
+[CreateAssetMenu(fileName = "IntegerEvent", menuName = "Scriptable Objects/Events/Integer Event")]
 public class IntegerEventChannelSO : GenericEventChannelSO<int>
 {
 }
