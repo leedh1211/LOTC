@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: idle_0
+      m_Hash: 379395835
+      m_Sprite: {fileID: 21300000, guid: e103bce4fd362ce46b7cc9213518e018, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 21300000, guid: e103bce4fd362ce46b7cc9213518e018, type: 3}
+    - m_Name: idle_1
+      m_Hash: 563752557
+      m_Sprite: {fileID: 21300000, guid: 5ecaf9758fee35a40a157a47e0d5cf7d, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 21300000, guid: 5ecaf9758fee35a40a157a47e0d5cf7d, type: 3}
+    - m_Name: idle_2
+      m_Hash: 949190615
+      m_Sprite: {fileID: 21300000, guid: 3c4b3fc002d4f0d4799786086f276859, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 21300000, guid: 3c4b3fc002d4f0d4799786086f276859, type: 3}
+    - m_Name: idle_3
+      m_Hash: 261377857
+      m_Sprite: {fileID: 21300000, guid: 88a82fb658cf0e4408e05eaccdb0d066, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 21300000, guid: 88a82fb658cf0e4408e05eaccdb0d066, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: Move
+    m_Hash: 252483654
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: move_0
+      m_Hash: 91806215
+      m_Sprite: {fileID: 21300000, guid: da38f00cd032ec743aa203443ea7256d, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 21300000, guid: da38f00cd032ec743aa203443ea7256d, type: 3}
+    - m_Name: move_1
+      m_Hash: 847243921
+      m_Sprite: {fileID: 21300000, guid: d793f364c089e4e4992163c2f836b474, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 21300000, guid: d793f364c089e4e4992163c2f836b474, type: 3}
+    - m_Name: move_2
+      m_Hash: 729201451
+      m_Sprite: {fileID: 21300000, guid: 9f0e5cb66f6a0e4448370ecb0eb0c5fe, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 21300000, guid: 9f0e5cb66f6a0e4448370ecb0eb0c5fe, type: 3}
+    - m_Name: move_3
+      m_Hash: 477203389
+      m_Sprite: {fileID: 21300000, guid: 80df9af38402f76489289c8979863ce6, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 21300000, guid: 80df9af38402f76489289c8979863ce6, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  m_PrimaryLibraryGUID: 8ea1a0878762fc040a80ff3c6b3b0488
+  m_ModificationHash: 638823508880814400
+  m_Version: 1
