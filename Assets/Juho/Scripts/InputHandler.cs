@@ -5,7 +5,11 @@ public class InputHandler : MonoSingleton<InputHandler>
 {
     [SerializeField] private JoyStick joystick;
     public Vector2 MoveInput { get; private set; }
-
+    private CustomizeController customizeController;
+    private void Start()
+    {
+        customizeController = GameObject.Find("Player").GetComponent<CustomizeController>();
+    }
     private void Update()
     {
         if(Input.GetMouseButtonDown(0))
@@ -25,7 +29,14 @@ public class InputHandler : MonoSingleton<InputHandler>
             joystick.OnPointerUp();
             joystick.gameObject.SetActive(false);
         }
-        
+        if(Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            customizeController.SetCustomizeByName("Angel");
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            customizeController.SetCustomizeByName("Ninja");
+        }
     }
     public void OnMove(Vector2 vector2)
     {

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94965468bc725c4c844c3f639b76009, type: 3}
   m_Name: Angel
   m_EditorClassIdentifier: 
-  name: 
-  spriteLibraryAsset: {fileID: 0}
-  iconImage: {fileID: 0}
+  name: Angel
+  spriteLibraryAsset: {fileID: 7108339969198208228, guid: e9f9c3d5018d9774c93e56470b9a37c5, type: 3}
+  iconImage: {fileID: 21300000, guid: e103bce4fd362ce46b7cc9213518e018, type: 3}

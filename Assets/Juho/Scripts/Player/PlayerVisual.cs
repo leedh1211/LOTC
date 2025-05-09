@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class PlayerVisual : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private SpriteLibrary spriteLibrary;
 
     private readonly int isMoveHash = Animator.StringToHash("IsMove");
 
@@ -11,6 +13,7 @@ public class PlayerVisual : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        spriteLibrary = GetComponent<SpriteLibrary>();
     }
     public void SetDirection(Vector2 dir)
     {
@@ -20,5 +23,9 @@ public class PlayerVisual : MonoBehaviour
     public void SetMoving(bool isMoving)
     {
         animator.SetBool(isMoveHash, isMoving);
+    }
+    public void SetSpriteLibrary(SpriteLibraryAsset spriteLibraryAsset)
+    {
+        this.spriteLibrary.spriteLibraryAsset = spriteLibraryAsset;
     }
 }
