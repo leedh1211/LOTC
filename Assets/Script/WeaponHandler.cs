@@ -78,10 +78,7 @@ public class WeaponHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-         //여기 적용시킬것
-            
-            
-
+            Attack();
         }
     }
 
