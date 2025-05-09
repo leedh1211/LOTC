@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13389fd023d29404d83ee9b42b14fd56, type: 3}
-  m_Name: ChangeStageLevelEvent
+  m_Name: StageStartChannel
   m_EditorClassIdentifier: 

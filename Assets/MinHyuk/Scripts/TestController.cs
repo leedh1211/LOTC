@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class TestController : MonoBehaviour
 {
-   [SerializeField] private IntegerEventChannelSO LoadStageLevelEvent;
-
-   [SerializeField] private int testSaveLevel;
+   [SerializeField] private IntegerEventChannelSO stageStartChannel;
 
 
-   private void Start()
-   { 
-      LoadStageLevelEvent.Raise(testSaveLevel);
+   private void Awake()
+   {
+      stageStartChannel.OnEventRaised += GameStartToStage;
+   }
+
+   void GameStartToStage(int stageLevel)
+   {
+      Debug.Log(stageLevel);
    }
 }
