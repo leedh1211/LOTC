@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using System.Linq;
 
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
@@ -6,13 +9,27 @@ public class Player : MonoBehaviour
     private PlayerController playerController;
     [SerializeField] private PlayerVisual playerVisual;
 
+    [Header("WeaPon")]
+    private WeaponHandler weapon;
+    
     void Awake()
     {
         playerController = GetComponent<PlayerController>();
         playerController.Init(playerVisual);
+
+        //Weapon
+        weapon = GetComponentInChildren<WeaponHandler>();
+
+
     }
+
+
+    
+
+
     
 }
+
 
 /*public class Player : MonoBehaviour
 {
