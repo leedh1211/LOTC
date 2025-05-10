@@ -6,17 +6,10 @@ public class TransformAnimationCoroutine
 {
     private Transform target;
 
-    private float scaleRemainDuration;
-
-    private Vector3 startScale;
-    private Vector3 startPosition;
-    private Vector3 startRotaion;
+    private MonoBehaviour runner;
 
     private Coroutine scaleCoroutine;
     
-
-    private MonoBehaviour runner;
-
 
     public TransformAnimationCoroutine(MonoBehaviour runner, Transform target)
     {
@@ -24,33 +17,33 @@ public class TransformAnimationCoroutine
         this.target = target;
     }
 
-    public void PlayScale(AnimationCurve curve, Vector3 targetScale, float duration)
+    public void PlayScale(AnimationCurve curve,  Vector3 startScale,  Vector3 targetScale, float duration)
     {
         if (scaleCoroutine != null)
         {
             runner.StopCoroutine(scaleCoroutine);
-
-            duration -= scaleRemainDuration;
         }
 
-        runner.StartCoroutine(ScaleCorouitne(curve, targetScale, duration));
+        scaleCoroutine = runner.StartCoroutine(ScaleCorouitne(curve, startScale, targetScale, duration));
     }
 
-    IEnumerator ScaleCorouitne(AnimationCurve curve, Vector3 targetScale,  float duration)
+    IEnumerator ScaleCorouitne(AnimationCurve curve, Vector3 startScale, Vector3 targetScale,  float duration)
     {
-        float time = 0;
-
-        startScale = target.localScale;
-
+        float totalDistance = Vector3.Distance(startScale, targetScale);
+        
+        float currentDistance = Vector3.Distance(startScale, target.localScale);
+        
+        float timeRatio = (totalDistance > 0f) ? currentDistance / totalDistance : 0f;
+        
+        float time = timeRatio * duration;
+        
         while (time <= duration)
         {
             time += Time.deltaTime;
 
-            float timeRatio = time / duration;
+            float cureveRatio = time / duration;
 
-            scaleRemainDuration = duration - time;
-
-            target.localScale = Vector3.Lerp(startScale, targetScale, curve.Evaluate(timeRatio));
+            target.localScale = Vector3.Lerp(startScale, targetScale, curve.Evaluate(cureveRatio));
             
             yield return null;
         }

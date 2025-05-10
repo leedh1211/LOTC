@@ -10,20 +10,31 @@ public class StageSelectUI : MonoBehaviour
    [SerializeField] private int testCleardLevel;
    [SerializeField] private int testLoadSelectLevel;
    
-   [SerializeField] private HorizontalSnapScroll selectScroll;
+   [SerializeField] private HorizontalSnapScrollView selectScrollView;
    [SerializeField] private Button playButton;
    [SerializeField] private RectTransform slotsParent;
    [SerializeField] private TextMeshProUGUI titleText;
+   [SerializeField] private RectTransform titleParent;
+   [SerializeField] private AnimationCurve lerpCurve;
    
 
    [Space(10f)]
    [Header("Events")]
    [SerializeField] private IntegerEventChannelSO stageStartChannel;
 
+   
    private StageSelectUISlot[] slots;
+   
+   private TransformAnimationCoroutine titleScaleCoroutine;
+   private TransformAnimationCoroutine playBtnScaleCoroutine;
+
 
    private void Awake()
    {
+      titleScaleCoroutine = new(this, titleParent);
+      playBtnScaleCoroutine = new(this, playButton.transform);
+      
+      
       slots = new StageSelectUISlot[slotsParent.childCount];
 
       for (int i = 0; i < slotsParent.childCount; i++)
@@ -34,46 +45,40 @@ public class StageSelectUI : MonoBehaviour
       }
       
       
-      selectScroll.OnBeginDragEvent += (data) => DeselectSlot();
+      selectScrollView.OnBeginDragEvent += (data) => OnBeginDrag();
 
-      selectScroll.OnEndDragEvent += (data) => SelectSlot();
+      selectScrollView.OnEndDragEvent += (data) => OnEndDrag();
 
-      selectScroll.centerIndex = testLoadSelectLevel;
+      selectScrollView.snapIndex = testLoadSelectLevel;
 
       
-      playButton.onClick.AddListener(() => stageStartChannel.Raise(selectScroll.centerIndex));
+      
+      playButton.onClick.AddListener(() => stageStartChannel.Raise(selectScrollView.snapIndex));
    }
 
    private void Start()
    {
-      SelectSlot();
+      OnEndDrag();
    }
 
-   void SelectSlot()
+   void OnEndDrag()
    {
-      slots[selectScroll.centerIndex].OnSelected(out string stageName);
-         
-      titleText.gameObject.SetActive(true);
+      slots[selectScrollView.snapIndex].OnSelected(out string stageName);
+      
       titleText.text = stageName;
-         
-      ActivePlayButton(selectScroll.centerIndex <= testCleardLevel);
+      
+
+      bool isActive = selectScrollView.snapIndex <= testCleardLevel;
+      
+      playBtnScaleCoroutine.PlayScale(lerpCurve, isActive ? Vector3.zero : Vector3.one, isActive ? Vector3.one : Vector3.zero, 0.05f);
+      
+      titleScaleCoroutine.PlayScale(lerpCurve, Vector3.zero, Vector3.one, 0.2f);
    }
 
-   void DeselectSlot()
+   void OnBeginDrag()
    {
-      slots[selectScroll.centerIndex].OnDeselected();
-         
-      titleText.gameObject.SetActive(false);
-         
-      ActivePlayButton(false);
-   }
-
-
-   void ActivePlayButton(bool isActive)
-   {
-      if (playButton.gameObject.activeSelf != isActive)
-      {
-         playButton.gameObject.SetActive(isActive);
-      }
+      slots[selectScrollView.snapIndex].OnDeselected();
+      
+      titleScaleCoroutine.PlayScale(lerpCurve, Vector3.one, Vector3.zero, 0.2f);
    }
 }

@@ -14,43 +14,34 @@ public class LobbyBottomButtonsUI : MonoBehaviour
     [SerializeField] private Button apperanceButton;
     [SerializeField] private Button statButton;
 
-    private Coroutine buttonCoroutine;
     private Transform targetButtonTransform;
 
+    private TransformAnimationCoroutine testCorouitine;
+    private TransformAnimationCoroutine testCorouitine2;
+
+    private void Awake()
+    {
+        testCorouitine = new(this, statButton.transform);
+        testCorouitine2 = new (this, apperanceButton.transform);
+    }
 
     public void OnButton(Transform target)
     {
-        if (buttonCoroutine != null)
+        if (target == statButton.transform)
         {
-            targetButtonTransform.localScale = Vector3.one;
-            
-            StopCoroutine(buttonCoroutine);
+            testCorouitine.PlayScale(onButtonCurve, Vector2.one, new Vector2(1.2f, 1.2f), 0.33f);
+            testCorouitine2.PlayScale(onButtonCurve, new Vector2(1.2f, 1.2f), Vector2.one, 0.33f);
         }
+        else
+        {
+            testCorouitine2.PlayScale(onButtonCurve, Vector2.one, new Vector2(1.2f, 1.2f), 0.33f);
+            testCorouitine.PlayScale(onButtonCurve, new Vector2(1.2f, 1.2f), Vector2.one, 0.33f);
+        }
+        
 
         targetButtonTransform = target;
         
         targetButtonTransform.SetAsLastSibling();
-        
-        buttonCoroutine = StartCoroutine(ScaleCorouitne(target));
     }
 
-    IEnumerator ScaleCorouitne(Transform target)
-    {
-        float time = 0;
-
-        Vector3 localScale = target.localScale;
-
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-
-            float curveRatio = time / duration;
-
-            target.localScale = Vector3.Lerp(localScale, targetScale, onButtonCurve.Evaluate(curveRatio));
-
-            yield return null;
-        }
-
-        target.localScale = targetScale;
-    }
 }
