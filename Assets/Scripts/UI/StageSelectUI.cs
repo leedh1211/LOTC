@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class StageSelectUI : MonoBehaviour
 {
-   [SerializeField] private int testCleardLevel;
-   [SerializeField] private int testLoadSelectLevel;
+   [SerializeField] private LobbyController lobbyController;
    
    [SerializeField] private HorizontalSnapScrollView selectScrollView;
    [SerializeField] private Button playButton;
@@ -41,7 +40,7 @@ public class StageSelectUI : MonoBehaviour
       {;
          slots[i] = slotsParent.GetChild(i).GetComponent<StageSelectUISlot>();
          
-         slots[i].Init(i<=testCleardLevel, i == testLoadSelectLevel);
+         slots[i].Init(i<=lobbyController.testCleardLevel, i == lobbyController.testSelectStage);
       }
       
       
@@ -49,7 +48,7 @@ public class StageSelectUI : MonoBehaviour
 
       selectScrollView.OnEndDragEvent += (data) => OnEndDrag();
 
-      selectScrollView.snapIndex = testLoadSelectLevel;
+      selectScrollView.snapIndex = lobbyController.testSelectStage;
 
       
       
@@ -68,7 +67,7 @@ public class StageSelectUI : MonoBehaviour
       titleText.text = stageName;
       
 
-      bool isActive = selectScrollView.snapIndex <= testCleardLevel;
+      bool isActive = selectScrollView.snapIndex <= lobbyController.testCleardLevel;
       
       playBtnScaleCoroutine.PlayScale(lerpCurve, isActive ? Vector3.zero : Vector3.one, isActive ? Vector3.one : Vector3.zero, 0.05f);
       

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -55,8 +56,41 @@ public abstract class SnapScrollView : MonoBehaviour, IEndDragHandler, IBeginDra
 
     private Coroutine lerpCoroutine;
 
-    private void OnEnable()
+
+    protected abstract Vector2 GetSnappedContentPos();
+    protected abstract float GetMaxScrollDistance();
+    protected abstract float GetItemDisToViewPort(Vector2 itemCenter, Vector2 viewPortCenter);
+
+  
+    public void OnBeginDrag(PointerEventData eventData)
     {
+        if (lerpCoroutine != null)
+        {
+            StopCoroutine(lerpCoroutine);
+        }
+        
+        OnBeginDragEvent?.Invoke(eventData);
+    }
+
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        SetSnapIndex();
+
+        var targetPos = GetSnappedContentPos(); 
+        
+        lerpCoroutine = StartCoroutine(SnapScrollRect(targetPos));
+        
+        OnEndDragEvent?.Invoke(eventData);
+    }
+    
+    
+    public void DirectUpdateItemList(int index)
+    {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(scrollRect.content);
+            
+        snapIndex = index;
+        
         for (int i = 0; i < itemList.Count; i++)
         {
             if (scaleOption.enabled)
@@ -80,36 +114,8 @@ public abstract class SnapScrollView : MonoBehaviour, IEndDragHandler, IBeginDra
     }
 
 
-    protected abstract Vector2 GetSnappedContentPos();
-    protected abstract float GetMaxScrollDistance();
-    protected abstract float GetItemDisToViewPort(Vector2 itemCenter, Vector2 viewPortCenter);
-
-
-    public void OnBeginDrag(PointerEventData eventData)
+    void SetSnapIndex()
     {
-        if (lerpCoroutine != null)
-        {
-            StopCoroutine(lerpCoroutine);
-        }
-        
-        OnBeginDragEvent?.Invoke(eventData);
-    }
-
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        var targetPos = GetSnappedContentPos(); 
-        
-        lerpCoroutine = StartCoroutine(SnapScrollRect(targetPos));
-        
-        OnEndDragEvent?.Invoke(eventData);
-    }
-
-    
-    public void UpdateItemList()
-    {
-        //TransformPoint = 로컬좌표를 기준 글로벌좌표로 (마치 pivot 0.5, 0.5)
-        
         Vector2 viewportCenter = scrollRect.viewport.TransformPoint(scrollRect.viewport.rect.center);
 
         float maxDis = GetMaxScrollDistance()/ 2;
@@ -134,6 +140,42 @@ public abstract class SnapScrollView : MonoBehaviour, IEndDragHandler, IBeginDra
                 
                 tempSnapIndex = i;
             }
+        }
+
+        snapIndex = tempSnapIndex;
+    }
+    
+
+    
+    public void UpdateItemList()
+    {
+        //TransformPoint = 로컬좌표를 기준 글로벌좌표로 (마치 pivot 0.5, 0.5)
+        
+        
+        Vector2 viewportCenter = scrollRect.viewport.TransformPoint(scrollRect.viewport.rect.center);
+
+        float maxDis = GetMaxScrollDistance()/ 2;
+
+        float maxItemDisRatio = 0;
+
+        //int tempSnapIndex = snapIndex;
+        
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            var item = itemList[i];
+            
+            Vector2 itemCenter = item.TransformPoint(item.rect.center);
+
+            float itemDis = GetItemDisToViewPort(itemCenter, viewportCenter);
+            
+            float itemDisNormalizedRatio = Mathf.Clamp01(1f -  Mathf.Abs(itemDis) / maxDis);
+
+            /*if (itemDisNormalizedRatio > maxItemDisRatio)
+            {
+                maxItemDisRatio = itemDisNormalizedRatio;
+                
+                tempSnapIndex = i;
+            }*/
 
             if (Mathf.Abs(itemDis) < maxDis)
             {
@@ -155,10 +197,11 @@ public abstract class SnapScrollView : MonoBehaviour, IEndDragHandler, IBeginDra
             }
         }
         
+        /*
         if (Mathf.Abs(scrollRect.content.anchoredPosition.x) < scrollRect.content.rect.width)
         {
             snapIndex = tempSnapIndex;
-        }
+        }*/
     }
 
 

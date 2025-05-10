@@ -3,22 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestController : MonoBehaviour
+public class LobbyController : MonoBehaviour
 {
+   public int testCleardLevel;
+   public int testSelectStage;
+   
    [SerializeField] private IntegerEventChannelSO stageStartChannel;
-
-   [SerializeField] private Transform testTransform;
 
 
    private void Awake()
    {
       stageStartChannel.OnEventRaised += GameStartToStage;
    }
-
-   private void Start()
-   {
-   }
-
 
 
    void GameStartToStage(int stageLevel)
