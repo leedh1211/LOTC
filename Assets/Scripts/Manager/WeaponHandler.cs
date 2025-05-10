@@ -46,9 +46,7 @@ public class WeaponHandler : MonoBehaviour
         for(int i = 0 ; i <monsterList.Count;i++)
         {
        
-           // dis = Vector3.Distance(this.transform.position,pos.position); // Change CurDistance
-
-            dis = (transform.position - monsterList[i].position).sqrMagnitude;
+           dis = (transform.position - monsterList[i].position).sqrMagnitude;
 
             if(dis<Nearest)
             {

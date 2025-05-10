@@ -23,6 +23,26 @@ public class Player : MonoBehaviour
 
     }
 
+    public void SetSkillData(SkillData data)
+    {
+        object effect = SkillEffectFactory.CreateEffect(data.type);
+        if (effect == null)
+        {
+            return;
+        }
+
+        var context = new SkillApplyContext
+        {
+            player = this,
+            weaponHandler = weapon
+            //직접 인스턴스화 시켜서 사용함. 
+        };
+
+        SkillManager.Instance.ApplySkill(effect,context);
+
+
+    
+    }
 
     
 
