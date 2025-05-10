@@ -43,16 +43,16 @@ public class WeaponHandler : MonoBehaviour
         Transform NearestMonster = null;
         
 
-       foreach(Transform pos in monsterList)
+        for(int i = 0 ; i <monsterList.Count;i++)
         {
        
            // dis = Vector3.Distance(this.transform.position,pos.position); // Change CurDistance
 
-            dis = (transform.position - pos.position).sqrMagnitude;
+            dis = (transform.position - monsterList[i].position).sqrMagnitude;
 
             if(dis<Nearest)
             {
-                NearestMonster = pos;
+                NearestMonster = monsterList[i];
                 Nearest = dis;
 
             }
@@ -69,14 +69,21 @@ public class WeaponHandler : MonoBehaviour
     public void Attack()
     {
         //�� Ž��
-        float baseAngle = 90f;
+       
+        Transform nearest = GetNearestEnemy();
+        
+        Vector3 targetPos = (nearest.position - firePoint.position).normalized;
 
+        float baseAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
+
+     
         // ȭ�� ���� ���� ����
         float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
         for (int i = 0; i < projectileCount; i++)
         {
-            float angle = -angleOffset + spreadAngle * i;
-            Quaternion rot = Quaternion.Euler(0, 0, baseAngle + angle);
+            float angle = baseAngle - angleOffset + spreadAngle * i;
+            //0, 0, baseAngle + angle
+            Quaternion rot = Quaternion.Euler(0,0,angle);
             GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // ȭ�� ����
 
             Vector3 rotatedDir = rot * Vector3.right; // �׻� ���� ��� ��Ʈ��
