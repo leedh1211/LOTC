@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
     [Header("AttackInfo")]
     [SerializeField]
-    private float delay = 1f;
+    [Range(0.3f,2.0f)]private float delay = 2.0f;
     public float Delay { get => delay;set=> delay = value; }
+
+    private float curTime = 0.0f;
     [SerializeField]
     private float power = 1f;
     public float Power { get => power; set => power = value; }
@@ -18,61 +21,97 @@ public class WeaponHandler : MonoBehaviour
     private float attackRange = 10f;
     public float AttackRange { get => attackRange; set => attackRange = value; }
 
-    public LayerMask targetlayer; //°ø°Ý °¡´É ´ë»ó
+    public LayerMask targetlayer; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
 
     [Header("ArrowInfo")]
     [SerializeField]
     private GameObject ArrowPrefabs;
-    public int projectileCount = 2; //È­»ì°¹¼ö
+    public int projectileCount = 2; //È­ï¿½ì°¹ï¿½ï¿½
     [SerializeField]
     private Transform firePoint;
     [SerializeField]
     private float spreadAngle = 15f;
 
+    [Header("MonsterList")]
+    
+    public List<Transform> monsterList;
 
-    public Transform GetNearestEnemy(Vector3 formpos, float range, LayerMask enemyLayer)
+
+    public Transform GetNearestEnemy()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(formpos, range, enemyLayer);
+        float Nearest = Mathf.Infinity;
+        float dis;
+        Transform NearestMonster = null;
+        
 
-        float minDist = float.MaxValue;
-        Transform nearest = null;
-
-        foreach (var hit in hits)
+        for(int i = 0 ; i <monsterList.Count;i++)
         {
-            float dist = Vector3.Distance(formpos, hit.transform.position);
-            if (dist < minDist)
-            {
-                minDist = dist;
-                nearest = hit.transform;
-            }
-        }
+       
+           dis = (transform.position - monsterList[i].position).sqrMagnitude;
 
-        return nearest;
+            if(dis<Nearest)
+            {
+                NearestMonster = monsterList[i];
+                Nearest = dis;
+
+            }
+            //else if(monster die) continue return ë“±ë“± ì£½ìœ¼ë©´ ì²˜ë¦¬ ë°©ë²• íŒ€ì› ìƒì˜í›„ ì¶”ê°€í•˜ê¸° 
+            
+
+
+        }
+        return NearestMonster;
     }
+
+
 
 
 
     public void Attack()
     {
-        //Àû Å½»ö
-        float baseAngle = 90f;
+        //ï¿½ï¿½ Å½ï¿½ï¿½
+       
+        Transform nearest = GetNearestEnemy();
+        
+        Vector3 targetPos = (nearest.position - firePoint.position).normalized;
 
-        // È­»ì °¢µµ ¹üÀ§ ¼³Á¤
+        float baseAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
+
+     
+        // È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
         for (int i = 0; i < projectileCount; i++)
         {
-            float angle = -angleOffset + spreadAngle * i;
-            Quaternion rot = Quaternion.Euler(0, 0, baseAngle + angle);
-            GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // È­»ì »ý¼º
+            float angle = baseAngle - angleOffset + spreadAngle * i;
+            //0, 0, baseAngle + angle
+            Quaternion rot = Quaternion.Euler(0,0,angle);
+            GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-            Vector3 rotatedDir = rot * Vector3.right; // Ç×»ó À§·Î ½îµÇ ÆÛÆ®¸²
+            Vector3 rotatedDir = rot * Vector3.right; // ï¿½×»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½
             arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir);
         }
 
     }
 
 
+    private void DelayAttack()
+    {
+        
+        if(curTime >=delay)
+        {
+            Attack();
+            curTime = 0.0f;
+        }
+        else
+        {
+            curTime += Time.deltaTime;
+
+
+        }
+        
+
+    }
     
     private void Update()
     {
@@ -80,12 +119,19 @@ public class WeaponHandler : MonoBehaviour
         {
             Attack();
         }
+
+        DelayAttack();
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            delay -=0.1f;
+        }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red; // ¿øÀÇ »ö»ó ÁöÁ¤
-        Gizmos.DrawWireSphere(transform.position, attackRange); // °ø°Ý ¹üÀ§ ½Ã°¢È­
+        Gizmos.color = Color.red; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        Gizmos.DrawWireSphere(transform.position, attackRange); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½È­
     }
 
 }
