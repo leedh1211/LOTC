@@ -6,27 +6,43 @@ namespace Monster.ScriptableObject.Skill
     [CreateAssetMenu(fileName = "AreaSkillData", menuName = "MonsterSkill/AreaSkillData")]
     public class AreaSkillData : BaseMonsterSkillData
     {
-        public GameObject affectPrefab;
+        public GameObject affectPrefab;             
+        public GameObject affectProjectilePrefab;   
+        public float ProjectileSpeed;         
         public float DamageRatio;
-        public float Range;
-        public float projectileSpeed;
-        public float projectileQuantity;
-        public float projectileAngle;
-        
-        public override void Excute(MonsterConfig monsterConfig , Transform self, Transform target)
+        public float skillRange;
+        public float AffectRange;
+        public float Duration;
+
+        public override void Excute(MonsterConfig monsterConfig, Transform self, Transform target)
         {
-            Vector2 BaseDirection = (target.position - self.position).normalized;
-            float startAngle = (projectileAngle / 2) * -1f;
-            float stepAngle = projectileAngle / projectileQuantity;
-            Vector2 startDir = Quaternion.Euler(0, 0, startAngle) * BaseDirection;
-            float Damage = monsterConfig.monsterStatData.attackPower * DamageRatio;
-            for (int i = 0; i < projectileQuantity; i++)
-            {
-                Vector2 dir = Quaternion.Euler(0, 0, stepAngle * i) * startDir;
-                GameObject projectile = Instantiate(affectPrefab, self.position, Quaternion.identity);
-                ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
-                projectileController.Init(dir, projectileSpeed, Damage);   
-            }
+            // 1) 투사체 생성
+            GameObject proj = Instantiate(
+                affectProjectilePrefab,
+                self.position,
+                Quaternion.identity
+            );
+
+            // 2) 컨트롤러 붙이고 초기화
+            var projCtrl = proj.GetComponent<AreaProjectileController>();
+            if (projCtrl == null)
+                projCtrl = proj.AddComponent<AreaProjectileController>();
+
+            // 대미지 계산
+            float damage = monsterConfig.monsterStatData.attackPower * DamageRatio;
+            // 발사 방향 (스킬 시전 시점 플레이어 위치 기준)
+            Vector2 dir = (target.position - self.position).normalized;
+
+            projCtrl.Init(
+                direction: dir,
+                travelDistance: skillRange,
+                speed: ProjectileSpeed,
+                damage: damage,
+                areaRange: AffectRange,
+                areaDuration: Duration,
+                areaPrefab: affectPrefab,
+                ownerConfig: monsterConfig
+            );
         }
     }
 }

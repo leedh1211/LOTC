@@ -28,11 +28,21 @@ public class MonsterController : MonoBehaviour
     public void Init(MonsterConfig config, GameObject player)
     {
         monsterConfig = config;
+        if (monsterConfig.isFly)
+        {
+            Physics2D.IgnoreLayerCollision(
+                gameObject.layer,
+                LayerMask.NameToLayer("Obstacle"),
+                true
+            );
+        }
+        
         aiController = GetComponent<BaseAIController>();
         aiController.Init(monsterConfig, GetComponent<Rigidbody2D>(), player);
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = monsterConfig.SpriteOverride;
         animator.runtimeAnimatorController = monsterConfig.AnimatorOverrideController.runtimeAnimatorController;
+        transform.localScale *= 0.9f;
         
         if (bodyCollider is BoxCollider2D box)
         {
@@ -44,9 +54,5 @@ public class MonsterController : MonoBehaviour
         float shadowHeight = spriteSize.y * 0.3f;
 
         shadow.localScale = new Vector3(shadowWidth, shadowHeight, 1f);
-    }
-
-    public void OnTriggerEnter2D(Collision2D collision)
-    {
     }
 }

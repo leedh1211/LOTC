@@ -19,7 +19,7 @@ namespace Monster.ScriptableObject.Skill
             }
             Vector2 direction = (target.position - self.position).normalized;
             float damage = monsterConfig.monsterStatData.attackPower * DamageRatio;
-            controller.DashInit(direction, damage, monsterConfig.SpriteOverride, Range, Speed, Delay);
+            controller.DashInit(direction, damage, monsterConfig.SpriteOverride, Range, Speed, Delay, monsterConfig.isFly);
         }
     }
 }
