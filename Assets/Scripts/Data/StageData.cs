@@ -8,7 +8,6 @@ public class StageData : ScriptableObject
     [System.Serializable]
     public class StageInfo
     {
-        public int MainStage;
         public List<TileMapData> Maps;
     }
 

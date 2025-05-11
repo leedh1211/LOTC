@@ -26,7 +26,7 @@ public class StageSelectUI : MonoBehaviour
 
    [Space(10f)]
    [Header("Events")]
-   [SerializeField] private IntegerEventChannelSO selectStageChannel;
+   [SerializeField] private IntegerEventChannelSO selectedStageLevel;
 
    
    private StageSelectUISlot[] slots;
@@ -54,7 +54,7 @@ public class StageSelectUI : MonoBehaviour
    {
       selectButton.onClick.AddListener(() =>
       {
-         selectStageChannel.Raise(selectScrollView.snapIndex);
+         selectedStageLevel.Raise(selectScrollView.snapIndex);
          Disable();
       });
       

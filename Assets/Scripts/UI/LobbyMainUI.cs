@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LobbyMainUI : MonoBehaviour
 {
@@ -11,9 +12,13 @@ public class LobbyMainUI : MonoBehaviour
     [SerializeField] private HorizontalSnapScrollView snapScrollView;
     
     [SerializeField] private List<RectTransform> pageList;
+    
     [SerializeField] private TextMeshProUGUI stageText;
+    
+    [SerializeField] private Button startButton;
 
-    [SerializeField] private IntegerEventChannelSO selectStageChannel;
+    [SerializeField] private IntegerEventChannelSO selectedStageLevel;
+    [SerializeField] private IntegerEventChannelSO startedMainGame;
     private void Awake()
     {
         SetStageInfo(lobbyController.testSelectStage);
@@ -22,18 +27,20 @@ public class LobbyMainUI : MonoBehaviour
         {
             pageList[i].sizeDelta = new(Screen.width, Screen.height);
         }
+        
+        startButton.onClick.AddListener(() => startedMainGame.Raise(lobbyController.testSelectStage));
     }
 
     private void Start()
     {
         snapScrollView.DirectUpdateItemList(1);
 
-        selectStageChannel.OnEventRaised += SetStageInfo;
+        selectedStageLevel.OnEventRaised += SetStageInfo;
     }
 
     private void OnDestroy()
     {
-        selectStageChannel.OnEventRaised -= SetStageInfo;
+        selectedStageLevel.OnEventRaised -= SetStageInfo;
     }
 
     void SetStageInfo(int level) => stageText.text = (level + 1).ToString();
