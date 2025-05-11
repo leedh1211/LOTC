@@ -7,73 +7,110 @@ using UnityEngine.UI;
 
 public class StageSelectUI : MonoBehaviour
 {
-   [SerializeField] private int testCleardLevel;
-   [SerializeField] private int testLoadSelectLevel;
+   [SerializeField] private LobbyController lobbyController;
    
-   [SerializeField] private HorizontalSnapScroll selectScroll;
-   [SerializeField] private Button playButton;
+   [Space(10f)]
+   [SerializeField] private CanvasGroup canvasGroup;
+   [SerializeField] private HorizontalSnapScrollView selectScrollView;
+   
+   [Space(10f)]
    [SerializeField] private RectTransform slotsParent;
    [SerializeField] private TextMeshProUGUI titleText;
+   [SerializeField] private RectTransform titleParent;
+   [SerializeField] private Button selectButton;
+
    
+   [Space(10f)]
+   [SerializeField] private AnimationCurve  easeOutCurve;
+   [SerializeField] private AnimationCurve  easeInCurve;
 
    [Space(10f)]
    [Header("Events")]
-   [SerializeField] private IntegerEventChannelSO stageStartChannel;
+   [SerializeField] private IntegerEventChannelSO selectStageChannel;
 
+   
    private StageSelectUISlot[] slots;
+   
+   private ProgressTweener testTitlePopTweener;
+   private ProgressTweener canvasGroupTweener;
+   
 
    private void Awake()
    {
+      testTitlePopTweener = new(this);
+
+      canvasGroupTweener = new(this);
+
       slots = new StageSelectUISlot[slotsParent.childCount];
 
       for (int i = 0; i < slotsParent.childCount; i++)
       {;
          slots[i] = slotsParent.GetChild(i).GetComponent<StageSelectUISlot>();
-         
-         slots[i].Init(i<=testCleardLevel, i == testLoadSelectLevel);
       }
       
-      
-      selectScroll.OnBeginDragEvent += (data) => DeselectSlot();
-
-      selectScroll.OnEndDragEvent += (data) => SelectSlot();
-
-      selectScroll.centerIndex = testLoadSelectLevel;
-
-      
-      playButton.onClick.AddListener(() => stageStartChannel.Raise(selectScroll.centerIndex));
    }
 
    private void Start()
    {
-      SelectSlot();
-   }
-
-   void SelectSlot()
-   {
-      slots[selectScroll.centerIndex].OnSelected(out string stageName);
-         
-      titleText.gameObject.SetActive(true);
-      titleText.text = stageName;
-         
-      ActivePlayButton(selectScroll.centerIndex <= testCleardLevel);
-   }
-
-   void DeselectSlot()
-   {
-      slots[selectScroll.centerIndex].OnDeselected();
-         
-      titleText.gameObject.SetActive(false);
-         
-      ActivePlayButton(false);
-   }
-
-
-   void ActivePlayButton(bool isActive)
-   {
-      if (playButton.gameObject.activeSelf != isActive)
+      selectButton.onClick.AddListener(() =>
       {
-         playButton.gameObject.SetActive(isActive);
+         selectStageChannel.Raise(selectScrollView.snapIndex);
+         Disable();
+      });
+      
+      
+      for (int i = 0; i < slotsParent.childCount; i++)
+      {;
+         slots[i].Init(i<=lobbyController.testCleardLevel, i == lobbyController.testSelectStage);
       }
+
+      
+      selectScrollView.OnBeginDragEvent += (data) => EnableItems(false);
+
+      selectScrollView.OnEndDragEvent += (data) => EnableItems(true);
+
+      selectScrollView.snapIndex = lobbyController.testSelectStage;
+   }
+
+
+   public void Enable()
+   {
+      selectScrollView.DirectUpdateItemList(lobbyController.testSelectStage);
+
+      EnableItems(true);
+      
+      canvasGroup.blocksRaycasts = true;
+      canvasGroupTweener.Play((ratio) => canvasGroup.alpha = Mathf.Lerp(0, 1, ratio), 0.1f).SetCurve(easeOutCurve);
+   }
+
+   public void Disable()
+   {
+      canvasGroup.blocksRaycasts = false;
+      canvasGroupTweener.Play((ratio) => canvasGroup.alpha = Mathf.Lerp(1, 0, ratio), 0.1f).SetCurve(easeInCurve);
+   }
+
+   
+
+   void EnableItems(bool enable)
+   {
+         if (enable)
+         {
+            slots[selectScrollView.snapIndex].OnSelected(out string stageName);
+      
+            titleText.text = stageName;
+
+            bool isCleared = selectScrollView.snapIndex <= lobbyController.testCleardLevel;
+
+            if (selectButton.gameObject.activeSelf != isCleared)
+            {
+               selectButton.gameObject.SetActive(isCleared);
+            }
+            
+            testTitlePopTweener.Play((ratio) => titleParent.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, ratio), 0.1f).SetCurve(easeOutCurve);
+         }
+         else
+         {
+            testTitlePopTweener.Play((ratio) => titleParent.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, ratio), 0.1f).SetCurve(easeInCurve);
+         }
    }
 }
