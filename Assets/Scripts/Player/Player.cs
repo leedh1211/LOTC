@@ -1,16 +1,16 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using System.Linq;
 
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
 {
     private PlayerController playerController;
     [SerializeField] private PlayerVisual playerVisual;
+    private PlayerData playerData;
 
     [Header("WeaPon")]
     private WeaponHandler weapon;
+
+    private PlayerData PlayerData => playerData;
     
     void Awake()
     {
@@ -19,8 +19,6 @@ public class Player : MonoBehaviour
 
         //Weapon
         weapon = GetComponentInChildren<WeaponHandler>();
-
-
     }
 
     public void SetSkillData(SkillData data)
