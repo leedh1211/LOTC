@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Monster.Skill;
 using Unity.VisualScripting;
@@ -14,10 +15,12 @@ namespace Monster.AI
         private List<float> skillCooldownTimerList = new List<float>();
         private MonsterSkillController _monsterSkillController;
         private bool _isInitialized;
+        private bool isUsingSkill;
 
         public void Awake()
         {
             _isInitialized = false;
+            isUsingSkill = false;
         }
         public virtual void Start()
         {
@@ -26,41 +29,46 @@ namespace Monster.AI
         
         public virtual void Update()
         {
+            for (int i = 0; i < skillCooldownTimerList.Count; i++)
+            {
+                if (skillCooldownTimerList[i] <= 0)
+                {
+                    isUsingSkill = true; // 스킬 사용 중
+                    _monsterSkillController.UseSkill(_monsterConfig, _monsterConfig.skillData[i], player.transform);
+
+                    skillCooldownTimerList[i] = _monsterConfig.skillData[i].Cooldown;
+
+                    StartCoroutine(EndSkillAfter(_monsterConfig.skillData[i].AfterDelay)); //후딜레이 처리
+                }
+                else
+                {
+                    skillCooldownTimerList[i] -= Time.deltaTime;
+                }
+            }
         }
 
         public virtual void FixedUpdate()
         {
-            if (!_isInitialized)
-            {
+            if (!_isInitialized || isUsingSkill)
                 return;
-            }
-            if (Vector2.Distance(player.transform.position, this.transform.position) <= _monsterConfig.monsterStatData.attackRange) // 스킬쿨이 다 돌았고, 사거리안에 들어와있으면 스킬 시전
-            {
-                for (int i = 0; i < skillCooldownTimerList.Count; i++)
-                {
-                    if (skillCooldownTimerList[i] <= 0)
-                    {
-                        _monsterSkillController.UseSkill(i, player.transform);
-                        skillCooldownTimerList[i] = _monsterConfig.skillData[i].Cooldown;
-                    }
-                    else
-                    {
-                        skillCooldownTimerList[i] -= Time.fixedDeltaTime;
-                    }
-                }
-            }
-            else
+
+            if (Vector2.Distance(player.transform.position, this.transform.position) > _monsterConfig.monsterStatData.attackRange)
             {
                 Move();
             }
-            
         }
 
         public virtual void Move()
         {
-            Vector2 direction = player.transform.position - this.transform.position;
-            Vector2 nextPosition = (direction * _monsterConfig.monsterStatData.moveSpeed*Time.fixedDeltaTime) + (Vector2)this.transform.position;
+            Vector2 direction = (player.transform.position - transform.position).normalized;
+            Vector2 nextPosition = (direction * _monsterConfig.monsterStatData.moveSpeed * Time.fixedDeltaTime) + (Vector2)transform.position;
             _monsterRigid.MovePosition(nextPosition);
+        }
+        
+        private IEnumerator EndSkillAfter(float duration)
+        {
+            yield return new WaitForSeconds(duration);
+            isUsingSkill = false;
         }
 
         public virtual void ActiveSkill()

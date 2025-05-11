@@ -7,11 +7,13 @@ using UnityEngine;
 public class MonsterController : MonoBehaviour
 {
     private GameObject monsterPrefab;
-    private MonsterConfig monsterConfig;
+    public MonsterConfig monsterConfig;
     private BaseAIController aiController;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     [SerializeField] private Collider2D bodyCollider;
+    [SerializeField] private Transform shadow;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class MonsterController : MonoBehaviour
         monsterConfig = config;
         aiController = GetComponent<BaseAIController>();
         aiController.Init(monsterConfig, GetComponent<Rigidbody2D>(), player);
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = monsterConfig.SpriteOverride;
         animator.runtimeAnimatorController = monsterConfig.AnimatorOverrideController.runtimeAnimatorController;
         
@@ -35,5 +38,18 @@ public class MonsterController : MonoBehaviour
         {
             box.size = spriteRenderer.bounds.size;
         }
+        Vector2 spriteSize = spriteRenderer.bounds.size;
+        Debug.Log(spriteSize);
+        Debug.Log(spriteRenderer.bounds.size);
+        
+        float shadowWidth = spriteSize.x * 0.6f;
+        float shadowHeight = spriteSize.y * 0.3f;
+
+        shadow.localScale = new Vector3(shadowWidth, shadowHeight, 1f);
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
 }

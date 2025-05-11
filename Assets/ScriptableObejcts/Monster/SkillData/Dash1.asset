@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfa3281a48343e5b0258375ba6609ce, type: 3}
-  m_Name: AreaAttack
+  m_Script: {fileID: 11500000, guid: 2a74657f909541bc9100bf1f4067d308, type: 3}
+  m_Name: Dash1
   m_EditorClassIdentifier: 
-  skillName: AreaAttack
-  Type: 2
-  AttackRank: 0
-  Cooldown: 0
-  Damage: 0
-  Range: 0
-  projectile: {fileID: 0}
-  GroundEffectPrefab: {fileID: 0}
+  skillName: Dash1
+  Cooldown: 5
+  AfterDelay: 1
+  DamageRatio: 1
+  Range: 3
+  Delay: 1
+  Speed: 4
