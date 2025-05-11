@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TransformAnimationCoroutine
+public class TransformTweener
 {
     private Transform target;
 
@@ -11,7 +11,7 @@ public class TransformAnimationCoroutine
     private Coroutine scaleCoroutine;
     
 
-    public TransformAnimationCoroutine(MonoBehaviour runner, Transform target)
+    public TransformTweener(MonoBehaviour runner, Transform target)
     {
         this.runner = runner;
         this.target = target;

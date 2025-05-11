@@ -8,17 +8,19 @@ public class LobbyController : MonoBehaviour
    public int testCleardLevel;
    public int testSelectStage;
    
-   [SerializeField] private IntegerEventChannelSO stageStartChannel;
+   [SerializeField] private IntegerEventChannelSO selectedStageLevel;
 
 
-   private void Awake()
+   private void Start()
    {
-      stageStartChannel.OnEventRaised += GameStartToStage;
+      selectedStageLevel.OnEventRaised += SetStage;
    }
 
-
-   void GameStartToStage(int stageLevel)
+   private void OnDestroy()
    {
-      Debug.Log(stageLevel);
+      selectedStageLevel.OnEventRaised -= SetStage;
    }
+
+   void SetStage(int level) => testSelectStage = level;
+
 }
