@@ -39,8 +39,6 @@ public class MonsterController : MonoBehaviour
             box.size = spriteRenderer.bounds.size;
         }
         Vector2 spriteSize = spriteRenderer.bounds.size;
-        Debug.Log(spriteSize);
-        Debug.Log(spriteRenderer.bounds.size);
         
         float shadowWidth = spriteSize.x * 0.6f;
         float shadowHeight = spriteSize.y * 0.3f;
@@ -48,8 +46,7 @@ public class MonsterController : MonoBehaviour
         shadow.localScale = new Vector3(shadowWidth, shadowHeight, 1f);
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collision2D collision)
     {
-        
     }
 }

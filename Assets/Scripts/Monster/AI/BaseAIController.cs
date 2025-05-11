@@ -71,11 +71,6 @@ namespace Monster.AI
             isUsingSkill = false;
         }
 
-        public virtual void ActiveSkill()
-        {
-            
-        }
-
         public void Init(MonsterConfig config, Rigidbody2D rigid, GameObject player)
         {
             _monsterConfig = config;
@@ -87,6 +82,5 @@ namespace Monster.AI
             this.player = player;
             _isInitialized = true;
         }
-            
     }
 }

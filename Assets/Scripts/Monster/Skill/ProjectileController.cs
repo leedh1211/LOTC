@@ -40,7 +40,6 @@ namespace Monster.Skill
 
         public void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log($"충돌: {other.gameObject.name}, Layer: {other.gameObject.layer}");
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 Debug.Log(other.gameObject.name);

@@ -14,8 +14,9 @@ namespace Monster
 
         public void Start()
         {
-            SpawnMonster(MonsterName.Mob3, new Vector2(3f, 5f) , player );
-            // SpawnMonster(MonsterName.Mob2, new Vector2(3f, 10f) , player );
+            SpawnMonster(MonsterName.Mob3, new Vector2(2f, 5f) , player );
+            SpawnMonster(MonsterName.Mob2, new Vector2(-2f, 10f) , player );
+            SpawnMonster(MonsterName.Mob1, new Vector2(0f, 12f) , player );
         }
 
         [MenuItem("Tolls/SpwanMonster")]
