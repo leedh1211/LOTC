@@ -10,7 +10,7 @@ public class LobbyMainUI : MonoBehaviour
     
     [SerializeField] private HorizontalSnapScrollView snapScrollView;
     
-    [SerializeField] private List<RectTransform> mainItemList;
+    [SerializeField] private List<RectTransform> pageList;
     [SerializeField] private TextMeshProUGUI stageText;
 
     [SerializeField] private IntegerEventChannelSO selectStageChannel;
@@ -18,9 +18,9 @@ public class LobbyMainUI : MonoBehaviour
     {
         SetStageInfo(lobbyController.testSelectStage);
         
-        for (int i = 0; i < mainItemList.Count; i++)
+        for (int i = 0; i < pageList.Count; i++)
         {
-            mainItemList[i].sizeDelta = new(Screen.width, Screen.height);
+            pageList[i].sizeDelta = new(Screen.width, Screen.height);
         }
     }
 

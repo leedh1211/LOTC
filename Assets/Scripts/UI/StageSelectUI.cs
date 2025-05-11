@@ -9,14 +9,20 @@ public class StageSelectUI : MonoBehaviour
 {
    [SerializeField] private LobbyController lobbyController;
    
+   [Space(10f)]
+   [SerializeField] private CanvasGroup canvasGroup;
    [SerializeField] private HorizontalSnapScrollView selectScrollView;
-   [SerializeField] private Button selectButton;
+   
+   [Space(10f)]
    [SerializeField] private RectTransform slotsParent;
    [SerializeField] private TextMeshProUGUI titleText;
    [SerializeField] private RectTransform titleParent;
+   [SerializeField] private Button selectButton;
+
    
    [Space(10f)]
    [SerializeField] private AnimationCurve  easeOutCurve;
+   [SerializeField] private AnimationCurve  easeInCurve;
 
    [Space(10f)]
    [Header("Events")]
@@ -25,13 +31,16 @@ public class StageSelectUI : MonoBehaviour
    
    private StageSelectUISlot[] slots;
    
-   private ProgressTweener testTitleTweener;
-
+   private ProgressTweener testTitlePopTweener;
+   private ProgressTweener canvasGroupTweener;
+   
 
    private void Awake()
    {
-      testTitleTweener = new(this);
-      
+      testTitlePopTweener = new(this);
+
+      canvasGroupTweener = new(this);
+
       slots = new StageSelectUISlot[slotsParent.childCount];
 
       for (int i = 0; i < slotsParent.childCount; i++)
@@ -46,6 +55,7 @@ public class StageSelectUI : MonoBehaviour
       selectButton.onClick.AddListener(() =>
       {
          selectStageChannel.Raise(selectScrollView.snapIndex);
+         Disable();
       });
       
       
@@ -60,6 +70,23 @@ public class StageSelectUI : MonoBehaviour
       selectScrollView.OnEndDragEvent += (data) => EnableItems(true);
 
       selectScrollView.snapIndex = lobbyController.testSelectStage;
+   }
+
+
+   public void Enable()
+   {
+      selectScrollView.DirectUpdateItemList(lobbyController.testSelectStage);
+
+      EnableItems(true);
+      
+      canvasGroup.blocksRaycasts = true;
+      canvasGroupTweener.Play((ratio) => canvasGroup.alpha = Mathf.Lerp(0, 1, ratio), 0.1f).SetCurve(easeOutCurve);
+   }
+
+   public void Disable()
+   {
+      canvasGroup.blocksRaycasts = false;
+      canvasGroupTweener.Play((ratio) => canvasGroup.alpha = Mathf.Lerp(1, 0, ratio), 0.1f).SetCurve(easeInCurve);
    }
 
    
@@ -79,13 +106,11 @@ public class StageSelectUI : MonoBehaviour
                selectButton.gameObject.SetActive(isCleared);
             }
             
-            testTitleTweener.Play((ratio) => titleParent.localScale = Vector3.one * ratio, 0.2f).SetCurve(easeOutCurve);
+            testTitlePopTweener.Play((ratio) => titleParent.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, ratio), 0.1f).SetCurve(easeOutCurve);
          }
          else
          {
-            slots[selectScrollView.snapIndex].OnDeselected();
-      
-            testTitleTweener.Play((ratio) => titleParent.localScale = Vector3.one *(1f - ratio), 0.2f).SetCurve(easeOutCurve);
+            testTitlePopTweener.Play((ratio) => titleParent.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, ratio), 0.1f).SetCurve(easeInCurve);
          }
    }
 }
