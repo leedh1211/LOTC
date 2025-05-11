@@ -684,7 +684,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  selectStageChannel: {fileID: 11400000, guid: 0fa2012851b43274dbff2baa462efebd, type: 2}
+  selectedStageLevel: {fileID: 11400000, guid: 0fa2012851b43274dbff2baa462efebd, type: 2}
 --- !u!225 &5591042773415266338
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -144,7 +144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play
+  m_text: Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1362,7 +1362,7 @@ GameObject:
   - component: {fileID: 7821675358415519367}
   - component: {fileID: 4534792607059580614}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1640,7 +1640,9 @@ MonoBehaviour:
   - {fileID: 4482410677494444744}
   - {fileID: 6726663517628297266}
   stageText: {fileID: 5567458595152107129}
-  selectStageChannel: {fileID: 11400000, guid: 0fa2012851b43274dbff2baa462efebd, type: 2}
+  startButton: {fileID: 4534792607059580614}
+  selectedStageLevel: {fileID: 11400000, guid: 0fa2012851b43274dbff2baa462efebd, type: 2}
+  startedMainGame: {fileID: 11400000, guid: 8d22acd0c0f1e4349b31ccf22134cc43, type: 2}
 --- !u!1 &5991969162315131543
 GameObject:
   m_ObjectHideFlags: 0

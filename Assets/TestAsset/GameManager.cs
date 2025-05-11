@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+
     [SerializeField] private IntegerEventChannelSO startedMainGame;
+    [SerializeField] private IntegerVariableSO selectedStageLevel;
 
     protected override void Awake()
     {
@@ -17,6 +19,8 @@ public class GameManager : Singleton<GameManager>
 
     void LoadMainGame(int level)
     {
-        SceneManager.LoadScene("MainGameScene");
+        selectedStageLevel.RuntimeValue = level;
+        
+        SceneManager.LoadScene("Test2MainGame");
     }
 }
