@@ -7,8 +7,10 @@ public class WeaponHandler : MonoBehaviour
 {
     [Header("AttackInfo")]
     [SerializeField]
-    private float delay = 1f;
+    [Range(0.3f,2.0f)]private float delay = 2.0f;
     public float Delay { get => delay;set=> delay = value; }
+
+    private float curTime = 0.0f;
     [SerializeField]
     private float power = 1f;
     public float Power { get => power; set => power = value; }
@@ -91,6 +93,23 @@ public class WeaponHandler : MonoBehaviour
     }
 
 
+    private void DelayAttack()
+    {
+        
+        if(curTime >=delay)
+        {
+            Attack();
+            curTime = 0.0f;
+        }
+        else
+        {
+            curTime += Time.deltaTime;
+
+
+        }
+        
+
+    }
     
     private void Update()
     {
@@ -99,9 +118,11 @@ public class WeaponHandler : MonoBehaviour
             Attack();
         }
 
+        DelayAttack();
+
         if(Input.GetKeyDown(KeyCode.M))
         {
-            GetNearestEnemy();
+            delay -=0.1f;
         }
     }
 
