@@ -13,33 +13,19 @@ MonoBehaviour:
   m_Name: StageData
   m_EditorClassIdentifier: 
   stages:
-  - MainStage: 1
-    Maps:
+  - Maps:
     - {fileID: 11400000, guid: 4d72c5b3c07b9d340a0d2ccb0ce93309, type: 2}
     - {fileID: 11400000, guid: 9046ff89068c04c48809cd064f9837a7, type: 2}
     - {fileID: 11400000, guid: c40b7aa22c5589b4992a7aaa8c25a7a7, type: 2}
-  - MainStage: 2
-    Maps:
+  - Maps:
     - {fileID: 11400000, guid: e333453651836394b9f1a5fb66bae3c3, type: 2}
     - {fileID: 11400000, guid: 34a9b0c5c8db07142a23993019e5308f, type: 2}
     - {fileID: 11400000, guid: 1048f93bea02e89488b0e3defce56282, type: 2}
-  - MainStage: 3
-    Maps:
+  - Maps:
     - {fileID: 11400000, guid: b183020d896695a4f89dbc3d8fb215fd, type: 2}
     - {fileID: 11400000, guid: d087d27d9f432eb4c872f9c9a14383fd, type: 2}
     - {fileID: 11400000, guid: bce415738bc42464abbc7c4444c789bf, type: 2}
-  - MainStage: 4
-    Maps:
+  - Maps:
     - {fileID: 11400000, guid: 8af8cdede25d6344dab0c83d487fbbf3, type: 2}
     - {fileID: 11400000, guid: 67ccede5e0e580542905ca56429c23a5, type: 2}
     - {fileID: 11400000, guid: d88a58904db88734788448ba3119e46c, type: 2}
-  - MainStage: 5
-    Maps:
-    - {fileID: 11400000, guid: 16ed2817e2d7a52458955d81b83052a2, type: 2}
-    - {fileID: 11400000, guid: a0f66e7ac0b47ee4381ce6d92590f9fa, type: 2}
-    - {fileID: 11400000, guid: 37232cf6253b0c547ac3b19e9e7a25cd, type: 2}
-  - MainStage: 6
-    Maps:
-    - {fileID: 11400000, guid: 2c8a7a1a6b4e2bb4ba4b4dcbfd231211, type: 2}
-    - {fileID: 11400000, guid: ab3d2b288bc69204fbc263f71353e171, type: 2}
-    - {fileID: 11400000, guid: fca4bb22f0adbc449a8c03aba3fc7f1d, type: 2}
