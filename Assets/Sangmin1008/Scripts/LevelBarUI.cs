@@ -9,24 +9,22 @@ using UnityEngine.UI;
 public class LevelBarUI : MonoBehaviour
 {
     [SerializeField] private Slider slider;
-    [SerializeField] private IntegerEventChannelSO expEvent;
+    [SerializeField] private IntegerEventChannelSO expChangedEvent;
     [SerializeField] private VoidEventChannelSO levelUpEvent;
-    [SerializeField] private TextMeshProUGUI levelText;
     
     private int _currentExp = 0;
-    private int _remainderExp = 0;
     private int _maxExp = 100;
     private Coroutine _sliderCoroutine;
     private bool _isLevelingUp = false;
 
     private void OnEnable()
     {
-        expEvent.OnEventRaised += SliderUpdate;
+        expChangedEvent.OnEventRaised += SliderUpdate;
     }
 
     private void OnDisable()
     {
-        expEvent.OnEventRaised -= SliderUpdate;
+        expChangedEvent.OnEventRaised -= SliderUpdate;
     }
 
     private void Start()
@@ -49,15 +47,15 @@ public class LevelBarUI : MonoBehaviour
         if (targetExp >= _maxExp)
         {
             int overflowExp = targetExp - _maxExp;
-            _sliderCoroutine = StartCoroutine(SmoothSliderUpdate(_currentExp, _maxExp, overflowExp));
+            _sliderCoroutine = StartCoroutine(SmoothSliderUpdate(_maxExp, overflowExp));
         }
         else
         {
-            _sliderCoroutine = StartCoroutine(SmoothSliderUpdate(_currentExp, targetExp, 0));
+            _sliderCoroutine = StartCoroutine(SmoothSliderUpdate(targetExp, 0));
         }
     }
 
-    private IEnumerator SmoothSliderUpdate(int startExp, int targetExp, int overflowExp)
+    private IEnumerator SmoothSliderUpdate(int targetExp, int overflowExp)
     {
         float duration = 0.7f;
         float elapsed = 0f;
@@ -102,12 +100,5 @@ public class LevelBarUI : MonoBehaviour
             _isLevelingUp = false;
             SliderUpdate(overflowExp);
         }
-    }
-
-    // Test
-    [ContextMenu("UP")]
-    private void Up()
-    {
-        SliderUpdate(70);
     }
 }
