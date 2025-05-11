@@ -46,6 +46,10 @@ public class InputHandler : MonoSingleton<InputHandler>
         {
             customizeController.BuyCustomizeItem(2);
         }
+        if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            SaveManager.Instance.Save();
+        }
     }
     public void OnMove(Vector2 vector2)
     {

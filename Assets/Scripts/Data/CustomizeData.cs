@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
-using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Customize Data")]
 public class CustomizeData : ScriptableObject

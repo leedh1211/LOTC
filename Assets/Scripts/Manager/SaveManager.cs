@@ -17,6 +17,14 @@ public class SaveManager : Singleton<SaveManager>
     {
         base.Awake();
         CurrentSave = Load();
+
+        int customizeCount = CustomizeDataTable.GetCustomizeDataCount();
+        playerData = new PlayerData(customizeCount);
+
+        var bits = DeserializeOwnedItems(CurrentSave.OwnedCustomizeItem);
+        playerData.LoadOwnedCustomizeItem(bits);
+        PlayerData.AddGold(CurrentSave.Gold);
+
     }
     public void Save()
     {
@@ -44,7 +52,7 @@ public class SaveManager : Singleton<SaveManager>
         {
             sb.Append(bits[i] ? '1' : '0');
         }
-        return sb.ToString(); // ¿¹: "010010110..."
+        return sb.ToString();
     }
 
     public BitArray DeserializeOwnedItems(string str)

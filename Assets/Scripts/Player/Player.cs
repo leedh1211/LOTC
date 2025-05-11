@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [Header("WeaPon")]
     private WeaponHandler weapon;
 
-    private PlayerData PlayerData => playerData;
+    public PlayerData PlayerData => playerData;
     
     void Awake()
     {
