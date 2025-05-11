@@ -56,6 +56,8 @@ public class WeaponHandler : MonoBehaviour
                 Nearest = dis;
 
             }
+            //else if(monster die) continue return 등등 죽으면 처리 방법 팀원 상의후 추가하기 
+            
 
 
         }

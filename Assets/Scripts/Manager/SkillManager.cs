@@ -1,12 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class SkillManager : Singleton<SkillManager> //½Ì±ÛÅæ
+public class SkillManager : Singleton<SkillManager> //ï¿½Ì±ï¿½ï¿½ï¿½
 {
-    
+    private List<SkillData> skillDatas = new List<SkillData>();
+
+    public void LearnSkill(SkillData data ,SkillApplyContext context)
+    {
+        ISKillEffect effect = SkillEffectFactory.CreateEffect(data.type);
+
+        if(effect == null)
+        {
+            Debug.Log("there is no skill");
+        }
+
+        ApplySkill(effect,context); //Apply skill
+
+    }
+
+
+    private void ApplySkillEffect(ISKillEffect effect , SkillApplyContext context)
+    {
+        if(effect is IPlayerApplicable player)
+        {
+            player.ApplyToPlayer(context);
+        }
+
+        if(effect is IWeaponApplicable weapon)
+        {
+            weapon.ApplyToWeapon(context);
+        }
+
+
+    }
    
    
     public void ApplySkill(object effectInstance,SkillApplyContext context)
@@ -15,7 +45,7 @@ public class SkillManager : Singleton<SkillManager> //½Ì±ÛÅæ
         {
             playerEffect.ApplyToPlayer(context);
         #if UNITY_EDITOR
-            Debug.Log("ÇÃ·¹ÀÌ¾î¿¡°Ô ½ºÅ³ Àû¿ëµÊ");
+            Debug.Log("ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½");
         #endif
         }
 
@@ -23,7 +53,7 @@ public class SkillManager : Singleton<SkillManager> //½Ì±ÛÅæ
         {
             weaponEffect.ApplyToWeapon(context);
         #if UNITY_EDITOR
-            Debug.Log("¹«±â¿¡ ½ºÅ³ Àû¿ëµÊ");
+            Debug.Log("ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½");
         #endif
 
         }
