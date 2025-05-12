@@ -78,12 +78,12 @@ public class MainGameController : MonoBehaviour
     private void GameOver()
     {
         gameOverPanel.SetActive(true);
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
     }
 
     private void GameClear()
     {
         gameClearPanel.SetActive(true);
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
     }
 }
