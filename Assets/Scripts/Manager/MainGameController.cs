@@ -15,18 +15,25 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private int monsterSpawnCount = 5;
     
     [SerializeField] private VoidEventChannelSO playerDeathEvent;
+    [SerializeField] private VoidEventChannelSO monsterDeathEvent;
+
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject gameClearPanel;
 
     private List<Rect> _monsterSpawner;
     private Vector2 _playerSpawner;
+    private int _killedMonsterCount = 0;
 
     private void OnEnable()
     {
         playerDeathEvent.OnEventRaised += GameOver;
+        monsterDeathEvent.OnEventRaised += KillMonster;
     }
 
     private void OnDisable()
     {
         playerDeathEvent.OnEventRaised -= GameOver;
+        monsterDeathEvent.OnEventRaised -= KillMonster;
     }
 
     private void Start()
@@ -38,6 +45,7 @@ public class MainGameController : MonoBehaviour
     {
         _monsterSpawner = tileMapLoader.TileMap.SpawnArea;
         _playerSpawner = tileMapLoader.TileMap.PlayerSpawnPosition;
+        _killedMonsterCount = 0;
 
         var playerInstance = Instantiate(player, _playerSpawner, Quaternion.identity);
         playerInstance.name = "Player";
@@ -58,9 +66,24 @@ public class MainGameController : MonoBehaviour
         }
     }
 
+    private void KillMonster()
+    {
+        _killedMonsterCount++;
+        if (_killedMonsterCount >= monsterSpawnCount)
+        {
+            GameClear();
+        }
+    }
+
     private void GameOver()
     {
-        
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
     }
-    
+
+    private void GameClear()
+    {
+        gameClearPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
 }
