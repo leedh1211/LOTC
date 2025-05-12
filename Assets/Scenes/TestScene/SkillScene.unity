@@ -928,6 +928,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 717420880}
     - target: {fileID: 2904279775362675993, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904279775362675993, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
+      propertyPath: shotCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904279775362675993, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
+      propertyPath: projectileCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904279775362675993, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
       propertyPath: monsterList.Array.size
       value: 1
       objectReference: {fileID: 0}
