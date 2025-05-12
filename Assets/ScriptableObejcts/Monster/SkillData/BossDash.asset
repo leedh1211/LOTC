@@ -16,6 +16,6 @@ MonoBehaviour:
   Cooldown: 10
   AfterDelay: 1
   DamageRatio: 1
-  Range: 3
+  Range: 5
   Delay: 1
   Speed: 4

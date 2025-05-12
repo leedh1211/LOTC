@@ -18,5 +18,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5232396780402959805, guid: 495bbb1c91bc9584193591de9ce893bc, type: 3}
   DamageRatio: 1
   projectileSpeed: 3
-  projectileQuantity: 6
+  projectileQuantity: 18
   projectileAngle: 360
+  projectileDelay: 0
+  isRandom: 0

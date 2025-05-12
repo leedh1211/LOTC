@@ -9,7 +9,6 @@ public class MonsterStatData : ScriptableObject
     public float attackPower;
     public float moveSpeed;
     public float attackRange;
-    // public float skillCooldown;
     public float knockbackDuration;
     public float knockbackCooldown;
 }

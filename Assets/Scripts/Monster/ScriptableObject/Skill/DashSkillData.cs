@@ -1,4 +1,5 @@
-﻿using Monster.Skill;
+﻿using System.Collections;
+using Monster.Skill;
 using UnityEngine;
 
 namespace Monster.ScriptableObject.Skill
@@ -11,7 +12,7 @@ namespace Monster.ScriptableObject.Skill
         public float Delay;
         public float Speed;
         
-        public override void Excute(MonsterConfig monsterConfig , Transform self, Transform target)
+        public override IEnumerator Excute(MonsterConfig monsterConfig , Transform self, Transform target)
         {
             if (!self.TryGetComponent(out DashSkillController controller))
             {
@@ -20,6 +21,7 @@ namespace Monster.ScriptableObject.Skill
             Vector2 direction = (target.position - self.position).normalized;
             float damage = monsterConfig.monsterStatData.attackPower * DamageRatio;
             controller.DashInit(direction, damage, monsterConfig.SpriteOverride, Range, Speed, Delay, monsterConfig.isFly);
+            yield return null;
         }
     }
 }

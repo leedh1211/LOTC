@@ -1,3 +1,4 @@
+using System.Collections;
 using JetBrains.Annotations;
 using Monster.ScriptableObject;
 using UnityEngine;
@@ -8,5 +9,5 @@ public abstract class BaseMonsterSkillData : ScriptableObject
     public float Cooldown;
     public float AfterDelay;
     
-    public abstract void Excute(MonsterConfig MonsterConfig , Transform self,Transform target);
+    public abstract IEnumerator Excute(MonsterConfig MonsterConfig , Transform self,Transform target);
 }

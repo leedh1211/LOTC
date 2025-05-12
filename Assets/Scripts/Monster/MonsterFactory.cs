@@ -14,8 +14,8 @@ namespace Monster
 
         public void Start()
         {
-            // SpawnMonster(MonsterName.Mob1, new Vector2(0f, 12f), player);
-            SpawnMonster(MonsterName.Boss2, new Vector2(1f, 15f) , player );
+            // SpawnMonster(MonsterName.MainBoss, new Vector2(0f, 12f), player);
+            SpawnMonster(MonsterName.Mob4, new Vector2(1f, 15f) , player );
         }
 
         public GameObject SpawnMonster(MonsterName name, Vector2 spawnPos, GameObject player)

@@ -9,10 +9,10 @@ public class MonsterController : MonoBehaviour
 {
     [SerializeField] private HPBarController hpBar;
 
+    public MonsterConfig monsterConfig;
+    
     private float maxHealth;
     private float currentHealth;
-    private GameObject monsterPrefab;
-    public MonsterConfig monsterConfig;
     private BaseAIController aiController;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
@@ -21,11 +21,6 @@ public class MonsterController : MonoBehaviour
     private float knockBackTimer;
     private float knockBackCooldown;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -57,12 +52,12 @@ public class MonsterController : MonoBehaviour
         currentHealth = config.monsterStatData.maxhealth;
         knockBackTimer = config.monsterStatData.knockbackCooldown;
         knockBackCooldown = config.monsterStatData.knockbackCooldown;
-        Debug.Log("첫설정" +currentHealth);
+        
         aiController = GetComponent<BaseAIController>();
         aiController.Init(monsterConfig, GetComponent<Rigidbody2D>(), player);
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
         spriteRenderer.sprite = monsterConfig.SpriteOverride;
-        animator.runtimeAnimatorController = monsterConfig.AnimatorOverrideController.runtimeAnimatorController;
+        animator.runtimeAnimatorController = monsterConfig.AnimatorOverrideController;
         Vector2 spriteSize = spriteRenderer.bounds.size;
         float shadowWidth = spriteSize.x * 0.6f;
         float shadowHeight = spriteSize.y * 0.3f;

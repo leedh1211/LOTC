@@ -12,7 +12,5 @@ public class MonsterConfig : ScriptableObject
     public BaseMonsterSkillData[] skillData;
     public AnimatorOverrideController AnimatorOverrideController;
     public Sprite SpriteOverride;
-
     public bool isFly;
-    // public Collider2D ColliderOverride;
 }

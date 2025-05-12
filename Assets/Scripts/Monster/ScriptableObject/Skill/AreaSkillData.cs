@@ -1,4 +1,5 @@
-﻿using Monster.Skill;
+﻿using System.Collections;
+using Monster.Skill;
 using UnityEngine;
 
 namespace Monster.ScriptableObject.Skill
@@ -13,9 +14,12 @@ namespace Monster.ScriptableObject.Skill
         public float skillRange;
         public float AffectRange;
         public float Duration;
+        public int AreaQuantity;
+        public float AreaAngle;
 
-        public override void Excute(MonsterConfig monsterConfig, Transform self, Transform target)
+        public override IEnumerator Excute(MonsterConfig monsterConfig, Transform self, Transform target)
         {
+            Debug.Log("스킬동작");
             GameObject proj = Instantiate(
                 affectProjectilePrefab,
                 self.position,
@@ -46,15 +50,16 @@ namespace Monster.ScriptableObject.Skill
             }
 
             projCtrl.Init(
-                direction: direction,
-                travelDistance: travelDistance,
-                speed: ProjectileSpeed,
-                damage: damage,
-                areaRange: AffectRange,
-                areaDuration: Duration,
-                areaPrefab: affectPrefab,
-                ownerConfig: monsterConfig
+                direction,
+                travelDistance,
+                ProjectileSpeed,
+                damage,
+                AffectRange,
+                Duration,
+                affectPrefab,
+                monsterConfig
             );
+            yield return null;
         }
     }
 }
