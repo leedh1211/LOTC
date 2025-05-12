@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4974c6289f33e8841825d8e464a13468, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  maxhealth: 0
-  attackPower: 0
-  moveSpeed: 0
-  attackRange: 0
-  skillCooldown: 0
-  knockbackDuration: 0
-  knockbackCooldown: 0
+  maxhealth: 500
+  attackPower: 10
+  moveSpeed: 1.2
+  attackRange: 5
+  knockbackDuration: 1
+  knockbackCooldown: 1
