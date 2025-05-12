@@ -1,19 +1,18 @@
 [System.Serializable]
 public class SaveData
 {
-    private int gold;
-    private string ownedCustomizeItem;
+    public int Gold { get; set; }
+    public string OwnedCustomizeItem { get; set; }
 
-    public int Gold => gold;
-    public string OwnedCustomizeItem => ownedCustomizeItem;
     public SaveData()
     {
-
+        Gold = 0;
+        OwnedCustomizeItem = "";
     }
     public SaveData(int gold, string ownedCustomizeItem)
     {
-        this.gold = gold;
-        this.ownedCustomizeItem = ownedCustomizeItem;
+        Gold = gold;
+        OwnedCustomizeItem = ownedCustomizeItem;
     }
 }
     

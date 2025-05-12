@@ -4,36 +4,31 @@ public class CustomizeController : MonoBehaviour
 {
     [SerializeField] private PlayerVisual playerVisual;
     [SerializeField] private CustomizeDataTable customizeDataTable;
-    private PlayerData playerData;
-
-    private void Awake()
-    {
-        playerData = GetComponent<Player>().PlayerData;
-    } 
+    [SerializeField] private BitArrayVariableSO OwnedCustomizeItem;
 
     public void BuyCustomizeItem(int customizeItemId)
     {
-        if(playerData.OwnedCustomizeItem[customizeItemId - 1] == true)
+        if(OwnedCustomizeItem.RuntimeValue[customizeItemId - 1])
         {
             Debug.Log("이미 구매한 아이템입니다");
         }
-        playerData.OwnedCustomizeItem[customizeItemId - 1] = true;
+        OwnedCustomizeItem.RuntimeValue[customizeItemId - 1] = true;
     }
     public void BuyCustomizeItem(string customName)
     {
         if (customizeDataTable.TryGetCustomizeData(customName, out var data))
         {
-            if (playerData.OwnedCustomizeItem[data.Id - 1] == true)
+            if (OwnedCustomizeItem.RuntimeValue[data.Id - 1])
             {
                 Debug.Log("이미 구매한 아이템입니다");
             }
-            playerData.OwnedCustomizeItem[data.Id - 1] = true;
+            OwnedCustomizeItem.RuntimeValue[data.Id - 1] = true;
         }
             
     }
     public void SetCustomize(int customizeItemId)
     {
-        if (playerData.OwnedCustomizeItem[customizeItemId - 1] == true)
+        if (OwnedCustomizeItem.RuntimeValue[customizeItemId - 1])
         {
             if (customizeDataTable.TryGetCustomizeData(customizeItemId, out var data))
                 playerVisual.SetSpriteLibrary(data.SpriteLibraryAsset);
@@ -47,7 +42,7 @@ public class CustomizeController : MonoBehaviour
     {
         if (customizeDataTable.TryGetCustomizeData(customName, out var data))
         {
-            if (playerData.OwnedCustomizeItem[data.Id - 1])
+            if (OwnedCustomizeItem.RuntimeValue[data.Id - 1])
                 playerVisual.SetSpriteLibrary(data.SpriteLibraryAsset);
             else
                 Debug.Log("구매하지 않은 아이템입니다");

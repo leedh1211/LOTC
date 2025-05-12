@@ -10,27 +10,26 @@ public class SaveManager : Singleton<SaveManager>
 
     string SavePath => Path.Combine(Application.persistentDataPath, "save.json");
 
-    private PlayerData playerData;
     [SerializeField] private CustomizeDataTable CustomizeDataTable;
-
+    [SerializeField] private IntegerVariableSO Gold;
+    [SerializeField] private BitArrayVariableSO OwnedCustomizeItem;
     protected override void Awake()
     {
         base.Awake();
         CurrentSave = Load();
 
-        int customizeCount = CustomizeDataTable.GetCustomizeDataCount();
-        playerData = new PlayerData(customizeCount);
-
+        OwnedCustomizeItem.RuntimeValue = new BitArray(CustomizeDataTable.GetCustomizeDataCount());
         var bits = DeserializeOwnedItems(CurrentSave.OwnedCustomizeItem);
-        playerData.LoadOwnedCustomizeItem(bits);
-        PlayerData.AddGold(CurrentSave.Gold);
-
+        for (int i = 0; i < bits.Length && i < OwnedCustomizeItem.RuntimeValue.Length; i++)
+        {
+            OwnedCustomizeItem.RuntimeValue[i] = bits[i];
+        }
     }
     public void Save()
     {
         SaveData data = new SaveData(
-            gold: playerData.Gold,
-            ownedCustomizeItem : SerializeOwnedItems(playerData.OwnedCustomizeItem)
+            gold: Gold.RuntimeValue,
+            ownedCustomizeItem : SerializeOwnedItems(OwnedCustomizeItem.RuntimeValue)
             );
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented); 

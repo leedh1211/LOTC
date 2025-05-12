@@ -5,12 +5,9 @@ public class Player : MonoBehaviour
 {
     private PlayerController playerController;
     [SerializeField] private PlayerVisual playerVisual;
-    private PlayerData playerData;
 
     [Header("WeaPon")]
     private WeaponHandler weapon;
-
-    public PlayerData PlayerData => playerData;
     
     void Awake()
     {
