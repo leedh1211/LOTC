@@ -14,10 +14,10 @@ namespace Monster
 
         public void Start()
         {
-            SpawnMonster(MonsterName.Mob1, Vector2.zero, player );
+            // SpawnMonster(MonsterName.Mob1, new Vector2(0f, 12f), player);
+            SpawnMonster(MonsterName.Boss2, new Vector2(1f, 15f) , player );
         }
 
-        [MenuItem("Tolls/SpwanMonster")]
         public GameObject SpawnMonster(MonsterName name, Vector2 spawnPos, GameObject player)
         {
             var config = monsterConfigs.Find(c => c.monsterName == name);

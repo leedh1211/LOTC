@@ -4,6 +4,7 @@ namespace Monster.ScriptableObject
     {
         melee,
         ranged,
-        area
+        area,
+        boss
     }
 }

@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxhealth: 70
   attackPower: 10
-  moveSpeed: 2
-  attackRange: 10
-  skillCooldown: 2
+  moveSpeed: 1
+  attackRange: 4
   knockbackDuration: 0.4
   knockbackCooldown: 0
