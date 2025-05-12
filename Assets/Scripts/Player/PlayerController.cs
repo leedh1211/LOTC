@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isInitialized)
         {
-            throw new System.Exception("PlayerControllerê°€ ì´ˆê¸°í™”ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
+            throw new System.Exception("PlayerController°¡ ÃÊ±âÈ­µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
         }
         moveDirection = inputHandler.MoveInput;
         if (moveDirection == Vector2.zero)
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         }
        
 
-        //Todo - ì¶”í›„ ìŠ¤íƒ¯ì—ì„œ ì†ë„ ë°›ì•„ì˜¤ë„ë¡
+            //Todo - ÃßÈÄ ½ºÅÈ¿¡¼­ ¼Óµµ ¹Ş¾Æ¿Àµµ·Ï
         transform.Translate(moveDirection * 3f * Time.deltaTime);
         playerVisual.SetDirection(moveDirection);
         playerVisual.SetMoving(true);

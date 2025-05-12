@@ -14,13 +14,6 @@ public class TileMapLoader : MonoBehaviour
     }
     [SerializeField] private StageData _stageData;
 
-    private TileMapData _tileMap;
-
-    public TileMapData TileMap
-    {
-        get { return _tileMap; }
-    }
-
     // Start는 나중에 제거
     private void Start()
     {
@@ -47,7 +40,6 @@ public class TileMapLoader : MonoBehaviour
         if (_currentGrid != null)
             Destroy(_currentGrid.gameObject);
 
-        _tileMap = data;
         Vector3 worldPos = new Vector3(data.Position.x, data.Position.y, 0);
         _currentGrid = Instantiate(data.GridMap, worldPos, Quaternion.identity);
     }
