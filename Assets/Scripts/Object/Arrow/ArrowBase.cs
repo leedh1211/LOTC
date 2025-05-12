@@ -31,6 +31,19 @@ public class ArrowBase : MonoBehaviour
         StartCoroutine(CheckArrowdistance());
     }
 
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if (((1 << other.gameObject.layer) & (1 << 7)) != 0)
+        {
+            MonsterController monsterControll = other.GetComponent<MonsterController>();
+            if (monsterControll != null)
+            {
+                monsterControll.TakeDamage(power);
+                Destroy(gameObject);
+            }
+        }
+    }
+
 
     protected virtual void Update()
     {
