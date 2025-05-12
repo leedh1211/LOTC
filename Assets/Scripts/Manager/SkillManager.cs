@@ -1,31 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class SkillManager : Singleton<SkillManager> //ΩÃ±€≈Ê
+public class SkillManager : Singleton<SkillManager> //ÔøΩÃ±ÔøΩÔøΩÔøΩ
 {
-    
-   
-   
-    public void ApplySkill(object effectInstance,SkillApplyContext context)
+    private List<SkillData> LearnSkills = new List<SkillData>();
+
+    private HashSet<SkillType> learnedSKillType = new HashSet<SkillType>();
+
+
+    public void LearnSkill(SkillData data ,SkillApplyContext context)
     {
-        if (effectInstance is IPlayerApplicable playerEffect)
+        ISKillEffect effect = SkillEffectFactory.CreateEffect(data.type);
+
+        if(effect == null)
         {
-            playerEffect.ApplyToPlayer(context);
-        #if UNITY_EDITOR
-            Debug.Log("«√∑π¿ÃæÓø°∞‘ Ω∫≈≥ ¿˚øÎµ ");
-        #endif
+            Debug.Log("there is no skill");
         }
 
-        if (effectInstance is IWeaponApplicable weaponEffect)
-        {
-            weaponEffect.ApplyToWeapon(context);
-        #if UNITY_EDITOR
-            Debug.Log("π´±‚ø° Ω∫≈≥ ¿˚øÎµ ");
-        #endif
+        ApplySkillEffect(effect,context); //Apply skill
 
+    }
+
+
+    private void ApplySkillEffect(ISKillEffect effect , SkillApplyContext context)
+    {
+        if(effect is IPlayerApplicable player)
+        {
+            player.ApplyToPlayer(context);
+        }
+
+        if(effect is IWeaponApplicable weapon)
+        {
+            weapon.ApplyToWeapon(context);
+        }
+
+
+    }
+   
+   
+
+   
+    private void TryCombine(SkillData newSkill, SkillApplyContext context)
+    {
+        foreach (SkillType existing in learnedSKillType)
+        {
+            if (newSkill.combinable.Contains(existing) && newSkill.resultCombo.HasValue)
+            {
+                SkillType result = newSkill.resultCombo.Value;
+                
+
+                Debug.Log($"[Ï°∞Ìï© Î∞úÏÉù] {newSkill.type} + {existing} ‚Üí {result}");
+
+                ISKillEffect comboEffect = SkillEffectFactory.CreateEffect(result);
+                if (comboEffect != null)
+                {
+                    ApplySkillEffect(comboEffect, context);
+                    learnedSKillType.Add(result);
+                }
+            }
         }
     }
+   
 }

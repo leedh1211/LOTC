@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     private InputHandler inputHandler;
     private PlayerVisual playerVisual;
     private bool isInitialized = false;
+    public bool isMoveing = false; //WeaponAttack
 
     public void Init(PlayerVisual visual)
     {
@@ -24,12 +25,15 @@ public class PlayerController : MonoBehaviour
         if (moveDirection == Vector2.zero)
         {
             playerVisual.SetMoving(false);
+            isMoveing = false;
             return;
         }
+       
 
-        //Todo - 추후 스탯에서 속도 받아오도록
+            //Todo - 추후 스탯에서 속도 받아오도록
         transform.Translate(moveDirection * 3f * Time.deltaTime);
         playerVisual.SetDirection(moveDirection);
         playerVisual.SetMoving(true);
+        isMoveing = true;
     }
 }
