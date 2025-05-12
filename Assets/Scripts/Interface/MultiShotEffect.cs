@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiShotEffect : IWeaponApplicable
+public class MultiShotEffect : ISKillEffect, IWeaponApplicable
 {
 
     public void ApplyToWeapon(SkillApplyContext context)
     {
-        context.weaponHandler.projectileCount += 1; //°ª Áõ°¡ 
-        Debug.Log(" MultiShot Àû¿ëµÊ! ÇöÀç È­»ì ¼ö: " + context.weaponHandler.projectileCount);
+        context.weaponHandler.projectileCount += 1; //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+        Debug.Log(" MultiShot ï¿½ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ï¿½: " + context.weaponHandler.projectileCount);
     }
 
 }

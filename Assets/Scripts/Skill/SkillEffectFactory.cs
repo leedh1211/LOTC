@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class SkillEffectFactory
 {
-    public static object CreateEffect(SkillType type)
+    public static ISKillEffect CreateEffect(SkillType type)
     {
         switch (type)
         {
@@ -14,6 +14,8 @@ public static class SkillEffectFactory
                 return null;
             case SkillType.MultiShot:
                 return new MultiShotEffect();
+            case SkillType.Passive:
+                return null;
             default:
                 return new MultiShotEffect();
 
