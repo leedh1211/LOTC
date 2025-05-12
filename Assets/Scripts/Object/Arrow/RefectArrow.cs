@@ -13,26 +13,19 @@ public class RefectArrow : ArrowBase
 
     private int curBonce = 0;
 
-    
-
-    private void Start()
-    {
-        //tipPos = <Transform>();
-    }
-
 
     protected override void Update()
     {
-       // base.Update(); //두번씩 움직여서 이상한거였다.. 
+        // base.Update(); //두번씩 움직여서 이상한거였다.. 
         float moveDistance = speed * Time.deltaTime;
-       
+
         //텔레포트
-        RaycastHit2D hit= Physics2D.Raycast(tipPos.position, transform.up, 0.2f, reflectLayer);
+        RaycastHit2D hit = Physics2D.Raycast(tipPos.position, transform.up, 0.2f, reflectLayer);
         if (hit.collider)
         {
             moveDirection = Vector3.Reflect(transform.up, hit.normal);//방향에서 hitnormal.
-           // transform.position = hit.point + hit.normal * 0.01f; 여기서 텔레포트 해서 충돌이생긴다. 
-           
+                                                                      // transform.position = hit.point + hit.normal * 0.01f; 여기서 텔레포트 해서 충돌이생긴다. 
+
             curBonce++;
             //부딪쳤다.
 
@@ -48,31 +41,28 @@ public class RefectArrow : ArrowBase
         }
         else
         {
-            transform.position += transform.up * moveDistance; 
+            transform.position += transform.up * moveDistance;
         }
 
 
-         
+
     }
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
-    
+
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
+
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(tipPos.position, transform.up*0.2f);
-         if (moveDirection == Vector3.zero)
-    {
-        Debug.LogWarning("moveDirection이 zero입니다. Ray가 그려지지 않아요.");
-        return;
-    }
+        Gizmos.DrawRay(tipPos.position, transform.up * 0.2f);
+        if (moveDirection == Vector3.zero)
+        {
+            Debug.LogWarning("moveDirection이 zero입니다. Ray가 그려지지 않아요.");
+            return;
+        }
     }
 
 }
