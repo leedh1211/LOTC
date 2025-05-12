@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd97a2b56f54a944a2c343385460716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterList: []
   playerVisual: {fileID: 8626990803830669826}
 --- !u!114 &5372241949254709475
 MonoBehaviour:
@@ -76,6 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVisual: {fileID: 8626990803830669826}
   customizeDataTable: {fileID: 11400000, guid: 49d78e0b7bb04f94db8eb33f63a31dfd, type: 2}
+  OwnedCustomizeItem: {fileID: 0}
 --- !u!1 &5683885534661695011
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,11 +186,8 @@ MonoBehaviour:
   projectileCount: 1
   firePoint: {fileID: 7525496220870391985}
   spreadAngle: 15
-  monsterList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerController: {fileID: 394234505624449839}
+  player: {fileID: 122389734002959321}
+  playercontroller: {fileID: 394234505624449839}
 --- !u!1 &9215501162485253429
 GameObject:
   m_ObjectHideFlags: 0

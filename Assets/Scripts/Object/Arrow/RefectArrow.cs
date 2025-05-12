@@ -54,6 +54,11 @@ public class RefectArrow : ArrowBase
 
          
     }
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        base.OnTriggerEnter2D(other);
+    
+    }
 
     private void FixedUpdate()
     {

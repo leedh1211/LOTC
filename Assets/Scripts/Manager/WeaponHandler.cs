@@ -20,6 +20,7 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField]
     private float attackRange = 10f;
     public float AttackRange { get => attackRange; set => attackRange = value; }
+     
 
     public LayerMask targetlayer; //���� ���� ���
 
@@ -33,39 +34,12 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField]
     private float spreadAngle = 15f;
 
-    [Header("MonsterList")]
-    
-    public List<Transform> monsterList;
+    [Header("Player")]
+    [SerializeField]
+    private Player player;
+    [SerializeField]
 
-    public PlayerController playerController;
-
-    public Transform GetNearestEnemy()
-    {
-        float Nearest = Mathf.Infinity;
-        float dis;
-        Transform NearestMonster = null;
-        
-
-        for(int i = 0 ; i <monsterList.Count;i++)
-        {
-       
-           dis = (transform.position - monsterList[i].position).sqrMagnitude;
-
-            if(dis<Nearest)
-            {
-                NearestMonster = monsterList[i];
-                Nearest = dis;
-
-            }
-            //else if(monster die) continue return 등등 죽으면 처리 방법 팀원 상의후 추가하기 
-            
-
-
-        }
-        return NearestMonster;
-    }
-
-
+    private PlayerController playercontroller;
 
 
 
@@ -73,7 +47,13 @@ public class WeaponHandler : MonoBehaviour
     {
         //�� Ž��
        
-        Transform nearest = GetNearestEnemy();
+        Transform nearest = player.GetNearestEnemy();
+
+        if (nearest == null)
+        {
+            Debug.Log("타겟이 없습니다");
+            return;
+        }
         
         Vector3 targetPos = (nearest.position - firePoint.position).normalized;
 
@@ -113,7 +93,12 @@ public class WeaponHandler : MonoBehaviour
         
 
     }
-    
+
+    private void Start()
+    {
+     playercontroller = player.GetComponent<PlayerController>();   
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -121,7 +106,7 @@ public class WeaponHandler : MonoBehaviour
             Attack();
         }
 
-        if (playerController.isMoveing != true)
+        if (player.GetComponent<PlayerController>().isMoveing != true)
         { 
         DelayAttack();
         }
