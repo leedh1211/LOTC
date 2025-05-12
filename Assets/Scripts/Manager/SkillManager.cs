@@ -7,7 +7,10 @@ using UnityEngine;
 
 public class SkillManager : Singleton<SkillManager> //�̱���
 {
-    private List<SkillData> skillDatas = new List<SkillData>();
+    private List<SkillData> LearnSkills = new List<SkillData>();
+
+    private HashSet<SkillType> learnedSKillType = new HashSet<SkillType>();
+
 
     public void LearnSkill(SkillData data ,SkillApplyContext context)
     {
@@ -18,7 +21,7 @@ public class SkillManager : Singleton<SkillManager> //�̱���
             Debug.Log("there is no skill");
         }
 
-        ApplySkill(effect,context); //Apply skill
+        ApplySkillEffect(effect,context); //Apply skill
 
     }
 
@@ -39,23 +42,27 @@ public class SkillManager : Singleton<SkillManager> //�̱���
     }
    
    
-    public void ApplySkill(object effectInstance,SkillApplyContext context)
+
+   
+    private void TryCombine(SkillData newSkill, SkillApplyContext context)
     {
-        if (effectInstance is IPlayerApplicable playerEffect)
+        foreach (SkillType existing in learnedSKillType)
         {
-            playerEffect.ApplyToPlayer(context);
-        #if UNITY_EDITOR
-            Debug.Log("�÷��̾�� ��ų �����");
-        #endif
-        }
+            if (newSkill.combinable.Contains(existing) && newSkill.resultCombo.HasValue)
+            {
+                SkillType result = newSkill.resultCombo.Value;
+                
 
-        if (effectInstance is IWeaponApplicable weaponEffect)
-        {
-            weaponEffect.ApplyToWeapon(context);
-        #if UNITY_EDITOR
-            Debug.Log("���⿡ ��ų �����");
-        #endif
+                Debug.Log($"[조합 발생] {newSkill.type} + {existing} → {result}");
 
+                ISKillEffect comboEffect = SkillEffectFactory.CreateEffect(result);
+                if (comboEffect != null)
+                {
+                    ApplySkillEffect(comboEffect, context);
+                    learnedSKillType.Add(result);
+                }
+            }
         }
     }
+   
 }

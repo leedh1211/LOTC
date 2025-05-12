@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using Monster.ScriptableObject;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MonsterConfig", menuName = "ScriptableObjects/MonsterConfig")]
+[CreateAssetMenu(fileName = "MonsterConfig", menuName = "Scriptable Objects/MonsterConfig")]
 public class MonsterConfig : ScriptableObject
 {
     public MonsterName monsterName;
     public MonsterType monsterType;
     public MonsterStatData monsterStatData;
-    public MonsterSkillData[] skillData;
+    public BaseMonsterSkillData[] skillData;
     public AnimatorOverrideController AnimatorOverrideController;
     public Sprite SpriteOverride;
-    public Collider2D ColliderOverride;
+
+    public bool isFly;
+    // public Collider2D ColliderOverride;
 }

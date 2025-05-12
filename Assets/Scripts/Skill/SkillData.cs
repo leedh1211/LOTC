@@ -7,7 +7,8 @@ public enum SkillType
 { 
     MultiShot,
     ChangeArrow,
-    State
+    State,
+    Passive
 }
 
 [CreateAssetMenu(menuName = "Skill/SkillData")]
@@ -16,9 +17,11 @@ public class SkillData : ScriptableObject
     public string SkillName;
     [TextArea] public string skillInfo;
     public Sprite icon;
-    public SkillType type;  
-    
+    public SkillType type;
 
+    [Header("조합설정")]
+    public List<SkillType> combinable;
+    public SkillType? resultCombo;
 
 }
 // 스킬 적용받는 대상 + 소스를 넣는다 -> 민혁님 조언

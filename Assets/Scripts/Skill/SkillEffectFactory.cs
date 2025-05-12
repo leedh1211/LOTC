@@ -14,6 +14,8 @@ public static class SkillEffectFactory
                 return null;
             case SkillType.MultiShot:
                 return new MultiShotEffect();
+            case SkillType.Passive:
+                return null;
             default:
                 return new MultiShotEffect();
 

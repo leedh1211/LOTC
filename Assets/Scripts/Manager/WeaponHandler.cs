@@ -37,6 +37,7 @@ public class WeaponHandler : MonoBehaviour
     
     public List<Transform> monsterList;
 
+    public PlayerController playerController;
 
     public Transform GetNearestEnemy()
     {
@@ -120,18 +121,24 @@ public class WeaponHandler : MonoBehaviour
             Attack();
         }
 
+        if (playerController.isMoveing != true)
+        { 
         DelayAttack();
+        }
 
+        //delay Test
         if(Input.GetKeyDown(KeyCode.M))
         {
             delay -=0.1f;
         }
+
+       
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red; // ���� ���� ����
-        Gizmos.DrawWireSphere(transform.position, attackRange); // ���� ���� �ð�ȭ
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange); 
     }
 
 }

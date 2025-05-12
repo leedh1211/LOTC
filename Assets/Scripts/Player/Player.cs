@@ -3,6 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
 {
+    public struct PlayerState
+    {
+        public int maxHp;
+        public int curHp;
+        public int Speed;
+
+    }
     private PlayerController playerController;
     [SerializeField] private PlayerVisual playerVisual;
 
@@ -33,60 +40,33 @@ public class Player : MonoBehaviour
             //직접 인스턴스화 시켜서 사용함. 
         };
 
-        SkillManager.Instance.ApplySkill(effect,context);
 
+        SkillManager.Instance.LearnSkill(data, context); //스킬 적용
 
-    
     }
 
-    
-
-
-    
-}
-
-
-/*public class Player : MonoBehaviour
-{
-    public int MaxHp;
-    public int curHp;
-
-    public SkillData skillData;
-    
-    // public SkillData Skilldata => skillData;
-
-    private WeaponHandler PlayerweaponHandler;
-
-    private void Start()
-    {
-        PlayerweaponHandler = GetComponentInChildren<WeaponHandler>();
-         
-    }
-
+    /*
+     * 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            object effect = SkillEffectFactory.CreateEffect(skillData.type);
-
-            if (effect == null)
+            SkillData skill = Resources.Load<SkillData>("ScriptableObejcts/SKillData/MultiShot");
+            if (skill != null)
             {
-                Debug.Log($"��ų ���� ���� {skillData.type}");
+                SetSkillData(skill);
+            }
+            else
+            {
+                Debug.Log("스킬이 없습니다.");
                 return;
             }
-
-            var context = new SkillApplyContext
-            {
-                player = this,
-                weaponHandler = PlayerweaponHandler
-            };
-
-
-            SkillManager.Instance.ApplySkill(effect, context);
-#if UNITY_EDITOR
-            Debug.Log("��ų�� ���Խ��ϴ� " + skillData.name);
-#endif
         }
     }
 
-}*/
+    */
+
+
+}
+
+
