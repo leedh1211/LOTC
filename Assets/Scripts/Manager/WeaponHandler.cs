@@ -126,10 +126,13 @@ public class WeaponHandler : MonoBehaviour
         DelayAttack();
         }
 
+        //delay Test
         if(Input.GetKeyDown(KeyCode.M))
         {
             delay -=0.1f;
         }
+
+       
     }
 
     private void OnDrawGizmos()
