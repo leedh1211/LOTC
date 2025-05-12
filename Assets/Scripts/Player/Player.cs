@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))]
@@ -11,7 +12,12 @@ public class Player : MonoBehaviour
 
     }
     private PlayerController playerController;
+
+    public List<Transform> monsterList; //Test
+   
     [SerializeField] private PlayerVisual playerVisual;
+
+
 
     [Header("WeaPon")]
     private WeaponHandler weapon;
@@ -45,26 +51,34 @@ public class Player : MonoBehaviour
 
     }
 
-    /*
-     * 
-    private void Update()
+    public Transform GetNearestEnemy()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        float Nearest = Mathf.Infinity;
+        float dis;
+        Transform NearestMonster = null;
+
+
+        for (int i = 0; i < monsterList.Count; i++)
         {
-            SkillData skill = Resources.Load<SkillData>("ScriptableObejcts/SKillData/MultiShot");
-            if (skill != null)
+            //
+            dis = (transform.position - monsterList[i].position).sqrMagnitude;
+
+            if (dis < Nearest)
             {
-                SetSkillData(skill);
+                NearestMonster = monsterList[i];
+                Nearest = dis;
+
             }
-            else
-            {
-                Debug.Log("스킬이 없습니다.");
-                return;
-            }
+            //else if(monster die) continue return 등등 죽으면 처리 방법 팀원 상의후 추가하기 
+
+
+
         }
+        return NearestMonster;
     }
 
-    */
+
+
 
 
 }
