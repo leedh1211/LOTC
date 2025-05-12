@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class SkillManager : Singleton<SkillManager> //�̱���
 {
-    private List<SkillData> skillDatas = new List<SkillData>();
+    private List<SkillData> LearnSkills = new List<SkillData>();
 
     public void LearnSkill(SkillData data ,SkillApplyContext context)
     {
@@ -39,6 +39,8 @@ public class SkillManager : Singleton<SkillManager> //�̱���
     }
    
    
+
+   //will Erase Funtion
     public void ApplySkill(object effectInstance,SkillApplyContext context)
     {
         if (effectInstance is IPlayerApplicable playerEffect)
@@ -58,4 +60,26 @@ public class SkillManager : Singleton<SkillManager> //�̱���
 
         }
     }
+
+/*    private void TryCombine(SkillData newSkill, SkillApplyContext context)
+    {
+        foreach (SkillType existing in LearnSkills)
+        {
+            if (newSkill.combinableWith.Contains(existing) && newSkill.resultCombo.HasValue)
+            {
+                SkillType result = newSkill.resultCombo.Value;
+                if (learnedSkillTypes.Contains(result)) return;
+
+                Debug.Log($"[조합 발생] {newSkill.type} + {existing} → {result}");
+
+                ISkillEffect comboEffect = SkillEffectFactory.CreateEffect(result);
+                if (comboEffect != null)
+                {
+                    ApplyEffect(comboEffect, context);
+                    learnedSkillTypes.Add(result);
+                }
+            }
+        }
+    }
+    */
 }
