@@ -56,11 +56,11 @@ public class ProgressTweener
         progressRatio = 1;
 
         onUpdateToProgressRatio?.Invoke(progressRatio); 
-
-        onComplete?.Invoke(); 
         
         runningCurve = null;
 
         progressRatio = 0;
+        
+        onComplete?.Invoke(); 
     }
 }
