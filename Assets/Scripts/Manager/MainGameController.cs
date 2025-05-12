@@ -4,55 +4,72 @@ using System.Collections.Generic;
 using Monster;
 using Monster.ScriptableObject;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class MainGameController : MonoBehaviour
 {
-    [SerializeField] private TileMapLoader tileMapLoader;
-    [SerializeField] private Player player;
-    [SerializeField] private MonsterFactory monsterFactory;
-    [SerializeField] private GameObject playerHpCanvasPrefab;
     [SerializeField] private int monsterSpawnCount = 5;
+
+
+    [SerializeField] private TileMapLoader tileMapLoader;
+    
+    [SerializeField] private MonsterFactory monsterFactory;
+    
+    [SerializeField] private GameObject gameOverPanel;
+    
+    [SerializeField] private Button gameClearButton;
+    
+    [SerializeField] private Player playerPrefab;
+
     
     [SerializeField] private VoidEventChannelSO playerDeathEvent;
-    [SerializeField] private VoidEventChannelSO monsterDeathEvent;
-
-    [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private GameObject gameClearPanel;
+    [SerializeField] private MonsterEventChannelSO killedMonster;
+    [SerializeField] private MonsterListVariableSO monsterList;
+    [SerializeField] private IntegerVariableSO selectedStageLevel;
+    [SerializeField] private IntegerVariableSO clearedStageLevel;
 
     private List<Rect> _monsterSpawner;
-    private Vector2 _playerSpawner;
-    private int _killedMonsterCount = 0;
-
     private void OnEnable()
     {
         playerDeathEvent.OnEventRaised += GameOver;
-        monsterDeathEvent.OnEventRaised += KillMonster;
+        killedMonster.OnEventRaised += KillMonster;
     }
 
     private void OnDisable()
     {
         playerDeathEvent.OnEventRaised -= GameOver;
-        monsterDeathEvent.OnEventRaised -= KillMonster;
+        killedMonster.OnEventRaised -= KillMonster;
     }
+
 
     private void Start()
     {
+        tileMapLoader.LoadRandomTileMap(selectedStageLevel.RuntimeValue);
+
         Init();
+        
+        gameClearButton.onClick.AddListener(()=>
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene("LobbyScene");
+        });
+        
+        gameClearButton.gameObject.SetActive(false);
     }
 
     private void Init()
     {
         _monsterSpawner = tileMapLoader.TileMap.SpawnArea;
-        _playerSpawner = tileMapLoader.TileMap.PlayerSpawnPosition;
-        _killedMonsterCount = 0;
 
-        var playerInstance = Instantiate(player, _playerSpawner, Quaternion.identity);
-        playerInstance.name = "Player";
+        Player player = Instantiate(playerPrefab);
         
-        var hpCanvas = Instantiate(playerHpCanvasPrefab);
-        hpCanvas.transform.SetParent(playerInstance.transform);
-        hpCanvas.transform.localPosition = new Vector3(0, -1f, 0);
+        player.name = "Player";
+        
+        player.transform.position = tileMapLoader.TileMap.PlayerSpawnPosition;
+
+        monsterList.RuntimeValue = new();
         
         for (int i = 0; i < monsterSpawnCount; i++)
         {
@@ -61,15 +78,23 @@ public class MainGameController : MonoBehaviour
             var randomY = Random.Range(spawnArea.y - spawnArea.height / 2, spawnArea.y + spawnArea.height / 2);
             var spawnPos = new Vector2(randomX, randomY);
 
-            monsterFactory.SpawnMonster(MonsterName.Mob1, spawnPos, playerInstance.gameObject);
+            var monster = monsterFactory.SpawnMonster(MonsterName.Mob1, spawnPos, player.gameObject);
+            
             Debug.Log($"{randomX}, {randomY}");
+
+            monsterList.RuntimeValue.Add(monster);
         }
+
+        player.monsterList = monsterList;
     }
 
-    private void KillMonster()
+    private void KillMonster(MonsterController monster)
     {
-        _killedMonsterCount++;
-        if (_killedMonsterCount >= monsterSpawnCount)
+        List<MonsterController> monsterList = this.monsterList.RuntimeValue;
+        
+        monsterList.Remove(monster);
+
+        if (monsterList.Count == 0)
         {
             GameClear();
         }
@@ -83,7 +108,12 @@ public class MainGameController : MonoBehaviour
 
     private void GameClear()
     {
-        gameClearPanel.SetActive(true);
+        if (clearedStageLevel.RuntimeValue <= selectedStageLevel.RuntimeValue)
+        {
+            clearedStageLevel.RuntimeValue++;
+        }
+        
+        gameClearButton.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 }

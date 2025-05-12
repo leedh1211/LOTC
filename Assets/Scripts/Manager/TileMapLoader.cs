@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 
 public class TileMapLoader : MonoBehaviour
 {
-    [SerializeField] private IntegerVariableSO selectedStageLevel;
     private Grid _currentGrid;
     public Grid CurrentGrid
     {
@@ -21,15 +20,10 @@ public class TileMapLoader : MonoBehaviour
         get { return _tileMap; }
     }
 
-    // Start는 나중에 제거
-    private void Start()
-    {
-        LoadRandomTileMap(selectedStageLevel.RuntimeValue);
-    }
 
-    public void LoadRandomTileMap(int mainStage)
+    public void LoadRandomTileMap(int stageLevel)
     {
-        var stageInfo = _stageData.Stages[selectedStageLevel.RuntimeValue];
+        var stageInfo = _stageData.Stages[stageLevel];
 
         if (stageInfo == null || stageInfo.Maps.Count == 0)
         {

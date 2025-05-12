@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class StageSelectUI : MonoBehaviour
 {
-   [SerializeField] private LobbyController lobbyController;
+   [SerializeField] private LobbyMainUI mainUI;
    
    [Space(10f)]
    [SerializeField] private CanvasGroup canvasGroup;
@@ -26,7 +26,8 @@ public class StageSelectUI : MonoBehaviour
 
    [Space(10f)]
    [Header("Events")]
-   [SerializeField] private IntegerEventChannelSO selectedStageLevel;
+   [SerializeField] private IntegerVariableSO selectedStageLevel;
+   [SerializeField] private IntegerVariableSO cleardStageLevel;
 
    
    private StageSelectUISlot[] slots;
@@ -54,14 +55,17 @@ public class StageSelectUI : MonoBehaviour
    {
       selectButton.onClick.AddListener(() =>
       {
-         selectedStageLevel.Raise(selectScrollView.snapIndex);
+         selectedStageLevel.RuntimeValue = selectScrollView.snapIndex;
+         
+         mainUI.SetStageInfo(selectedStageLevel.RuntimeValue);
+         
          Disable();
       });
       
       
       for (int i = 0; i < slotsParent.childCount; i++)
       {;
-         slots[i].Init(i<=lobbyController.testCleardLevel, i == lobbyController.testSelectStage);
+         slots[i].Init(i<= cleardStageLevel.RuntimeValue, i == selectedStageLevel.RuntimeValue);
       }
 
       
@@ -69,13 +73,13 @@ public class StageSelectUI : MonoBehaviour
 
       selectScrollView.OnEndDragEvent += (data) => EnableItems(true);
 
-      selectScrollView.snapIndex = lobbyController.testSelectStage;
+      selectScrollView.snapIndex = selectedStageLevel.RuntimeValue;
    }
 
 
    public void Enable()
    {
-      selectScrollView.DirectUpdateItemList(lobbyController.testSelectStage);
+      selectScrollView.DirectUpdateItemList(selectedStageLevel.RuntimeValue);
 
       EnableItems(true);
       
@@ -99,7 +103,7 @@ public class StageSelectUI : MonoBehaviour
       
             titleText.text = stageName;
 
-            bool isCleared = selectScrollView.snapIndex <= lobbyController.testCleardLevel;
+            bool isCleared = selectScrollView.snapIndex <= cleardStageLevel.RuntimeValue;
 
             if (selectButton.gameObject.activeSelf != isCleared)
             {

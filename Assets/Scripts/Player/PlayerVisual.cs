@@ -9,21 +9,27 @@ public class PlayerVisual : MonoBehaviour
 
     private readonly int isMoveHash = Animator.StringToHash("IsMove");
 
+    
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         spriteLibrary = GetComponent<SpriteLibrary>();
     }
-    public void SetDirection(Vector2 dir)
+    
+    
+    public void FlipSpriteRenderer(bool isFlip)
     {
-        if (dir.x != 0)
-            spriteRenderer.flipX = dir.x < 0;
+        spriteRenderer.flipX = isFlip;
     }
-    public void SetMoving(bool isMoving)
+    
+    
+    public void SetAnimation(bool isMoving)
     {
         animator.SetBool(isMoveHash, isMoving);
     }
+    
+    
     public void SetSpriteLibrary(SpriteLibraryAsset spriteLibraryAsset)
     {
         this.spriteLibrary.spriteLibraryAsset = spriteLibraryAsset;

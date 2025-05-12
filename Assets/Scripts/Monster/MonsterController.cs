@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Monster;
@@ -7,27 +8,25 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
-    [SerializeField] private HPBarController hpBar;
 
     private float maxHealth;
     private float currentHealth;
-    private GameObject monsterPrefab;
-    public MonsterConfig monsterConfig;
+    private MonsterConfig monsterConfig;
     private BaseAIController aiController;
+        
+    private float knockBackTimer;
+    private float knockBackCooldown;
+
+    [SerializeField] private HPBarController hpBar;
+
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     [SerializeField] private Collider2D bodyCollider;
     [SerializeField] private Transform shadow;
-    private float knockBackTimer;
-    private float knockBackCooldown;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+
+    [SerializeField] private MonsterEventChannelSO killedMonster;
+
     void Update()
     {
         if (knockBackTimer > 0f)
@@ -96,7 +95,7 @@ public class MonsterController : MonoBehaviour
 
     public void MobDeath()
     {
-        Debug.Log("Mob Death");
+        killedMonster.Raise(this);
         Destroy(gameObject);
     }
 }

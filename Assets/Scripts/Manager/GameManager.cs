@@ -8,21 +8,15 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private int testGold;
     
-    [SerializeField] private IntegerEventChannelSO startedMainGame;
     [SerializeField] private IntegerEventChannelSO rootedGold;
     [SerializeField] private TransformEventChannelSO rooting;
     [SerializeField] private Transform testRootingTarget;
-
-    
-    [SerializeField] private IntegerVariableSO selectedStageLevel;
 
     protected override void Awake()
     {
         base.Awake();
 
         rootedGold.OnEventRaised += (gold) => testGold += gold;
-        
-        startedMainGame.OnEventRaised += LoadMainGame;
     }
 
 
@@ -34,10 +28,8 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    void LoadMainGame(int level)
+    public void StartMainGame()
     {
-        selectedStageLevel.RuntimeValue = level;
-        
-        SceneManager.LoadScene("Test2MainGame");
+        SceneManager.LoadScene("GameScene");
     }
 }

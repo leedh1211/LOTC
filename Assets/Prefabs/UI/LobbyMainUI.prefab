@@ -1650,11 +1650,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5295a5bd552912948b45b2ce4cb124d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobbyController: {fileID: 0}
   snapScrollView: {fileID: 9067928883711815990}
   stageText: {fileID: 5567458595152107129}
   startButton: {fileID: 4534792607059580614}
-  selectedStageLevel: {fileID: 11400000, guid: 0fa2012851b43274dbff2baa462efebd, type: 2}
+  selectedStageLevel: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
   startedMainGame: {fileID: 11400000, guid: 8d22acd0c0f1e4349b31ccf22134cc43, type: 2}
 --- !u!1 &5991969162315131543
 GameObject:

@@ -37,17 +37,18 @@ public class WeaponHandler : MonoBehaviour
     [Header("Player")]
     [SerializeField]
     private Player player;
-    [SerializeField]
+    
 
-    private PlayerController playercontroller;
+    /// <summary>
+    /// /////////////////
+    /// </summary>
 
-
-
+    [SerializeField] private Vector2VariableSO joystickPos;
     public void Attack()
     {
         //�� Ž��
        
-        Transform nearest = player.GetNearestEnemy();
+        MonsterController nearest = player.GetNearestEnemy();
 
         if (nearest == null)
         {
@@ -55,7 +56,7 @@ public class WeaponHandler : MonoBehaviour
             return;
         }
         
-        Vector3 targetPos = (nearest.position - firePoint.position).normalized;
+        Vector3 targetPos = (nearest.transform.position - firePoint.position).normalized;
 
         float baseAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
 
@@ -87,17 +88,9 @@ public class WeaponHandler : MonoBehaviour
         else
         {
             curTime += Time.deltaTime;
-
-
         }
-        
-
     }
 
-    private void Start()
-    {
-     playercontroller = player.GetComponent<PlayerController>();   
-    }
 
     private void Update()
     {
@@ -106,9 +99,9 @@ public class WeaponHandler : MonoBehaviour
             Attack();
         }
 
-        if (player.GetComponent<PlayerController>().isMoveing != true)
+        if (joystickPos.RuntimeValue == Vector2.zero)
         { 
-        DelayAttack();
+            DelayAttack();
         }
 
         //delay Test
@@ -116,8 +109,6 @@ public class WeaponHandler : MonoBehaviour
         {
             delay -=0.1f;
         }
-
-       
     }
 
     private void OnDrawGizmos()
