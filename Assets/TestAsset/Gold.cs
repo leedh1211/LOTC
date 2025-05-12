@@ -8,6 +8,10 @@ public class Gold : MonoBehaviour
     [SerializeField] private int goldAmount;
 
     [Space(10f)]
+    [SerializeField] private float popDist;
+    [SerializeField] private float popTime;
+    
+    [Space(10f)]
     [SerializeField] private float yoyoDist;
     [SerializeField] private float yoyoTime;
     
@@ -34,6 +38,21 @@ public class Gold : MonoBehaviour
     private void OnEnable()
     {
         rooting.OnEventRaised += ChasedTarget;
+        
+        Vector2 popStartPos = transform.position;
+
+        Vector3 popEndPos = popStartPos + Vector2.up * popDist;
+
+        chaseTweener.Play(
+            (ratio) => transform.position = Vector3.Lerp(popStartPos, popEndPos, ratio),
+            popTime,
+            () =>
+            {
+                chaseTweener.Play(
+                    (ratio) => transform.position = Vector3.Lerp(popEndPos, popStartPos, ratio),
+                    popTime).SetCurve(easeInCurve);
+                
+            }).SetCurve(easeOutCurve);
     }
 
     private void OnDisable()
@@ -47,16 +66,14 @@ public class Gold : MonoBehaviour
         
         Vector3 yoyoDir = (yoyoStartPos - target.position).normalized;
 
-        Vector3 yoyoPos = yoyoStartPos + yoyoDir * yoyoDist;
+        Vector3 yoyoEndPos = yoyoStartPos + yoyoDir * yoyoDist;
         
 
         chaseTweener.Play(
-            (ratio) => transform.position = Vector3.Lerp(yoyoStartPos, yoyoPos, ratio),
+            (ratio) => transform.position = Vector3.Lerp(yoyoStartPos, yoyoEndPos, ratio),
             yoyoTime,
             () =>
             {
-                Vector3 yoyoEndPos = transform.position;
-                
                 chaseTweener.Play(
                     (ratio) => transform.position = Vector3.Lerp(yoyoEndPos, target.position, ratio),
                     chaseTime,

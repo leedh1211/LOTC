@@ -225,6 +225,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gold (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4351593204628806750, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299843618150138418, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: popDist
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299843618150138418, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: popTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6531998050308008322, guid: b49507afe703ba2409297059e9964571, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.7
@@ -331,7 +343,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -458,6 +470,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gold (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4351593204628806750, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299843618150138418, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: popDist
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299843618150138418, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: popTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6531998050308008322, guid: b49507afe703ba2409297059e9964571, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.71
@@ -565,6 +589,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gold (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4351593204628806750, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299843618150138418, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: popDist
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299843618150138418, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: popTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6531998050308008322, guid: b49507afe703ba2409297059e9964571, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.85
@@ -621,6 +657,18 @@ PrefabInstance:
     - target: {fileID: 4351593204628806750, guid: b49507afe703ba2409297059e9964571, type: 3}
       propertyPath: m_Name
       value: Gold (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351593204628806750, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299843618150138418, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: popDist
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299843618150138418, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: popTime
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6531998050308008322, guid: b49507afe703ba2409297059e9964571, type: 3}
       propertyPath: m_LocalPosition.x
@@ -762,6 +810,18 @@ PrefabInstance:
     - target: {fileID: 4351593204628806750, guid: b49507afe703ba2409297059e9964571, type: 3}
       propertyPath: m_Name
       value: Gold
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351593204628806750, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299843618150138418, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: popDist
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299843618150138418, guid: b49507afe703ba2409297059e9964571, type: 3}
+      propertyPath: popTime
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6531998050308008322, guid: b49507afe703ba2409297059e9964571, type: 3}
       propertyPath: m_LocalPosition.x
