@@ -23,6 +23,7 @@ namespace Monster.ScriptableObject.Skill
             {
                 Vector2 dir = Quaternion.Euler(0, 0, stepAngle * i) * startDir;
                 GameObject projectile = Instantiate(projectilePrefab, self.position, Quaternion.identity);
+                Debug.Log(projectile);
                 ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
                 projectileController.Init(dir, projectileSpeed, Damage);   
             }

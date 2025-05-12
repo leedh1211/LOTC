@@ -16,26 +16,38 @@ namespace Monster.ScriptableObject.Skill
 
         public override void Excute(MonsterConfig monsterConfig, Transform self, Transform target)
         {
-            // 1) 투사체 생성
             GameObject proj = Instantiate(
                 affectProjectilePrefab,
                 self.position,
                 Quaternion.identity
             );
 
-            // 2) 컨트롤러 붙이고 초기화
             var projCtrl = proj.GetComponent<AreaProjectileController>();
             if (projCtrl == null)
                 projCtrl = proj.AddComponent<AreaProjectileController>();
 
-            // 대미지 계산
             float damage = monsterConfig.monsterStatData.attackPower * DamageRatio;
-            // 발사 방향 (스킬 시전 시점 플레이어 위치 기준)
-            Vector2 dir = (target.position - self.position).normalized;
+
+            // 플레이어 방향 벡터 및 거리
+            Vector2 direction = (target.position - self.position).normalized;
+            float distanceToTarget = Vector2.Distance(self.position, target.position);
+
+            // 목표 지점 계산
+            Vector2 targetPos;
+            float travelDistance;
+
+            if (distanceToTarget <= skillRange)
+            {
+                travelDistance = distanceToTarget;
+            }
+            else
+            {
+                travelDistance = skillRange;
+            }
 
             projCtrl.Init(
-                direction: dir,
-                travelDistance: skillRange,
+                direction: direction,
+                travelDistance: travelDistance,
                 speed: ProjectileSpeed,
                 damage: damage,
                 areaRange: AffectRange,

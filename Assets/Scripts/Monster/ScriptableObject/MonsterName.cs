@@ -7,6 +7,8 @@ namespace Monster.ScriptableObject
         Mob3,
         Mob4,
         FlyMob1,
-        FlyMob2
+        FlyMob2,
+        Boss1,
+        Boss2
     }
 }

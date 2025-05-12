@@ -42,17 +42,22 @@ public class MonsterController : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = monsterConfig.SpriteOverride;
         animator.runtimeAnimatorController = monsterConfig.AnimatorOverrideController.runtimeAnimatorController;
-        transform.localScale *= 0.9f;
-        
-        if (bodyCollider is BoxCollider2D box)
-        {
-            box.size = spriteRenderer.bounds.size;
-        }
+        // if (bodyCollider is BoxCollider2D box)
+        // {
+        //     box.size = spriteRenderer.bounds.size;
+        // }
         Vector2 spriteSize = spriteRenderer.bounds.size;
-        
         float shadowWidth = spriteSize.x * 0.6f;
         float shadowHeight = spriteSize.y * 0.3f;
-
         shadow.localScale = new Vector3(shadowWidth, shadowHeight, 1f);
+        
+        if (monsterConfig.monsterType == MonsterType.boss)
+        {
+            transform.localScale *= 2.0f;
+        }
+        else
+        {
+            transform.localScale *= 0.9f;    
+        }
     }
 }

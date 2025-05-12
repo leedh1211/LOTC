@@ -1,59 +1,53 @@
-﻿using System.Collections.Generic;
+﻿// AStar.cs
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monster.AI
 {
-    /// <summary>
-    /// 간단화된 A* 경로 탐색기
-    /// </summary>
     public static class AStar
     {
-        public static List<Vector2Int> FindPath(Node start, Node goal, Node[,] grid)
+        public static List<Vector2Int> FindPath(Node start, Node goal, Node[,] grid, Func<Vector2Int, bool> isWalkable)
         {
-            // 1) 매번 노드 초기화
             foreach (var node in grid)
             {
-                node.gCost  = Mathf.Infinity;
-                node.hCost  = 0f;
+                node.gCost = Mathf.Infinity;
+                node.hCost = 0f;
                 node.parent = null;
             }
 
             start.gCost = 0f;
             start.hCost = Heuristic(start, goal);
 
-            var openSet   = new List<Node> { start };
+            var openSet = new List<Node> { start };
             var closedSet = new HashSet<Node>();
 
             while (openSet.Count > 0)
             {
-                // 2) fCost 최솟값 노드 선택
                 Node current = openSet[0];
                 for (int i = 1; i < openSet.Count; i++)
                 {
                     var n = openSet[i];
-                    if (n.fCost < current.fCost ||
-                       (n.fCost == current.fCost && n.hCost < current.hCost))
+                    if (n.fCost < current.fCost || (n.fCost == current.fCost && n.hCost < current.hCost))
                         current = n;
                 }
 
                 openSet.Remove(current);
                 closedSet.Add(current);
 
-                // 3) 목표 도달 시 경로 재구성 후 반환
                 if (current == goal)
                     return RetracePath(current);
 
-                // 4) 이웃 노드 검사
                 foreach (var neighbor in GetNeighbors(current, grid))
                 {
-                    if (!neighbor.walkable || closedSet.Contains(neighbor))
+                    if (!neighbor.walkable || !isWalkable(neighbor.pos) || closedSet.Contains(neighbor))
                         continue;
 
                     float newG = current.gCost + Vector2Int.Distance(current.pos, neighbor.pos);
                     if (newG < neighbor.gCost)
                     {
-                        neighbor.gCost  = newG;
-                        neighbor.hCost  = Heuristic(neighbor, goal);
+                        neighbor.gCost = newG;
+                        neighbor.hCost = Heuristic(neighbor, goal);
                         neighbor.parent = current;
 
                         if (!openSet.Contains(neighbor))
@@ -62,13 +56,11 @@ namespace Monster.AI
                 }
             }
 
-            // 경로 없음
             return null;
         }
 
         private static float Heuristic(Node a, Node b)
         {
-            // 유클리드 거리 또는 맨해튼 거리로 대체 가능
             return Vector2Int.Distance(a.pos, b.pos);
         }
 
@@ -83,11 +75,8 @@ namespace Monster.AI
             foreach (var d in dirs)
             {
                 var check = node.pos + d;
-                if (check.x >= 0 && check.y >= 0 &&
-                    check.x < grid.GetLength(0) && check.y < grid.GetLength(1))
-                {
+                if (check.x >= 0 && check.y >= 0 && check.x < grid.GetLength(0) && check.y < grid.GetLength(1))
                     neighbors.Add(grid[check.x, check.y]);
-                }
             }
             return neighbors;
         }

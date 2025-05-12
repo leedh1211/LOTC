@@ -15,9 +15,11 @@ namespace Monster.Skill
         private Collider2D col;
         private Transform shadowTransform;
         private SpriteRenderer shadowRenderer;
+        private Vector3 originalScale;
 
         public void JumpInit(float damage, Transform player, float range, float duration, float radius, bool isFly, Transform shadow, SpriteRenderer shadowRen )
         {
+            originalScale = transform.localScale;
             jumpDamage = damage;
             jumpStartPos = transform.position;
             jumpDuration = duration;
@@ -52,7 +54,6 @@ namespace Monster.Skill
         private IEnumerator JumpCoroutine()
         {
             float elapsed = 0f;
-
             Vector2 landingTarget = jumpTargetPos;
             float jumpHeight = 1.0f;
 
@@ -62,16 +63,15 @@ namespace Monster.Skill
             while (elapsed < jumpDuration)
             {
                 float t = elapsed / jumpDuration;
-                float heightFactor = Mathf.Sin(t * Mathf.PI); // 0→1→0
+                float heightFactor = Mathf.Sin(t * Mathf.PI);
 
                 Vector2 flatPos = Vector2.Lerp(jumpStartPos, landingTarget, t);
-
                 transform.position = flatPos + Vector2.up * heightFactor * jumpHeight;
 
-                shadowTransform.position = flatPos + Vector2.down * 0.7f; //그림자위치 잡기
+                shadowTransform.position = flatPos + Vector2.down * 0.7f;
 
-                float scale = Mathf.Lerp(1f, 1.2f, heightFactor);
-                transform.localScale = new Vector3(scale, scale, 1);
+                // 🔸 여기서 스케일을 원래대로 유지
+                transform.localScale = originalScale;
 
                 float shadowScaleFactor = Mathf.Lerp(1f, 0.5f, heightFactor);
                 shadowTransform.localScale = baseShadowScale * shadowScaleFactor;
@@ -85,7 +85,7 @@ namespace Monster.Skill
             }
 
             transform.position = landingTarget;
-            transform.localScale = Vector3.one;
+            transform.localScale = originalScale;
 
             shadowTransform.localScale = baseShadowScale;
             shadowRenderer.color = baseShadowColor;

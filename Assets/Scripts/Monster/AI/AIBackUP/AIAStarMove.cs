@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using Monster.ScriptableObject;
 using Monster.Skill;
 using UnityEngine;
 
@@ -8,8 +8,7 @@ namespace Monster.AI
 {
     public class AIAStarMove : MonoBehaviour
     {
-        [SerializeField] private GameObject player;
-
+        private GameObject player;
         private MonsterConfig _monsterConfig;
         private Rigidbody2D _monsterRigid;
         private MonsterSkillController _monsterSkillController;
@@ -20,7 +19,6 @@ namespace Monster.AI
         private bool _isUsingSkill;
         private bool _isFollowingPath;
 
-        // 시각 디버그용
         private List<Vector2Int> _debugPath;
 
         private void Awake()
@@ -39,7 +37,6 @@ namespace Monster.AI
 
         private void Update()
         {
-            // 스킬 쿨다운 관리
             for (int i = 0; i < _skillCooldowns.Count; i++)
             {
                 if (_skillCooldowns[i] <= 0f)
@@ -61,22 +58,23 @@ namespace Monster.AI
             if (!_isInitialized || _isUsingSkill || _isFollowingPath)
                 return;
 
-            if (Vector2.Distance(player.transform.position, this.transform.position) >
-                _monsterConfig.monsterStatData.attackRange)
+            if (Vector2.Distance(player.transform.position, transform.position) > _monsterConfig.monsterStatData.attackRange)
             {
                 Vector2 dir = (player.transform.position - transform.position).normalized;
                 float range = _monsterConfig.monsterStatData.attackRange;
                 int mask = 1 << LayerMask.NameToLayer("Obstacle");
 
-                // 장애물 검사
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, range, mask);
+                BoxCollider2D collider = GetComponent<BoxCollider2D>();
+                Vector2 boxSize = collider.size * transform.localScale;
+                int mobSize = GetMonsterTileSize(collider);
+                RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxSize, 0f, dir, range, mask);
+
                 if (hit.collider != null)
                 {
-                    StartCoroutine(FollowPathCoroutine());
+                    StartCoroutine(FollowPathCoroutine(mobSize));
                 }
                 else
                 {
-                    // 장애물 없으면 기본 이동
                     Move(dir);
                 }
             }
@@ -94,16 +92,14 @@ namespace Monster.AI
             _isUsingSkill = false;
         }
 
-        private IEnumerator FollowPathCoroutine()
+        private IEnumerator FollowPathCoroutine(int size)
         {
             _isFollowingPath = true;
 
-            // 1) A* 경로 계산
             Node start = _gridManager.GetNodeFromWorld(transform.position);
-            Node goal  = _gridManager.GetNodeFromWorld(player.transform.position);
-            var path = AStar.FindPath(start, goal, _gridManager.GetGrid());
+            Node goal = _gridManager.GetNodeFromWorld(player.transform.position);
+            List<Vector2Int> path = AStar.FindPath(start, goal, _gridManager.GetGrid(), pos => _gridManager.IsWalkableForSize(pos, size));
 
-            // 디버그용 시각화
             _debugPath = path;
 
             if (path == null || path.Count < 2)
@@ -111,7 +107,7 @@ namespace Monster.AI
                 _isFollowingPath = false;
                 yield break;
             }
-            
+
             float attackRange = _monsterConfig.monsterStatData.attackRange;
             for (int i = 1; i < path.Count; i++)
             {
@@ -123,16 +119,15 @@ namespace Monster.AI
                         _isFollowingPath = false;
                         yield break;
                     }
-                    
+
                     if (Vector2.Distance(transform.position, player.transform.position) <= attackRange)
                     {
                         _isFollowingPath = false;
                         yield break;
                     }
-                    
+
                     Vector2 dir = (waypoint - (Vector2)transform.position).normalized;
                     Move(dir);
-
                     yield return new WaitForFixedUpdate();
                 }
             }
@@ -149,8 +144,6 @@ namespace Monster.AI
                 _skillCooldowns.Add(s.Cooldown);
         }
 
-        #region Debug Gizmos
-
         private void OnDrawGizmos()
         {
             if (_debugPath == null || _gridManager == null) return;
@@ -160,8 +153,31 @@ namespace Monster.AI
                 Vector2 w = _gridManager.GridToWorld(g);
                 Gizmos.DrawWireCube(w, Vector3.one * _gridManager.cellSize * 0.9f);
             }
+
+            if (!Application.isPlaying) return;
+
+            Vector2 origin = transform.position;
+            Vector2 direction = (player.transform.position - transform.position).normalized;
+            float range = _monsterConfig.monsterStatData.attackRange;
+            Vector2 boxSize = GetComponent<BoxCollider2D>().size * transform.localScale;
+
+            Gizmos.color = Color.red;
+            Matrix4x4 rotationMatrix = Matrix4x4.TRS(origin + direction * range * 0.5f, Quaternion.identity, Vector3.one);
+            Gizmos.matrix = rotationMatrix;
+            Gizmos.DrawWireCube(Vector3.zero, new Vector3(boxSize.x, boxSize.y, 0));
+            Gizmos.matrix = Matrix4x4.identity;
+
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(origin, origin + direction * range);
         }
 
-        #endregion
+        private int GetMonsterTileSize(Collider2D collider)
+        {
+            float tileSize = 1f;
+            Vector2 size = collider.bounds.size;
+            int tileWidth = Mathf.CeilToInt(size.x / tileSize);
+            int tileHeight = Mathf.CeilToInt(size.y / tileSize);
+            return Mathf.Max(tileWidth, tileHeight);
+        }
     }
 }

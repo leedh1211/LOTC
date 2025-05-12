@@ -44,11 +44,10 @@ namespace Monster.Skill
             {
                 Debug.Log(other.gameObject.name);
             }
-            else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Enemy_projectile"))
             {
                 return;
             }
-
             Destroy(gameObject);
         }
     }

@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4974c6289f33e8841825d8e464a13468, type: 3}
-  m_Name: Boss
+  m_Script: {fileID: 11500000, guid: 3d0d819cf95a4693a75eeecf3747c298, type: 3}
+  m_Name: BossJump
   m_EditorClassIdentifier: 
-  maxhealth: 500
-  attackPower: 10
-  moveSpeed: 1.2
-  attackRange: 5
-  knockbackDuration: 0
-  knockbackCooldown: 0
+  skillName: Jump1
+  Cooldown: 10
+  AfterDelay: 1
+  DamageRatio: 1.4
+  Range: 5
+  Duration: 1
+  ImpactRadius: 1.3
+  IsCollide: 0
