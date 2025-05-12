@@ -11,23 +11,17 @@ public class LobbyMainUI : MonoBehaviour
     
     [SerializeField] private HorizontalSnapScrollView snapScrollView;
     
-    [SerializeField] private List<RectTransform> pageList;
-    
     [SerializeField] private TextMeshProUGUI stageText;
     
     [SerializeField] private Button startButton;
 
     [SerializeField] private IntegerEventChannelSO selectedStageLevel;
     [SerializeField] private IntegerEventChannelSO startedMainGame;
+    
     private void Awake()
     {
         SetStageInfo(lobbyController.testSelectStage);
-        
-        for (int i = 0; i < pageList.Count; i++)
-        {
-            pageList[i].sizeDelta = new(Screen.width, Screen.height);
-        }
-        
+      
         startButton.onClick.AddListener(() => startedMainGame.Raise(lobbyController.testSelectStage));
     }
 
