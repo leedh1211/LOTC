@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum SkillType
 { 
-    MultiShot,
+    Shot,
     ChangeArrow,
     State,
     Orbit
