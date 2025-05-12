@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isInitialized)
         {
+            throw new System.Exception("PlayerController가 초기화되지 않았습니다.");
         }
         moveDirection = inputHandler.MoveInput;
         if (moveDirection == Vector2.zero)
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        //Todo - 추후 스탯에서 속도 받아오도록
         transform.Translate(moveDirection * 3f * Time.deltaTime);
         playerVisual.SetDirection(moveDirection);
         playerVisual.SetMoving(true);
