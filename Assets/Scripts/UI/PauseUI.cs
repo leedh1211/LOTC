@@ -28,12 +28,12 @@ public class PauseUI : MonoBehaviour
     private void ShowPauseMenu()
     {
         pausePanel.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
         pausePanel.SetActive(false);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
 }
