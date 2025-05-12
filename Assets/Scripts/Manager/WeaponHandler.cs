@@ -74,6 +74,12 @@ public class WeaponHandler : MonoBehaviour
         //�� Ž��
        
         Transform nearest = GetNearestEnemy();
+
+        if (nearest == null)
+        {
+            Debug.Log("타겟이 없습니다");
+            return;
+        }
         
         Vector3 targetPos = (nearest.position - firePoint.position).normalized;
 
