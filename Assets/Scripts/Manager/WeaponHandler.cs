@@ -76,6 +76,43 @@ public class WeaponHandler : MonoBehaviour
     }
 
 
+    private IEnumerator SequnceShot()
+    {
+
+        while (true)
+        { 
+        Transform nearest = player.GetNearestEnemy();
+
+        if (nearest == null)
+        {
+            Debug.Log("타겟이 없습니다");
+            yield return new WaitForSeconds(0.5f);
+            continue;
+        }
+
+        Vector3 targetPos = (nearest.position - firePoint.position).normalized;
+
+        float baseAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
+
+
+        // ȭ�� ���� ���� ����
+        float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
+        for (int i = 0; i < projectileCount; i++)
+        {
+            float angle = baseAngle - angleOffset + spreadAngle * i;
+            //0, 0, baseAngle + angle
+            Quaternion rot = Quaternion.Euler(0, 0, angle);
+            GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // ȭ�� ����
+
+            Vector3 rotatedDir = rot * Vector3.right; // �׻� ���� ��� ��Ʈ��
+            arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir);
+        }
+        }
+
+    }
+
+
+
     private void DelayAttack()
     {
         
@@ -96,7 +133,7 @@ public class WeaponHandler : MonoBehaviour
 
     private void Start()
     {
-     playercontroller = player.GetComponent<PlayerController>();   
+    // playercontroller = player.GetComponent<PlayerController>();   
     }
 
     private void Update()
