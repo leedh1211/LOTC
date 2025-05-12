@@ -46,4 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CustomizeDataTable: {fileID: 11400000, guid: 49d78e0b7bb04f94db8eb33f63a31dfd, type: 2}
   Gold: {fileID: 11400000, guid: 647b62941e3931343b553575da104cad, type: 2}
+  SelectedStage: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
+  ClearedStage: {fileID: 11400000, guid: ce7e92b087375f846ace2ec2ca4dfc76, type: 2}
   OwnedCustomizeItem: {fileID: 11400000, guid: a6deeda6b90b5014bae24734c08218db, type: 2}

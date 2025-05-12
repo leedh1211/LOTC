@@ -12,6 +12,8 @@ public class SaveManager : Singleton<SaveManager>
 
     [SerializeField] private CustomizeDataTable CustomizeDataTable;
     [SerializeField] private IntegerVariableSO Gold;
+    [SerializeField] private IntegerVariableSO SelectedStage;
+    [SerializeField] private IntegerVariableSO ClearedStage;
     [SerializeField] private BitArrayVariableSO OwnedCustomizeItem;
     protected override void Awake()
     {
@@ -29,7 +31,9 @@ public class SaveManager : Singleton<SaveManager>
     {
         SaveData data = new SaveData(
             gold: Gold.RuntimeValue,
-            ownedCustomizeItem : SerializeOwnedItems(OwnedCustomizeItem.RuntimeValue)
+            ownedCustomizeItem : SerializeOwnedItems(OwnedCustomizeItem.RuntimeValue),
+            selectedStage : SelectedStage.RuntimeValue,
+            clearedStage: ClearedStage.RuntimeValue
             );
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented); 
