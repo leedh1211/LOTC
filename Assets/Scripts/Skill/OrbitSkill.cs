@@ -5,12 +5,11 @@ using UnityEngine.UIElements;
 
 public class OrbitSkill : MonoBehaviour
 {
-    [SerializeField]
+    
     private List<Transform> orbitObjects = new List<Transform>();
 
 
-    [SerializeField]
-    private float radis;
+
 
     public Transform targetPos;
 
@@ -18,7 +17,15 @@ public class OrbitSkill : MonoBehaviour
     private float speed;
 
     private float angle;
+    [SerializeField]
+    private float radis;
 
+    private void Start()
+    {
+        targetPos = transform.parent;
+        orbitObjects.Add(transform.GetChild(0));
+        orbitObjects.Add(transform.GetChild(1));
+    }
 
     private void Update()
     {

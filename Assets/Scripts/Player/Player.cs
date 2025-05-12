@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))]
@@ -11,9 +12,9 @@ public class Player : MonoBehaviour
         public int Speed;
 
     }
-    private PlayerController playerController;
-
     public List<Transform> monsterList; //Test
+
+    private PlayerController playerController;
    
     [SerializeField] private PlayerVisual playerVisual;
 
@@ -21,6 +22,8 @@ public class Player : MonoBehaviour
 
     [Header("WeaPon")]
     private WeaponHandler weapon;
+    [Header("OrbitSkill")]
+    [SerializeField]private GameObject orbitPrefab;
     
     void Awake()
     {
@@ -77,6 +80,13 @@ public class Player : MonoBehaviour
         return NearestMonster;
     }
 
+
+    public void SetOrbitSkill()
+    { 
+        GameObject orbit =  Instantiate(orbitPrefab);
+        orbit.transform.SetParent(this.transform);
+
+    }
 
 
 

@@ -8,7 +8,7 @@ public enum SkillType
     MultiShot,
     ChangeArrow,
     State,
-    Passive
+    Orbit
 }
 
 [CreateAssetMenu(menuName = "Skill/SkillData")]

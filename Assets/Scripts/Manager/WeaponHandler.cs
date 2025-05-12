@@ -5,24 +5,25 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
+    public float Delay { get => delay;set=> delay = value; }
+    public float Power { get => power; set => power = value; }
+    public float Speed { get => speed; set => speed = value; }
+    public float AttackRange { get => attackRange; set => attackRange = value; }
+    
+    public LayerMask targetlayer; 
+    
     [Header("AttackInfo")]
     [SerializeField]
     [Range(0.3f,2.0f)]private float delay = 2.0f;
-    public float Delay { get => delay;set=> delay = value; }
-
     private float curTime = 0.0f;
     [SerializeField]
     private float power = 1f;
-    public float Power { get => power; set => power = value; }
     [SerializeField]
     private float speed = 1f;
-    public float Speed { get => speed; set => speed = value; }
     [SerializeField]
     private float attackRange = 10f;
-    public float AttackRange { get => attackRange; set => attackRange = value; }
      
 
-    public LayerMask targetlayer; //���� ���� ���
 
 
     [Header("ArrowInfo")]
@@ -38,8 +39,8 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField]
     private Player player;
     [SerializeField]
-
     private PlayerController playercontroller;
+
 
 
 
