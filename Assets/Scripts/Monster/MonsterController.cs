@@ -23,7 +23,7 @@ public class MonsterController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Collider2D bodyCollider;
     [SerializeField] private Transform shadow;
-
+   
 
     [SerializeField] private MonsterEventChannelSO killedMonster;
 
@@ -56,12 +56,12 @@ public class MonsterController : MonoBehaviour
         currentHealth = config.monsterStatData.maxhealth;
         knockBackTimer = config.monsterStatData.knockbackCooldown;
         knockBackCooldown = config.monsterStatData.knockbackCooldown;
-        Debug.Log("첫설정" +currentHealth);
+        
         aiController = GetComponent<BaseAIController>();
         aiController.Init(monsterConfig, GetComponent<Rigidbody2D>(), player);
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
         spriteRenderer.sprite = monsterConfig.SpriteOverride;
-        animator.runtimeAnimatorController = monsterConfig.AnimatorOverrideController.runtimeAnimatorController;
+        animator.runtimeAnimatorController = monsterConfig.AnimatorOverrideController;
         Vector2 spriteSize = spriteRenderer.bounds.size;
         float shadowWidth = spriteSize.x * 0.6f;
         float shadowHeight = spriteSize.y * 0.3f;

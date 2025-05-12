@@ -1,4 +1,5 @@
-﻿using Monster.Skill;
+﻿using System.Collections;
+using Monster.Skill;
 using UnityEngine;
 
 namespace Monster.ScriptableObject.Skill
@@ -12,7 +13,7 @@ namespace Monster.ScriptableObject.Skill
         public float ImpactRadius;
         public bool IsCollide;
 
-        public override void Excute(MonsterConfig monsterConfig, Transform self, Transform target)
+        public override IEnumerator Excute(MonsterConfig monsterConfig, Transform self, Transform target)
         {
             if (!self.TryGetComponent(out JumpSkillController controller))
             {
@@ -24,14 +25,18 @@ namespace Monster.ScriptableObject.Skill
 
             float damage = monsterConfig.monsterStatData.attackPower * DamageRatio;
             
-            var shadow = self.Find("Shadow"); // 이름이 "Shadow"인 자식 오브젝트라고 가정
-            
+            var shadow = self.Find("Shadow");
             if (shadow == null || !shadow.TryGetComponent(out SpriteRenderer shadowRenderer))
             {
-                return;
+                yield break;
             }
+            bool isDone = false;
 
+            controller.OnJumpFinished = () => isDone = true;
+            
             controller.JumpInit(damage, target, Range, Duration, ImpactRadius, false, shadow, shadowRenderer);
+            while (!isDone)
+                yield return null;
         }
     }
 }

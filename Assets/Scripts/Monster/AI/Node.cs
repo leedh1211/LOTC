@@ -2,9 +2,6 @@
 
 namespace Monster.AI
 {
-    /// <summary>
-    /// A* 계산을 위한 노드 정보
-    /// </summary>
     public class Node
     {
         public Vector2Int pos;

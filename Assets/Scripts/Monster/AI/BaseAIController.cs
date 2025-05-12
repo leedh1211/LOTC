@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Monster.ScriptableObject;
 using Monster.Skill;
 using UnityEngine;
 
@@ -12,50 +13,34 @@ namespace Monster.AI
         private MonsterConfig _monsterConfig;
         private Rigidbody2D _monsterRigid;
         private MonsterSkillController _monsterSkillController;
-        private List<float> _skillCooldowns = new();
 
         private GridManager _gridManager;
         private bool _isInitialized;
-        private bool _isUsingSkill;
         private bool _isFollowingPath;
-
-        private List<Vector2Int> _debugPath;
-
-        private void Awake()
-        {
-            _isInitialized = false;
-            _isUsingSkill = false;
-            _isFollowingPath = false;
-        }
 
         private void Start()
         {
             _gridManager = FindObjectOfType<GridManager>();
-            _monsterSkillController = GetComponent<MonsterSkillController>();
             _isInitialized = true;
+        }
+        
+        public void Init(MonsterConfig config, Rigidbody2D rigid, GameObject playerObj)
+        {
+            _monsterConfig = config;
+            _monsterRigid = rigid;
+            player = playerObj;
+            _monsterSkillController = GetComponent<MonsterSkillController>();
+            _monsterSkillController.Init(_monsterConfig, player.transform);
         }
 
         private void Update()
         {
-            for (int i = 0; i < _skillCooldowns.Count; i++)
-            {
-                if (_skillCooldowns[i] <= 0f)
-                {
-                    _isUsingSkill = true;
-                    _monsterSkillController.UseSkill(_monsterConfig, _monsterConfig.skillData[i], player.transform);
-                    _skillCooldowns[i] = _monsterConfig.skillData[i].Cooldown;
-                    StartCoroutine(EndSkillAfter(_monsterConfig.skillData[i].AfterDelay));
-                }
-                else
-                {
-                    _skillCooldowns[i] -= Time.deltaTime;
-                }
-            }
+            _monsterSkillController.Tick();
         }
 
         private void FixedUpdate()
         {
-            if (!_isInitialized || _isUsingSkill || _isFollowingPath)
+            if (!_isInitialized || _monsterSkillController.IsUsingSkill() || _isFollowingPath)
                 return;
 
             if (Vector2.Distance(player.transform.position, transform.position) > _monsterConfig.monsterStatData.attackRange)
@@ -86,12 +71,6 @@ namespace Monster.AI
             _monsterRigid.MovePosition(next);
         }
 
-        private IEnumerator EndSkillAfter(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            _isUsingSkill = false;
-        }
-
         private IEnumerator FollowPathCoroutine(int size)
         {
             _isFollowingPath = true;
@@ -99,9 +78,7 @@ namespace Monster.AI
             Node start = _gridManager.GetNodeFromWorld(transform.position);
             Node goal = _gridManager.GetNodeFromWorld(player.transform.position);
             List<Vector2Int> path = AStar.FindPath(start, goal, _gridManager.GetGrid(), pos => _gridManager.IsWalkableForSize(pos, size));
-
-            _debugPath = path;
-
+            
             if (path == null || path.Count < 2)
             {
                 _isFollowingPath = false;
@@ -114,7 +91,7 @@ namespace Monster.AI
                 Vector2 waypoint = _gridManager.GridToWorld(path[i]);
                 while (Vector2.Distance(transform.position, waypoint) > 0.1f)
                 {
-                    if (_isUsingSkill)
+                    if (_monsterSkillController.IsUsingSkill())
                     {
                         _isFollowingPath = false;
                         yield break;
@@ -132,43 +109,6 @@ namespace Monster.AI
                 }
             }
             _isFollowingPath = false;
-        }
-
-        public void Init(MonsterConfig config, Rigidbody2D rigid, GameObject playerObj)
-        {
-            _monsterConfig = config;
-            _monsterRigid = rigid;
-            player = playerObj;
-            _skillCooldowns.Clear();
-            foreach (var s in _monsterConfig.skillData)
-                _skillCooldowns.Add(s.Cooldown);
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (_debugPath == null || _gridManager == null) return;
-            Gizmos.color = Color.cyan;
-            foreach (var g in _debugPath)
-            {
-                Vector2 w = _gridManager.GridToWorld(g);
-                Gizmos.DrawWireCube(w, Vector3.one * _gridManager.cellSize * 0.9f);
-            }
-
-            if (!Application.isPlaying) return;
-
-            Vector2 origin = transform.position;
-            Vector2 direction = (player.transform.position - transform.position).normalized;
-            float range = _monsterConfig.monsterStatData.attackRange;
-            Vector2 boxSize = GetComponent<BoxCollider2D>().size * transform.localScale;
-
-            Gizmos.color = Color.red;
-            Matrix4x4 rotationMatrix = Matrix4x4.TRS(origin + direction * range * 0.5f, Quaternion.identity, Vector3.one);
-            Gizmos.matrix = rotationMatrix;
-            Gizmos.DrawWireCube(Vector3.zero, new Vector3(boxSize.x, boxSize.y, 0));
-            Gizmos.matrix = Matrix4x4.identity;
-
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(origin, origin + direction * range);
         }
 
         private int GetMonsterTileSize(Collider2D collider)

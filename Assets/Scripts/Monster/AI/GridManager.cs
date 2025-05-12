@@ -35,12 +35,6 @@ namespace Monster.AI
 
         public Node GetNodeFromWorld(Vector2 worldPos)
         {
-            if (grid == null)
-            {
-                Debug.LogError("GridManager.grid가 null입니다. InitGridFromTilemap()이 호출되었는지 확인하세요.");
-                return null;
-            }
-
             Vector3Int cell = tilemap.WorldToCell(worldPos);
             int ix = cell.x - origin.x;
             int iy = cell.y - origin.y;

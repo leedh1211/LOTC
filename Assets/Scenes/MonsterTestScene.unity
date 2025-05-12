@@ -731,7 +731,7 @@ PrefabInstance:
       objectReference: {fileID: 1463932083}
     - target: {fileID: 593685554011583298, guid: 9fc0e5548c4fb254492792bcca9af99d, type: 3}
       propertyPath: monsterConfigs.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 593685554011583298, guid: 9fc0e5548c4fb254492792bcca9af99d, type: 3}
       propertyPath: monsterConfigs.Array.data[4]
@@ -749,6 +749,10 @@ PrefabInstance:
       propertyPath: monsterConfigs.Array.data[7]
       value: 
       objectReference: {fileID: 11400000, guid: b0225ad508572bb4389cdb2168f13f1d, type: 2}
+    - target: {fileID: 593685554011583298, guid: 9fc0e5548c4fb254492792bcca9af99d, type: 3}
+      propertyPath: monsterConfigs.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f7b1415a5af7f7438e3dbc0b04f9dfd, type: 2}
     - target: {fileID: 4347426117791232289, guid: 9fc0e5548c4fb254492792bcca9af99d, type: 3}
       propertyPath: m_Name
       value: MonsterController

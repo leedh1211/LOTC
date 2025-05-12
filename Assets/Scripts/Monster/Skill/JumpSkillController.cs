@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Monster.Skill
 {
     public class JumpSkillController : MonoBehaviour
     {
+        public Action OnJumpFinished;
+        
         private float jumpDamage;
         private Vector2 jumpStartPos;
         private Vector2 jumpTargetPos;
@@ -91,6 +94,7 @@ namespace Monster.Skill
             shadowRenderer.color = baseShadowColor;
 
             isJumping = false;
+            OnJumpFinished?.Invoke();
             col.enabled = true;
 
             DoImpact();

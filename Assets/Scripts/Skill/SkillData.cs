@@ -5,10 +5,10 @@ using UnityEngine;
 
 public enum SkillType
 { 
-    MultiShot,
+    Shot,
     ChangeArrow,
     State,
-    Passive
+    Orbit
 }
 
 [CreateAssetMenu(menuName = "Skill/SkillData")]
