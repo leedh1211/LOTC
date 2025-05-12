@@ -18,8 +18,9 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private MonsterFactory monsterFactory;
     
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject gameClearPanel;
     
-    [SerializeField] private Button gameClearButton;
+    [SerializeField] private Button exitButton;
     
     [SerializeField] private Player playerPrefab;
 
@@ -50,13 +51,11 @@ public class MainGameController : MonoBehaviour
 
         Init();
         
-        gameClearButton.onClick.AddListener(()=>
+        exitButton.onClick.AddListener(()=>
         {
             Time.timeScale = 1;
             SceneManager.LoadScene("LobbyScene");
         });
-        
-        gameClearButton.gameObject.SetActive(false);
     }
 
     private void Init()
@@ -112,8 +111,7 @@ public class MainGameController : MonoBehaviour
         {
             clearedStageLevel.RuntimeValue++;
         }
-        
-        gameClearButton.gameObject.SetActive(true);
+        gameClearPanel.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 }

@@ -15,45 +15,29 @@ public class WeaponHandler : MonoBehaviour
     public LayerMask targetlayer;
 
     [Header("AttackInfo")]
-    [SerializeField]
-    [Range(0.3f, 2.0f)] private float delay = 2.0f;
+    [SerializeField] [Range(0.3f, 2.0f)] private float delay = 2.0f;
+    [SerializeField] private float power = 1f;
+    [SerializeField] private float speed = 1f;
+    [SerializeField] private float attackRange = 10f;
+
     private float curTime = 0.0f;
-    [SerializeField]
-    private float power = 1f;
-    [SerializeField]
-    private float speed = 1f;
-    [SerializeField]
-    private float attackRange = 10f;
-
-
 
 
     [Header("ArrowInfo")]
-    [SerializeField]
-    private GameObject ArrowPrefabs;
     public int projectileCount = 2; //arrow count SpreadCountup
-    [SerializeField]
-    private Transform firePoint;
-    [SerializeField]
-    private float spreadAngle = 15f;
-    [SerializeField]
-    private int shotCount = 1;
-    [SerializeField]
-    private bool isSequnce = false;
+
+    [SerializeField] private GameObject ArrowPrefabs;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float spreadAngle = 15f;
+    [SerializeField] private int shotCount = 1;
+    [SerializeField] private bool isSequnce = false;
     
 
     [Header("Player")]
-    [SerializeField]
-    private Player player;
-    [SerializeField]
-    private PlayerController playercontroller;
+    [SerializeField] private Player player;
     
-
-    /// <summary>
-    /// /////////////////
-    /// </summary>
-
     [SerializeField] private Vector2VariableSO joystickPos;
+    
     public void Attack()
     {
         //�� Ž��
@@ -83,7 +67,6 @@ public class WeaponHandler : MonoBehaviour
                 Vector3 rotatedDir = rot * Vector3.right; // �׻� ���� ��� ��Ʈ��
                 arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir);
             }
-
         }
 
    
@@ -118,21 +101,14 @@ public class WeaponHandler : MonoBehaviour
                 arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir);
             }
 
-
-
             yield return new WaitForSeconds(0.4f); //시간을 채크할때 -> 평소 느끼는 대로 
         }
-
-
-
-
     }
 
 
 
     private void DelayAttack()
     {
-
         if (curTime >= delay)
         {
             if (isSequnce == false)
@@ -149,13 +125,6 @@ public class WeaponHandler : MonoBehaviour
         {
             curTime += Time.deltaTime;
         }
-
-
-    }
-
-    private void Start()
-    {
-        // playercontroller = player.GetComponent<PlayerController>();   
     }
 
     private void Update()
