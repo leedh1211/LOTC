@@ -5,9 +5,11 @@ using UnityEngine.UIElements;
 
 public class OrbitSkill : MonoBehaviour
 {
+    
+    private List<Transform> orbitObjects = new List<Transform>();
 
-    [SerializeField]
-    private float radis;
+
+
 
     public Transform targetPos;
 
@@ -15,11 +17,19 @@ public class OrbitSkill : MonoBehaviour
     private float speed;
 
     private float angle;
+    [SerializeField]
+    private float radis;
 
+    private void Start()
+    {
+        targetPos = transform.parent;
+        orbitObjects.Add(transform.GetChild(0));
+        orbitObjects.Add(transform.GetChild(1));
+    }
 
     private void Update()
     {
-        if (targetPos == null)
+        if (targetPos == null || orbitObjects.Count < 2)
         {
             return;
         }
@@ -27,21 +37,26 @@ public class OrbitSkill : MonoBehaviour
 
         angle += speed * Time.deltaTime;
 
-        float rad = angle * Mathf.Deg2Rad;
+        for (int i = 0; i < orbitObjects.Count; i++)
+        {
 
-        //Vector3 orbit = new Vector3(Mathf.Cos(rad) * xRange, Mathf.Sin(rad) * yRange, 0f);
-        float dx = targetPos.position.x + Mathf.Cos(rad) * radis;
-        float dy = targetPos.position.y + Mathf.Sin(rad) * radis;
-       // float dz = targetPos.position.z;
+            float offset = i * 180f;
+            float curAngle = angle + offset;
+            float rad = curAngle * Mathf.Deg2Rad;
+
+            float dx = targetPos.position.x + Mathf.Cos(rad) * radis;
+            float dy = targetPos.position.y + Mathf.Sin(rad) * radis;
 
 
 
-        transform.position = new Vector3(dx, dy, 0);
-        //      this.transform.RotateAround(targetPos.position, Vector3.left, speed * Time.deltaTime);
 
+            orbitObjects[i].position = new Vector3(dx, dy, 0);
+
+
+        }
     }
 
-
+   
 
 
 }

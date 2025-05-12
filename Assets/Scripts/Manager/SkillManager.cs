@@ -14,6 +14,11 @@ public class SkillManager : Singleton<SkillManager> //�̱���
 
     public void LearnSkill(SkillData data ,SkillApplyContext context)
     {
+        if (learnedSKillType.Contains(data.type) && data.type == SkillType.Orbit)
+        {
+            return;
+        }
+        learnedSKillType.Add(data.type);
         ISKillEffect effect = SkillEffectFactory.CreateEffect(data.type);
 
         if(effect == null)
@@ -38,6 +43,7 @@ public class SkillManager : Singleton<SkillManager> //�̱���
             weapon.ApplyToWeapon(context);
         }
 
+     
 
     }
    

@@ -9,7 +9,7 @@ public class SkillApplyContext
 {
     public Player player;
     public WeaponHandler weaponHandler;
-
+    public GameManager gameManager;
 }
 
 
