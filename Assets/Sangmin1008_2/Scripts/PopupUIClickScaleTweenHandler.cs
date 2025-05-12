@@ -32,7 +32,7 @@ public class PopupUIClickScaleTweenHandler : MonoBehaviour
             float t = time / duration;
             float curveValue = bounceCurve.Evaluate(t);
             rectTransform.localScale = Vector3.LerpUnclamped(startScale, endScale, curveValue);
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             yield return null;
         }
 
@@ -43,7 +43,7 @@ public class PopupUIClickScaleTweenHandler : MonoBehaviour
         {
             float t = time / shrinkTime;
             rectTransform.localScale = Vector3.LerpUnclamped(fromScale, Vector3.one, t);
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             yield return null;
         }
 

@@ -34,13 +34,13 @@ public class SkillSelectMenuUI : MonoBehaviour
     private void ShowPanel()
     {
         skillMenuPanel.SetActive(true);
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
     }
     
     private void OnSkillSelected(string skillName)
     {
         Debug.Log($"{skillName} 선택 완료!");
         skillMenuPanel.SetActive(false);
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
     }
 }
