@@ -12,7 +12,7 @@ public static class SkillEffectFactory
                 return new HealEffect();
             case SkillType.ChangeArrow:
                 return null;
-            case SkillType.MultiShot:
+            case SkillType.Shot:
                 return new MultiShotEffect();
             case SkillType.Orbit:
                 return new OrbitEffect();

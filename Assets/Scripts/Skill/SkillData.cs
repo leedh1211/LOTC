@@ -19,11 +19,9 @@ public class SkillData : ScriptableObject
     public Sprite icon;
     public SkillType type;
 
-    [Header("Á¶ÇÕ¼³Á¤")]
+    [Header("ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½")]
     public List<SkillType> combinable;
     public SkillType? resultCombo;
 
 }
-// ½ºÅ³ Àû¿ë¹Þ´Â ´ë»ó + ¼Ò½º¸¦ ³Ö´Â´Ù -> ¹ÎÇõ´Ô Á¶¾ð
 
-//¸ÖÆ¼¼¦ Æ¨±â´Â°Å »óÅÂ °ü·Ã ½ºÅ³¸¸ ¸ÕÀú ¸¸µé¾îº¸ÀÚ 

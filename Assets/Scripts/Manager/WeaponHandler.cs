@@ -90,7 +90,7 @@ public class WeaponHandler : MonoBehaviour
 
     private IEnumerator SequnceShot()
     {
-        Transform nearest = player.GetNearestEnemy();
+        MonsterController nearest = player.GetNearestEnemy();
 
         if (nearest == null)
         {
@@ -104,7 +104,7 @@ public class WeaponHandler : MonoBehaviour
 
             for (int j = 0; j < projectileCount; j++)
             {
-                Vector3 targetPos = (nearest.position - firePoint.position).normalized;
+                Vector3 targetPos = (nearest.transform.position - firePoint.position).normalized;
 
                 float baseAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
 
