@@ -16,5 +16,5 @@ MonoBehaviour:
   attackPower: 10
   moveSpeed: 1.2
   attackRange: 5
-  knockbackDuration: 0
-  knockbackCooldown: 0
+  knockbackDuration: 1
+  knockbackCooldown: 1
