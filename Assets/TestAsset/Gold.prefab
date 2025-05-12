@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldAmount: 1
+  popDist: 0.15
+  popTime: 0.1
   yoyoDist: 0.6
   yoyoTime: 0.33
   chaseTime: 0.33
