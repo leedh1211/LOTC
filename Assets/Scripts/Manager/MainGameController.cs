@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class MainGameController : MonoBehaviour
 {
-    [SerializeField] private int monsterSpawnCount = 5;
+    [SerializeField] private int monsterSpawnCount = 0;
 
 
     [SerializeField] private TileMapLoader tileMapLoader;
@@ -19,6 +19,7 @@ public class MainGameController : MonoBehaviour
     
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject gameClearPanel;
+    //[SerializeField] private GameObject door;
     
     [SerializeField] private Button exitButton;
     
@@ -30,8 +31,10 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private MonsterListVariableSO monsterList;
     [SerializeField] private IntegerVariableSO selectedStageLevel;
     [SerializeField] private IntegerVariableSO clearedStageLevel;
+    [SerializeField] private IntegerVariableSO currentMapIndex;
 
-    private List<Rect> _monsterSpawner;
+
+    private List<Vector2> _monsterSpawner;
     private void OnEnable()
     {
         playerDeathEvent.OnEventRaised += GameOver;
@@ -48,7 +51,7 @@ public class MainGameController : MonoBehaviour
     private void Start()
     {
         tileMapLoader.LoadRandomTileMap(selectedStageLevel.RuntimeValue);
-
+        
         Init();
         
         exitButton.onClick.AddListener(()=>
@@ -61,26 +64,24 @@ public class MainGameController : MonoBehaviour
     private void Init()
     {
         _monsterSpawner = tileMapLoader.TileMap.SpawnArea;
+        monsterSpawnCount = _monsterSpawner.Count;
+        GetComponent<TileMapDataViewer>().tileMapData = tileMapLoader.TileMap;
 
         Player player = Instantiate(playerPrefab);
         
         player.name = "Player";
         
         player.transform.position = tileMapLoader.TileMap.PlayerSpawnPosition;
+        
+        Camera.main.GetComponent<CameraController>().Init(player.transform);
 
         monsterList.RuntimeValue = new();
         
         for (int i = 0; i < monsterSpawnCount; i++)
         {
-            var spawnArea = _monsterSpawner[Random.Range(0, _monsterSpawner.Count)];
-            var randomX = Random.Range(spawnArea.x - spawnArea.width / 2, spawnArea.x + spawnArea.width / 2);
-            var randomY = Random.Range(spawnArea.y - spawnArea.height / 2, spawnArea.y + spawnArea.height / 2);
-            var spawnPos = new Vector2(randomX, randomY);
+            var spawnPos = new Vector2(_monsterSpawner[i].x, _monsterSpawner[i].y);
 
             var monster = monsterFactory.SpawnMonster(MonsterName.Mob1, spawnPos, player.gameObject);
-            
-            Debug.Log($"{randomX}, {randomY}");
-
             monsterList.RuntimeValue.Add(monster);
         }
 
@@ -93,10 +94,23 @@ public class MainGameController : MonoBehaviour
         
         monsterList.Remove(monster);
 
-        if (monsterList.Count == 0)
+        if (monsterList.Count != 0) return;
+        
+        currentMapIndex.RuntimeValue++;
+        if (currentMapIndex.RuntimeValue >= tileMapLoader.numberOfMap)
         {
             GameClear();
         }
+        else
+        {
+            OpenTheDoor();
+        }
+    }
+
+    // 맵에 있는 몬스터 전부 죽이면 실행
+    private void OpenTheDoor()
+    {
+        //door.SetActive(true);
     }
 
     private void GameOver()
@@ -111,6 +125,8 @@ public class MainGameController : MonoBehaviour
         {
             clearedStageLevel.RuntimeValue++;
         }
+
+        currentMapIndex.RuntimeValue = 0;
         gameClearPanel.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
