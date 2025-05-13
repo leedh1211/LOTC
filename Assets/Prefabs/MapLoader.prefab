@@ -44,5 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e27ca3cb406af540bf39126ca5d545c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedStageLevel: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
-  _stageData: {fileID: 11400000, guid: cb992f07914eb1c40a5d854f4b6705a5, type: 2}
+  stageDataList:
+  - {fileID: 11400000, guid: cb992f07914eb1c40a5d854f4b6705a5, type: 2}
+  - {fileID: 11400000, guid: f4e68a4b85f55e7458b16b7382a6f46d, type: 2}
+  - {fileID: 11400000, guid: a43397f03c606f84f832e7fd93b5ac89, type: 2}
+  currentMapIndex: {fileID: 11400000, guid: e7b6c173e6dc6e746b3b708323f16ae0, type: 2}
+  numberOfMap: 0
