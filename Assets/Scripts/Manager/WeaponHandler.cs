@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
-    public float Delay { get => delay; set => delay = value; }
-    public float Power { get => power; set => power = value; }
+    public float Delay { get => delay - permanentStat.RuntimeValue.Delay * 0.1f; set => delay = value; }
+    public float Power { get => power + permanentStat.RuntimeValue.Power * 10; set => power = value; }
     public float Speed { get => speed; set => speed = value; }
     public float AttackRange { get => attackRange; set => attackRange = value; }
     public bool IsSequnce { get => isSequnce; set => isSequnce = value; }
@@ -80,7 +80,7 @@ public class WeaponHandler : MonoBehaviour
 
             }
 
-            arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir);
+            arrow.GetComponent<ArrowBase>()?.Init(Power, speed, attackRange, rotatedDir);
 
         }
     }
@@ -115,7 +115,7 @@ public class WeaponHandler : MonoBehaviour
                 GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot);
 
                 Vector3 rotatedDir = rot * Vector3.right;
-                arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir);
+                arrow.GetComponent<ArrowBase>()?.Init(Power, speed, attackRange, rotatedDir);
             }
 
             yield return new WaitForSeconds(0.4f); //시간을 채크할때 -> 평소 느끼는 대로 
@@ -126,7 +126,7 @@ public class WeaponHandler : MonoBehaviour
 
     private void DelayAttack()
     {
-        if (curTime >= delay)
+        if (curTime >= Delay)
         {
             if (isSequnce == false)
             {
@@ -159,7 +159,7 @@ public class WeaponHandler : MonoBehaviour
         //delay Test
         if (Input.GetKeyDown(KeyCode.M))
         {
-            delay -= 0.1f;
+            Delay -= 0.1f;
         }
 
         if (Input.GetKeyDown(KeyCode.P))

@@ -6,7 +6,7 @@ public class SaveData
     public int ClearedStage { get; set; }
     public int CurrentCustomizeItem { get; set; }
     public string OwnedCustomizeItem { get; set; }
-    public PlayerStat PlayerStat { get; set; }
+    public PlayerpermanentStat PlayerStat { get; set; }
     public SaveData()
     {
         Gold = 0;
@@ -14,9 +14,9 @@ public class SaveData
         ClearedStage = 0;
         CurrentCustomizeItem = 0;
         OwnedCustomizeItem = "";
-        PlayerStat = new PlayerStat();
+        PlayerStat = new PlayerpermanentStat();
     }
-    public SaveData(int gold,int currentCustomizeItem, string ownedCustomizeItem, int selectedStage, int clearedStage, PlayerStat stat)
+    public SaveData(int gold,int currentCustomizeItem, string ownedCustomizeItem, int selectedStage, int clearedStage, PlayerpermanentStat stat)
     {
         Gold = gold;
         CurrentCustomizeItem = currentCustomizeItem;

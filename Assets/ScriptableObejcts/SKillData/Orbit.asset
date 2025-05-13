@@ -15,5 +15,5 @@ MonoBehaviour:
   SkillName: 
   skillInfo: 
   icon: {fileID: 0}
-  type: 3
+  type: 0
   combinable: 
