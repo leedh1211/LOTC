@@ -29,7 +29,7 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private float spreadAngle = 15f;
     [SerializeField] private int shotCount = 1;
     [SerializeField] private bool isSequnce = false;
-    [SerializeField] private bool isReflect = false;
+    [SerializeField] private bool isReflect = true;
     
 
 
