@@ -82,7 +82,7 @@ MonoBehaviour:
   maxBounce: 3
   reflectLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   tipPos: {fileID: 8060244310875391025}
 --- !u!212 &7173831733015381387
 SpriteRenderer:
@@ -172,7 +172,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.21875, y: 0.65625}
+    oldSize: {x: 0.3125, y: 1.3125}
     newSize: {x: 0.07, y: 0.21}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

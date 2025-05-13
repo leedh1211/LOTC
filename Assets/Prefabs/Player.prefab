@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVisual: {fileID: 8626990803830669826}
   customizeDataTable: {fileID: 11400000, guid: 49d78e0b7bb04f94db8eb33f63a31dfd, type: 2}
-  OwnedCustomizeItem: {fileID: 11400000, guid: a6deeda6b90b5014bae24734c08218db, type: 2}
+  currentCustomId: {fileID: 0}
 --- !u!1 &5683885534661695011
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +299,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fc57a112d6123fc4fb37e8601cf232d8, type: 3}
+  m_Sprite: {fileID: -1751820622, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
