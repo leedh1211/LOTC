@@ -16,6 +16,8 @@ public static class SkillEffectFactory
                 return new MultiShotEffect();
             case SkillType.Orbit:
                 return new OrbitEffect();
+            case SkillType.Sequnce:
+                return new SequnceEffect();
             default:
                 return new MultiShotEffect();
 
