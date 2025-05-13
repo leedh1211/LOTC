@@ -50,3 +50,4 @@ MonoBehaviour:
   ClearedStage: {fileID: 11400000, guid: ce7e92b087375f846ace2ec2ca4dfc76, type: 2}
   CurrentCustomItemId: {fileID: 11400000, guid: c0666e01150970c43b5057d5eabe3fc1, type: 2}
   OwnedCustomizeItem: {fileID: 11400000, guid: a6deeda6b90b5014bae24734c08218db, type: 2}
+  PermanentStat: {fileID: 11400000, guid: a3815b4eb91319d4393d21d601c486ac, type: 2}

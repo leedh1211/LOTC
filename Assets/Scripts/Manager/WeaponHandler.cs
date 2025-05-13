@@ -8,7 +8,7 @@ public class WeaponHandler : MonoBehaviour
     public float Speed { get => speed; set => speed = value; }
     public float AttackRange { get => attackRange; set => attackRange = value; }
     public bool IsSequnce { get => isSequnce; set => isSequnce = value; }
-
+    
     public LayerMask targetlayer;
 
     [Header("AttackInfo")]
@@ -32,7 +32,7 @@ public class WeaponHandler : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private Player player;
-
+    [SerializeField] private PlayerStatVariableSO permanentStat;
     [SerializeField] private Vector2VariableSO joystickPos;
 
     public void Attack()

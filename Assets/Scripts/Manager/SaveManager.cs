@@ -16,6 +16,7 @@ public class SaveManager : Singleton<SaveManager>
     [SerializeField] private IntegerVariableSO ClearedStage;
     [SerializeField] private IntegerVariableSO CurrentCustomItemId;
     [SerializeField] private BitArrayVariableSO OwnedCustomizeItem;
+    [SerializeField] private PlayerStatVariableSO PermanentStat;
     protected override void Awake()
     {
         base.Awake();
@@ -40,7 +41,8 @@ public class SaveManager : Singleton<SaveManager>
             currentCustomizeItem: CurrentCustomItemId.RuntimeValue,
             ownedCustomizeItem: SerializeOwnedItems(OwnedCustomizeItem.RuntimeValue),
             selectedStage: SelectedStage.RuntimeValue,
-            clearedStage: ClearedStage.RuntimeValue
+            clearedStage: ClearedStage.RuntimeValue,
+            stat: PermanentStat.RuntimeValue
             );
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented); 
