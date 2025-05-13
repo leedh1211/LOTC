@@ -63,9 +63,18 @@ public class Player : MonoBehaviour
                 Nearest = dis;
 
             }
-            //else if(monster die) continue return 등등 죽으면 처리 방법 팀원 상의후 추가하기 
+           
         }
-        return NearestMonster;
+        if (monsterList.RuntimeValue.Count > 0)
+        {
+            return NearestMonster;
+        }
+        else
+        {
+            return null;
+        }
+        
+       
     }
 
 

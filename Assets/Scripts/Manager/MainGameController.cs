@@ -61,7 +61,9 @@ public class MainGameController : MonoBehaviour
         });
     }
 
-    private void Init()
+
+
+private void Init()
     {
         _monsterSpawner = tileMapLoader.TileMap.SpawnArea;
         monsterSpawnCount = _monsterSpawner.Count;

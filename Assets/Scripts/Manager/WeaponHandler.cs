@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
@@ -10,12 +7,12 @@ public class WeaponHandler : MonoBehaviour
     public float Power { get => power; set => power = value; }
     public float Speed { get => speed; set => speed = value; }
     public float AttackRange { get => attackRange; set => attackRange = value; }
-    public bool IsSequnce { get => isSequnce;set => isSequnce = value; }
+    public bool IsSequnce { get => isSequnce; set => isSequnce = value; }
 
     public LayerMask targetlayer;
 
     [Header("AttackInfo")]
-    [SerializeField] [Range(0.3f, 2.0f)] private float delay = 2.0f;
+    [SerializeField][Range(0.3f, 2.0f)] private float delay = 2.0f; //clamp()로해야 제대로 된다. 
     [SerializeField] private float power = 1f;
     [SerializeField] private float speed = 1f;
     [SerializeField] private float attackRange = 10f;
@@ -31,17 +28,17 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private float spreadAngle = 15f;
     [SerializeField] private int shotCount = 1;
     [SerializeField] private bool isSequnce = false;
-    
+
 
     [Header("Player")]
     [SerializeField] private Player player;
-    
+
     [SerializeField] private Vector2VariableSO joystickPos;
-    
+
     public void Attack()
     {
-        //�� Ž��
-       
+        
+
         MonsterController nearest = player.GetNearestEnemy();
 
         if (nearest == null)
@@ -49,27 +46,28 @@ public class WeaponHandler : MonoBehaviour
             Debug.Log("타겟이 없습니다");
             return;
         }
-        
+
         Vector3 targetPos = (nearest.transform.position - firePoint.position).normalized;
 
-            float baseAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
+        float baseAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
 
 
-            // ȭ�� ���� ���� ����
-            float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
-            for (int i = 0; i < projectileCount; i++)
-            {
-                float angle = baseAngle - angleOffset + spreadAngle * i;
-                //0, 0, baseAngle + angle
-                Quaternion rot = Quaternion.Euler(0,0,angle);
-                GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // ȭ�� ����
+       
+        float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
+        for (int i = 0; i < projectileCount; i++)
+        {
+            float angle = baseAngle - angleOffset + spreadAngle * i;
+       
+            Quaternion rot = Quaternion.Euler(0, 0, angle);
+            GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // ȭ�� ����
 
-                Vector3 rotatedDir = rot * Vector3.right; // �׻� ���� ��� ��Ʈ��
-                arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir);
-            }
+            Vector3 rotatedDir = rot * Vector3.right; // �׻� ���� ��� ��Ʈ��
+            arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir);
         }
+    }
 
-   
+
+
 
     private IEnumerator SequnceShot()
     {
@@ -93,7 +91,7 @@ public class WeaponHandler : MonoBehaviour
 
                 float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
                 float angle = baseAngle - angleOffset + spreadAngle * j;
-                //0, 0, baseAngle + angle
+                
                 Quaternion rot = Quaternion.Euler(0, 0, angle);
                 GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot);
 
@@ -116,8 +114,8 @@ public class WeaponHandler : MonoBehaviour
                 Attack();
             }
             else
-            { 
-            StartCoroutine(SequnceShot());
+            {
+                StartCoroutine(SequnceShot());
             }
             curTime = 0.0f;
         }
@@ -135,7 +133,7 @@ public class WeaponHandler : MonoBehaviour
         }
 
         if (joystickPos.RuntimeValue == Vector2.zero)
-        { 
+        {
             DelayAttack();
         }
 
@@ -146,7 +144,7 @@ public class WeaponHandler : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.P))
-        { 
+        {
             isSequnce = true;
         }
 
@@ -156,7 +154,7 @@ public class WeaponHandler : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange); 
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
 }
