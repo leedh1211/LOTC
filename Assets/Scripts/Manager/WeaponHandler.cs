@@ -15,7 +15,7 @@ public class WeaponHandler : MonoBehaviour
     public LayerMask targetlayer;
 
     [Header("AttackInfo")]
-    [SerializeField][Range(0.3f, 2.0f)] private float delay = 2.0f;
+    [SerializeField][Range(0.3f, 2.0f)] private float delay = 2.0f; //clamp()로해야 제대로 된다. 
     [SerializeField] private float power = 1f;
     [SerializeField] private float speed = 1f;
     [SerializeField] private float attackRange = 10f;
@@ -40,7 +40,7 @@ public class WeaponHandler : MonoBehaviour
 
     public void Attack()
     {
-        //�� Ž��
+        
 
         MonsterController nearest = player.GetNearestEnemy();
 
@@ -55,12 +55,12 @@ public class WeaponHandler : MonoBehaviour
         float baseAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
 
 
-        // ȭ�� ���� ���� ����
+       
         float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
         for (int i = 0; i < projectileCount; i++)
         {
             float angle = baseAngle - angleOffset + spreadAngle * i;
-            //0, 0, baseAngle + angle
+       
             Quaternion rot = Quaternion.Euler(0, 0, angle);
             GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // ȭ�� ����
 
@@ -94,7 +94,7 @@ public class WeaponHandler : MonoBehaviour
 
                 float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
                 float angle = baseAngle - angleOffset + spreadAngle * j;
-                //0, 0, baseAngle + angle
+                
                 Quaternion rot = Quaternion.Euler(0, 0, angle);
                 GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot);
 

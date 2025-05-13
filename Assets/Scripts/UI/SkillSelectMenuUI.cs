@@ -16,6 +16,7 @@ public class SkillSelectMenuUI : MonoBehaviour
     [SerializeField] private VoidEventChannelSO levelUpEvent;
     [SerializeField] private GameObject skillMenuPanel;
 
+    private bool HasObit = false;
 
     private void Start()
     {
@@ -46,18 +47,14 @@ public class SkillSelectMenuUI : MonoBehaviour
         skillMenuPanel.SetActive(true);
         Time.timeScale = 0f;
     }
-    
-    private void OnSkillSelected(string skillName)
-    {
-        Debug.Log($"{skillName} 선택 완료!");
-        skillMenuPanel.SetActive(false);
-        Time.timeScale = 1f;
-    }
+
+  
 
 
     private void SettingSkillUI()
     {
         RandomSkill();
+
         SkillData s1 = skillDatas[0];
         SkillData s2 = skillDatas[1];
         SkillData s3 = skillDatas[2];
@@ -78,12 +75,29 @@ public class SkillSelectMenuUI : MonoBehaviour
 
     private void RandomSkill()
     {
+
+       
+
         for (int i = 0; i < skillDatas.Count; i++)
         {
             SkillData temp = skillDatas[i];
             int randomIndex = UnityEngine.Random.Range(i, skillDatas.Count);
             skillDatas[i] = skillDatas[randomIndex];
             skillDatas[randomIndex] = temp;
+
+        }
+        if (HasObit == true)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (skillDatas[i].type == SkillType.Orbit)
+                {
+                    SkillData temp = skillDatas[skillDatas.Count - 1];
+                    skillDatas[skillDatas.Count - 1] = skillDatas[i];
+                    skillDatas[i] = temp;
+                }
+            }
+            
 
         }
     }
@@ -99,8 +113,13 @@ public class SkillSelectMenuUI : MonoBehaviour
             weaponHandler = FindObjectOfType<WeaponHandler>()
         };
 
+        if (selectedSkill.type == SkillType.Orbit && HasObit == false)
+        {
+            HasObit = true;
+        }
        
-        SkillManager.Instance.LearnSkill(selectedSkill, context); //매니저에게 전달
+     
+            SkillManager.Instance.LearnSkill(selectedSkill, context); //매니저에게 전달
 
      
         skillMenuPanel.SetActive(false);
