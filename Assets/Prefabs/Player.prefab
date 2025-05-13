@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd97a2b56f54a944a2c343385460716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  permanentStat: {fileID: 11400000, guid: a3815b4eb91319d4393d21d601c486ac, type: 2}
   monsterList: {fileID: 11400000, guid: 69c2a9259fb8ed44f869a9d89226c4f0, type: 2}
   orbitPrefab: {fileID: 6574067752759211410, guid: e107382ec4e579640902bceb8dad8b8b, type: 3}
   playerVisual: {fileID: 8626990803830669826}
@@ -194,6 +195,7 @@ MonoBehaviour:
   isSequnce: 0
   isReflect: 1
   player: {fileID: 122389734002959321}
+  permanentStat: {fileID: 11400000, guid: a3815b4eb91319d4393d21d601c486ac, type: 2}
   joystickPos: {fileID: 11400000, guid: 2229266326ba9d04083f3c010c1798df, type: 2}
 --- !u!114 &1080988013710144988
 MonoBehaviour:
