@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterList: {fileID: 11400000, guid: 69c2a9259fb8ed44f869a9d89226c4f0, type: 2}
+  orbitPrefab: {fileID: 0}
   playerVisual: {fileID: 8626990803830669826}
 --- !u!114 &5372241949254709475
 MonoBehaviour:
@@ -90,6 +91,7 @@ GameObject:
   - component: {fileID: 7525496220870391985}
   - component: {fileID: 3179107071694041703}
   - component: {fileID: 2904279775362675993}
+  - component: {fileID: 1080988013710144988}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -176,19 +178,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062edc2c59085ee4f81c3e376ffbda98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetlayer:
+    serializedVersion: 2
+    m_Bits: 128
   delay: 0.647
   power: 100
   speed: 5
   attackRange: 10
-  targetlayer:
-    serializedVersion: 2
-    m_Bits: 128
-  ArrowPrefabs: {fileID: 3072397918168628055, guid: 662dad48b0ceeef469c89132b2f7a67a, type: 3}
   projectileCount: 1
+  ArrowPrefabs: {fileID: 3072397918168628055, guid: 662dad48b0ceeef469c89132b2f7a67a, type: 3}
   firePoint: {fileID: 7525496220870391985}
   spreadAngle: 15
+  shotCount: 1
+  isSequnce: 0
   player: {fileID: 122389734002959321}
   joystickPos: {fileID: 11400000, guid: 2229266326ba9d04083f3c010c1798df, type: 2}
+--- !u!114 &1080988013710144988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683885534661695011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab21dede8cc95c14787c9c773651de51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 122389734002959321}
+  defaultLocalPos: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
+  lenghtX: 0
+  lenghtY: 0
 --- !u!1 &9215501162485253429
 GameObject:
   m_ObjectHideFlags: 0
