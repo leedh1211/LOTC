@@ -8,7 +8,8 @@ public class WeaponHandler : MonoBehaviour
     public float Speed { get => speed; set => speed = value; }
     public float AttackRange { get => attackRange; set => attackRange = value; }
     public bool IsSequnce { get => isSequnce; set => isSequnce = value; }
-    
+    public bool IsReflect { get => isReflect; set => isReflect = value; }
+
     public LayerMask targetlayer;
 
     [Header("AttackInfo")]
@@ -24,10 +25,13 @@ public class WeaponHandler : MonoBehaviour
     public int projectileCount = 2; //arrow count SpreadCountup
 
     [SerializeField] private GameObject ArrowPrefabs;
+    [SerializeField] private GameObject ReflectPrfabs;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float spreadAngle = 15f;
     [SerializeField] private int shotCount = 1;
     [SerializeField] private bool isSequnce = false;
+    [SerializeField] private bool isReflect = true;
+
 
 
     [Header("Player")]
@@ -37,7 +41,7 @@ public class WeaponHandler : MonoBehaviour
 
     public void Attack()
     {
-        
+
 
         MonsterController nearest = player.GetNearestEnemy();
 
@@ -52,17 +56,32 @@ public class WeaponHandler : MonoBehaviour
         float baseAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
 
 
-       
+
         float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
         for (int i = 0; i < projectileCount; i++)
         {
             float angle = baseAngle - angleOffset + spreadAngle * i;
-       
+
             Quaternion rot = Quaternion.Euler(0, 0, angle);
-            GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // ȭ�� ����
 
             Vector3 rotatedDir = rot * Vector3.right; // �׻� ���� ��� ��Ʈ��
+
+            GameObject arrow;
+            if (isReflect == true)
+            {
+
+
+                arrow = Instantiate(ReflectPrfabs, firePoint.position, rot); // ȭ�� ����
+
+            }
+            else
+            {
+                arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // ȭ�� ����
+
+            }
+
             arrow.GetComponent<ArrowBase>()?.Init(power, speed, attackRange, rotatedDir);
+
         }
     }
 
@@ -91,7 +110,7 @@ public class WeaponHandler : MonoBehaviour
 
                 float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
                 float angle = baseAngle - angleOffset + spreadAngle * j;
-                
+
                 Quaternion rot = Quaternion.Euler(0, 0, angle);
                 GameObject arrow = Instantiate(ArrowPrefabs, firePoint.position, rot);
 
