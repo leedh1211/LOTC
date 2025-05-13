@@ -3,12 +3,18 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
+    public float PullRatio
+    {
+        get => curTime / Delay;
+    }
+
     public float Delay { get => delay - permanentStat.RuntimeValue.Delay * 0.1f; set => delay = value; }
     public float Power { get => power + permanentStat.RuntimeValue.Power * 10; set => power = value; }
     public float Speed { get => speed; set => speed = value; }
     public float AttackRange { get => attackRange; set => attackRange = value; }
     public bool IsSequnce { get => isSequnce; set => isSequnce = value; }
     public bool IsReflect { get => isReflect; set => isReflect = value; }
+    
 
     public LayerMask targetlayer;
 
@@ -41,8 +47,6 @@ public class WeaponHandler : MonoBehaviour
 
     public void Attack()
     {
-
-
         MonsterController nearest = player.GetNearestEnemy();
 
         if (nearest == null)
@@ -55,9 +59,8 @@ public class WeaponHandler : MonoBehaviour
 
         float baseAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
 
-
-
         float angleOffset = (projectileCount - 1) * spreadAngle * 0.5f;
+        
         for (int i = 0; i < projectileCount; i++)
         {
             float angle = baseAngle - angleOffset + spreadAngle * i;
@@ -67,6 +70,7 @@ public class WeaponHandler : MonoBehaviour
             Vector3 rotatedDir = rot * Vector3.right; // �׻� ���� ��� ��Ʈ��
 
             GameObject arrow;
+            
             if (isReflect == true)
             {
 
@@ -154,6 +158,10 @@ public class WeaponHandler : MonoBehaviour
         if (joystickPos.RuntimeValue == Vector2.zero)
         {
             DelayAttack();
+        }
+        else
+        {
+            curTime = 0;
         }
 
         //delay Test

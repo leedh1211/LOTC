@@ -113,17 +113,21 @@ public class MainGameController : MonoBehaviour
         
         Debug.LogWarning("클리어!!!!");
         currentMapIndex.RuntimeValue++;
-        rooting.Raise(_player.transform);
-        StartCoroutine(WaitAndOpenDoor());
+        StartCoroutine(DelayEvent());
         if (currentMapIndex.RuntimeValue >= tileMapLoader.numberOfMap)
         {
             GameClear();
         }
     }
     
-    private IEnumerator WaitAndOpenDoor()
+    private IEnumerator DelayEvent()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
+
+        rooting.Raise(_player.transform);
+
+        yield return new WaitForSeconds(1.5f);
+
         OpenTheDoor();
     }
 
