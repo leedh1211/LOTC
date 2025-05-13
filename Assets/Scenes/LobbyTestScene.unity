@@ -661,6 +661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LobbyStageSelectUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5591042773415266338, guid: 5485f5036862b5f458424f88c255b338, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5710948569301785327, guid: 5485f5036862b5f458424f88c255b338, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1079,10 +1083,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 913567000370098206, guid: 6a7aa9f028ab6544b90afa0a034746da, type: 3}
-      propertyPath: CurrentCustomItemId
-      value: 
-      objectReference: {fileID: 11400000, guid: c0666e01150970c43b5057d5eabe3fc1, type: 2}
     - target: {fileID: 991572093446305349, guid: 6a7aa9f028ab6544b90afa0a034746da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.74075
