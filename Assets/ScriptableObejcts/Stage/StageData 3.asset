@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121dbdfadbb7ba84e95ade23e99c6c04, type: 3}
   m_Name: StageData 3
   m_EditorClassIdentifier: 
+  stageName: "\uC0AC\uC6D0"
+  mainImage: {fileID: 113975824, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
+  mainAnimator: {fileID: 22100000, guid: f1db1e47bfa0a6e488937685c45d2f2c, type: 2}
   stages: []

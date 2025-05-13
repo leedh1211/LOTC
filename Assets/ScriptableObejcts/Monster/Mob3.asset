@@ -21,3 +21,7 @@ MonoBehaviour:
   SpriteOverride: {fileID: 21300000, guid: d330c76166e23604c9c44f212607ad5c, type: 3}
   goldQuantity: 1
   isFly: 0
+  colliderSizeX: 1.2
+  colliderSizeY: 1.7
+  colliderOffX: 0
+  colliderOffY: -0.3

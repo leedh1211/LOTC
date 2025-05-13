@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec73274d1970d3148b1dc6f43f26cab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainImage: {fileID: 8705512801303600814}
   stageName: 1. Stage
   lockedImage: {fileID: 1866548066817010897}
 --- !u!1 &1957836139918830061

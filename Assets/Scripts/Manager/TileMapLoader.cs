@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Monster.AI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
@@ -8,8 +9,9 @@ using Random = UnityEngine.Random;
 
 public class TileMapLoader : MonoBehaviour
 {
-    [SerializeField] private List<StageData> stageDataList;
+    [SerializeField] private List<StageDataSO> stageDataList;
     [SerializeField] private IntegerVariableSO currentMapIndex;
+    [SerializeField] private GridManager gridManager;
     private Grid _currentGrid;
     public Grid CurrentGrid
     {
@@ -64,6 +66,10 @@ public class TileMapLoader : MonoBehaviour
         _tileMap = data;
         Vector3 worldPos = new Vector3(data.Position.x, data.Position.y, 0);
         _currentGrid = Instantiate(data.GridMap, worldPos, Quaternion.identity);
+        
+        var tilemap = _currentGrid.transform.Find("Collider").GetComponent<Tilemap>();
+        gridManager.SetTilemap(tilemap); // <- 여기를 반드시 넣어줘야 함
+        gridManager.InitGridFromTilemap();
         
         CameraBoundSetting();
     }

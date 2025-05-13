@@ -322,7 +322,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -282, y: -67}
-  m_SizeDelta: {x: 336, y: 224}
+  m_SizeDelta: {x: 370.16, y: 232.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1458067006644028788
 CanvasRenderer:
@@ -352,8 +352,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 616545888, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: -362567602, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -669,6 +669,7 @@ GameObject:
   - component: {fileID: 7812038655746057125}
   - component: {fileID: 7210671860151780213}
   - component: {fileID: 4896634860739364006}
+  - component: {fileID: 8987857007347243045}
   m_Layer: 5
   m_Name: MainImage
   m_TagString: Untagged
@@ -828,6 +829,27 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &8987857007347243045
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3183136539393723822}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 23f187746c7dfa149aefb5d35f011bcb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3529419872480426051
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +1019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 376, y: -68}
+  m_AnchoredPosition: {x: 365, y: -68}
   m_SizeDelta: {x: 223.99998, y: 223.99998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5151598508076855497
@@ -1028,7 +1050,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 945476695, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
+  m_Sprite: {fileID: -1805423688, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1126,10 +1148,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6849811653829848722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 321}
-  m_SizeDelta: {x: 400, y: 200}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 432}
+  m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6479395123737729012
 CanvasRenderer:
@@ -1168,8 +1190,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1768,6 +1790,7 @@ GameObject:
   - component: {fileID: 2888501787648314113}
   - component: {fileID: 7821675358415519367}
   - component: {fileID: 4534792607059580614}
+  - component: {fileID: 7218016878178995376}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -1876,6 +1899,44 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7218016878178995376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4262975769685452742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3950d2d917578064698f943dc4891d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.2
+  targetScale: {x: 0.9, y: 0.9}
+  easeOutCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4565058413408452164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,7 +2485,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapScrollView: {fileID: 9067928883711815990}
   stageText: {fileID: 5567458595152107129}
+  stageImage: {fileID: 7812038655746057125}
+  stageAnimator: {fileID: 8987857007347243045}
   startButton: {fileID: 4534792607059580614}
+  stageDataTable: {fileID: 11400000, guid: 8ddae8c83b9a8a448838681166193706, type: 2}
   selectedStageLevel: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
 --- !u!1 &6083673917692969730
 GameObject:
@@ -2735,7 +2799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.8148804, y: 0}
+  m_AnchoredPosition: {x: -23, y: 0}
   m_SizeDelta: {x: -13.630228, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6103328719606411325
@@ -3199,7 +3263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1814001188576305563, guid: e4605940f97765f4a92a8194f9444d85, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -738.3283
+      value: -1672
       objectReference: {fileID: 0}
     - target: {fileID: 2169969242217879537, guid: e4605940f97765f4a92a8194f9444d85, type: 3}
       propertyPath: m_Name

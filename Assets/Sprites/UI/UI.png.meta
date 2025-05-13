@@ -119,19 +119,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -745,64 +732,190 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_29
+      name: Forest_1
       rect:
         serializedVersion: 2
-        x: 241
-        y: 288
-        width: 46
-        height: 64
+        x: 288
+        y: 224
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c1d89cc2d0927f46b4a4bc72e939bab
-      internalID: -1782841778
+      spriteID: 34059c2559cd3d6459f8f94ba20bdb8e
+      internalID: 1851069305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_30
+      name: Forest_2
       rect:
         serializedVersion: 2
-        x: 241
-        y: 352
-        width: 46
-        height: 64
+        x: 384
+        y: 224
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2cfc899146e38747842a947e5d2581d
-      internalID: 1286913863
+      spriteID: e383c1f314c28754aa10d98240205f0a
+      internalID: 1104631385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_31
+      name: Forest_3
       rect:
         serializedVersion: 2
-        x: 193
-        y: 352
-        width: 46
-        height: 64
+        x: 480
+        y: 224
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d1c1a33b7dedc642bfeb79ccb96e95d
-      internalID: 1576706796
+      spriteID: df0504c7783800b46b204e3662ef18ff
+      internalID: -168666346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 320
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9efabff9e8d35ca4fb5d5797a9ec4ee9
+      internalID: -2144764870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 320
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e4397b09cd415647b250b23f0161f1b
+      internalID: 918371731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Desert_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 320
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73448646c5f03bf48864ac2f69c9be33
+      internalID: 1979211217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 416
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88bbdad3ee2e1374fbbbdaf1be7106b3
+      internalID: 179159894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 416
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a06d2354238a44e918e07561fd8398
+      internalID: 58803184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 416
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def5791185fdc5e4593dc4f6c061d3e3
+      internalID: -1859387676
       vertices: []
       indices: 
       edges: []
@@ -818,6 +931,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Desert_1: -2144764870
+      Desert_2: 918371731
+      Desert_3: 1979211217
+      Dungeon_1: 179159894
+      Dungeon_2: 58803184
+      Dungeon_3: -1859387676
+      Forest_1: 1851069305
+      Forest_2: 1104631385
+      Forest_3: -168666346
       UI_0: -1806360811
       UI_1: 557033424
       UI_10: 1647411172
@@ -840,10 +962,7 @@ TextureImporter:
       UI_26: -1605158648
       UI_27: -99861075
       UI_28: 1122387811
-      UI_29: -1782841778
       UI_3: 1622757698
-      UI_30: 1286913863
-      UI_31: 1576706796
       UI_4: 837747132
       UI_5: 616545888
       UI_6: 1547243544

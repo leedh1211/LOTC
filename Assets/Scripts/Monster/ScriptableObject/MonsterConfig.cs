@@ -14,4 +14,8 @@ public class MonsterConfig : ScriptableObject
     public Sprite SpriteOverride;
     public int goldQuantity;
     public bool isFly;
+    public float colliderSizeX = 0.8f;
+    public float colliderSizeY = 1.2f;
+    public float colliderOffX = 0;
+    public float colliderOffY = -0.2f;
 }
