@@ -520,6 +520,14 @@ PrefabInstance:
       propertyPath: monsterBasePrefab
       value: 
       objectReference: {fileID: 6855172646060971727, guid: 2db1fa43c1cfd2b46baef2c25f8390fc, type: 3}
+    - target: {fileID: 593685554011583298, guid: 9fc0e5548c4fb254492792bcca9af99d, type: 3}
+      propertyPath: monsterConfigs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 593685554011583298, guid: 9fc0e5548c4fb254492792bcca9af99d, type: 3}
+      propertyPath: monsterConfigs.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f7b1415a5af7f7438e3dbc0b04f9dfd, type: 2}
     - target: {fileID: 4347426117791232289, guid: 9fc0e5548c4fb254492792bcca9af99d, type: 3}
       propertyPath: m_Name
       value: MonsterController
