@@ -14,8 +14,12 @@ public class StatPage : MonoBehaviour
 
     private List<Action> statUpgraders;
     private Coroutine rouletteCoroutine;
+    [SerializeField] private AnimationCurve easeOutCurve;
+    private List<ProgressTweener> imageTweeners = new List<ProgressTweener>();
     private void Start()
     {
+        foreach (var img in statImages)
+            imageTweeners.Add(new ProgressTweener(this));
         statUpgraders = new List<Action>
         {
             () => permanentStat.RuntimeValue.MaxHp++,
@@ -37,33 +41,63 @@ public class StatPage : MonoBehaviour
     {
         float timer = 0f;
         int currentIndex = 0;
-        int totalCount = statImages.Count;
+        int count = statImages.Count;
 
-        HighlightImage(-1);
+        SetImageAlpha(-1); // 모두 흐리게
 
         while (timer < spinDuration)
         {
-            HighlightImage(currentIndex);
+            SetImageAlpha(currentIndex);
 
             float t = timer / spinDuration;
-            float delay = Mathf.Lerp(spinInterval, spinInterval * 3, t);
+            float delay = Mathf.Lerp(spinInterval, spinInterval * 3f, t);
             yield return new WaitForSeconds(delay);
 
-            currentIndex = (currentIndex + 1) % totalCount;
-            timer += spinInterval;
+            currentIndex = (currentIndex + 1) % count;
+            timer += delay;
         }
 
-        int finalIndex = UnityEngine.Random.Range(0, totalCount);
-        HighlightImage(finalIndex);
+        int finalIndex = UnityEngine.Random.Range(0, count);
+        SetImageAlpha(finalIndex);
 
         statUpgraders[finalIndex]?.Invoke();
+        SaveManager.Instance.Save();
+        yield return new WaitForSeconds(1f);
+        RestoreImageAlpha();
     }
-
-    private void HighlightImage(int index)
+    private void SetImageAlpha(int highlightIndex)
     {
         for (int i = 0; i < statImages.Count; i++)
         {
-            statImages[i].color = (i == index) ? Color.white : new Color(1, 1, 1, 0.3f);
+            int index = i;
+            var image = statImages[index];
+            var color = image.color;
+
+            color.a = (index == highlightIndex) ? 1f : 0.3f;
+            image.color = color;
+
+            // 개별 tweener로 각각 실행
+            image.rectTransform.localScale = (index == highlightIndex) ? Vector3.zero : Vector3.one;
+
+            imageTweeners[index]
+                .SetCurve(easeOutCurve)
+                .Play((ratio) =>
+                {
+                    if (index == highlightIndex)
+                    {
+                        image.rectTransform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, ratio);
+                    }
+                }, 0.1f);
+        }
+    }
+
+    private void RestoreImageAlpha()
+    {
+        foreach (var img in statImages)
+        {
+            var color = img.color;
+            color.a = 1f;
+            img.color = color;
         }
     }
 }

@@ -271,6 +271,26 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4306480024649443142, guid: 02fe8769985100546bb712d5d58945d2, type: 3}
+      propertyPath: easeOutCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306480024649443142, guid: 02fe8769985100546bb712d5d58945d2, type: 3}
+      propertyPath: easeOutCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306480024649443142, guid: 02fe8769985100546bb712d5d58945d2, type: 3}
+      propertyPath: easeOutCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306480024649443142, guid: 02fe8769985100546bb712d5d58945d2, type: 3}
+      propertyPath: easeOutCurve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306480024649443142, guid: 02fe8769985100546bb712d5d58945d2, type: 3}
+      propertyPath: easeOutCurve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4482410677494444744, guid: 02fe8769985100546bb712d5d58945d2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
