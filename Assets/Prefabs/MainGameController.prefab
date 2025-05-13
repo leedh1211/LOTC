@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7929489256966903974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3795585602113468783}
+  - component: {fileID: 9191922180610961209}
+  m_Layer: 0
+  m_Name: MainGameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3795585602113468783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7929489256966903974}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9191922180610961209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7929489256966903974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0097bbbd30c4c2243ab0cd843df43149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterSpawnCount: 5
+  tileMapLoader: {fileID: 0}
+  monsterFactory: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  gameClearPanel: {fileID: 0}
+  exitButton: {fileID: 0}
+  playerPrefab: {fileID: 122389734002959321, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
+  playerDeathEvent: {fileID: 11400000, guid: 3cf4ae26588ef9b4b9ba0e6d171465fa, type: 2}
+  killedMonster: {fileID: 11400000, guid: 31be2c046fb2f8e40a93be2976e1680d, type: 2}
+  monsterList: {fileID: 11400000, guid: 69c2a9259fb8ed44f869a9d89226c4f0, type: 2}
+  selectedStageLevel: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
+  clearedStageLevel: {fileID: 11400000, guid: ce7e92b087375f846ace2ec2ca4dfc76, type: 2}
+  currentMapIndex: {fileID: 0}
