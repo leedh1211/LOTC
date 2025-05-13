@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499fd734ea08f4d4ea007382cff1fb3d, type: 3}
   m_Name: SequnceShot
   m_EditorClassIdentifier: 
-  SkillName: SequnceShot
+  SkillName: "\uC5F0\uC18D\uBC1C\uC0AC"
   skillInfo: 
-  icon: {fileID: 0}
+  icon: {fileID: -99861075, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
   type: 4
   combinable: 
