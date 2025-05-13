@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Native_0
+      name: Ninja_0
       rect:
         serializedVersion: 2
         x: 0
@@ -157,7 +157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Native_1
+      name: Ninja_1
       rect:
         serializedVersion: 2
         x: 32
@@ -178,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Native_2
+      name: Ninja_2
       rect:
         serializedVersion: 2
         x: 64
@@ -199,7 +199,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Native_3
+      name: Ninja_3
       rect:
         serializedVersion: 2
         x: 96
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Native_4
+      name: Ninja_4
       rect:
         serializedVersion: 2
         x: 128
@@ -272,11 +272,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Native_0: -1751820622
-      Native_1: -1199931347
-      Native_2: 1258068113
-      Native_3: -103535726
-      Native_4: -1277185988
+      Ninja_0: -1751820622
+      Ninja_1: -1199931347
+      Ninja_2: 1258068113
+      Ninja_3: -103535726
+      Ninja_4: -1277185988
       Ninja_Icon: 1427562322
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

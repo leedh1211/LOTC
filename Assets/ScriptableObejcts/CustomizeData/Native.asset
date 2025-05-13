@@ -16,3 +16,4 @@ MonoBehaviour:
   name: Native
   spriteLibraryAsset: {fileID: 7108339969198208228, guid: e9f9c3d5018d9774c93e56470b9a37c5, type: 3}
   iconImage: {fileID: -616333776, guid: 904aea80c0bef80488113a51d9e9a760, type: 3}
+  previewImage: {fileID: -1751820622, guid: 904aea80c0bef80488113a51d9e9a760, type: 3}

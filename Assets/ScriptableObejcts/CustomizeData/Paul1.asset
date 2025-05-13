@@ -16,3 +16,4 @@ MonoBehaviour:
   name: Paul1
   spriteLibraryAsset: {fileID: 7108339969198208228, guid: 082f29b713302f943be818e27c184748, type: 3}
   iconImage: {fileID: 745643043, guid: 4291a751e0af9574da58379458041ee9, type: 3}
+  previewImage: {fileID: -352715408, guid: 4291a751e0af9574da58379458041ee9, type: 3}
