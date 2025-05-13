@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: shotSixCirleSkull
   Cooldown: 11
   AfterDelay: 1
-  projectilePrefab: {fileID: 5232396780402959805, guid: 495bbb1c91bc9584193591de9ce893bc, type: 3}
+  projectilePrefab: {fileID: 4343052537684773161, guid: 2c8429705e5dc7e44a6eacbe5ce6d6b6, type: 3}
   DamageRatio: 1
   projectileSpeed: 3
   projectileQuantity: 18
