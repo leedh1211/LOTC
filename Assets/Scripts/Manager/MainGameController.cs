@@ -19,6 +19,7 @@ public class MainGameController : MonoBehaviour
     
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject gameClearPanel;
+    //[SerializeField] private GameObject door;
     
     [SerializeField] private Button exitButton;
     
@@ -30,6 +31,8 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private MonsterListVariableSO monsterList;
     [SerializeField] private IntegerVariableSO selectedStageLevel;
     [SerializeField] private IntegerVariableSO clearedStageLevel;
+    [SerializeField] private IntegerVariableSO currentMapIndex;
+
 
     private List<Vector2> _monsterSpawner;
     private void OnEnable()
@@ -48,7 +51,7 @@ public class MainGameController : MonoBehaviour
     private void Start()
     {
         tileMapLoader.LoadRandomTileMap(selectedStageLevel.RuntimeValue);
-
+        
         Init();
         
         exitButton.onClick.AddListener(()=>
@@ -91,10 +94,23 @@ public class MainGameController : MonoBehaviour
         
         monsterList.Remove(monster);
 
-        if (monsterList.Count == 0)
+        if (monsterList.Count != 0) return;
+        
+        currentMapIndex.RuntimeValue++;
+        if (currentMapIndex.RuntimeValue >= tileMapLoader.numberOfMap)
         {
             GameClear();
         }
+        else
+        {
+            OpenTheDoor();
+        }
+    }
+
+    // 맵에 있는 몬스터 전부 죽이면 실행
+    private void OpenTheDoor()
+    {
+        //door.SetActive(true);
     }
 
     private void GameOver()
@@ -109,6 +125,8 @@ public class MainGameController : MonoBehaviour
         {
             clearedStageLevel.RuntimeValue++;
         }
+
+        currentMapIndex.RuntimeValue = 0;
         gameClearPanel.gameObject.SetActive(true);
         Time.timeScale = 0;
     }

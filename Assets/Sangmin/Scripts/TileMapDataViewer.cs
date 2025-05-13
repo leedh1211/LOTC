@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TileMapDataViewer : MonoBehaviour
 {
-    public TileMapData tileMapData;
+    [NonSerialized] public TileMapData tileMapData;
 
     private void OnDrawGizmos()
     {

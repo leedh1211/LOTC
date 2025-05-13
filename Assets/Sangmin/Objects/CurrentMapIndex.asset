@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af8e977a7d59c1544b1112a2b59b728d, type: 3}
-  m_Name: ClearedStageLevelVariable
+  m_Name: CurrentMapIndex
   m_EditorClassIdentifier: 
   InitialValue: 0

@@ -2,18 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 
 public class TileMapLoader : MonoBehaviour
 {
+    [SerializeField] private List<StageData> stageDataList;
+    [SerializeField] private IntegerVariableSO currentMapIndex;
     private Grid _currentGrid;
     public Grid CurrentGrid
     {
         get { return _currentGrid; }
     }
-    [SerializeField] private StageData _stageData;
-
     private TileMapData _tileMap;
 
     public TileMapData TileMap
@@ -21,19 +22,24 @@ public class TileMapLoader : MonoBehaviour
         get { return _tileMap; }
     }
 
+    public int numberOfMap = 0;
+
 
     public void LoadRandomTileMap(int stageLevel)
     {
-        var stageInfo = _stageData.Stages[stageLevel];
+        Debug.LogWarning(stageLevel);
+        var stageInfo = stageDataList[stageLevel].Stages;
+        numberOfMap = stageInfo.Count;
+        var currentStage = stageInfo[currentMapIndex.RuntimeValue];
 
-        if (stageInfo == null || stageInfo.Maps.Count == 0)
+        if (stageInfo == null || currentStage.Maps.Count == 0)
         {
             Debug.LogError("맵이 없음");
             return;
         }
         
-        int randomIndex = Random.Range(0, stageInfo.Maps.Count);
-        var selectedTileMapData = stageInfo.Maps[randomIndex];
+        int randomIndex = Random.Range(0, currentStage.Maps.Count);
+        var selectedTileMapData = currentStage.Maps[randomIndex];
         LoadTileMap(selectedTileMapData);
     }
 
