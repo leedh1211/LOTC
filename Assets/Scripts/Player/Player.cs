@@ -5,7 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
 {
+    private int maxHp;
+    private int curHp;
 
+    [SerializeField] private PlayerStatVariableSO permanentStat;
+    public int MaxHp {  get { return maxHp+ permanentStat.RuntimeValue.MaxHp; } }
+    public int CurHp { get { return curHp + permanentStat.RuntimeValue.MaxHp; } }
     public MonsterListVariableSO monsterList;
 
     private PlayerController playerController;

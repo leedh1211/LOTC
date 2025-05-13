@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 593685554011583298}
   - component: {fileID: 2442994828176039501}
   m_Layer: 0
-  m_Name: MonsterController
+  m_Name: MonsterFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 42854e9640d113e4284ffcfca482b710, type: 2}
   - {fileID: 11400000, guid: fff8a20969dcb7344babefa5479866ef, type: 2}
   - {fileID: 11400000, guid: 2a4aadee7d7954e4a958477090a0afa6, type: 2}
+  - {fileID: 11400000, guid: 7f7b1415a5af7f7438e3dbc0b04f9dfd, type: 2}
 --- !u!114 &2442994828176039501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,4 +65,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterEventChannel: {fileID: 11400000, guid: 31be2c046fb2f8e40a93be2976e1680d, type: 2}
-  rootingChannel: {fileID: 11400000, guid: c2c6e0aa6200360429d51fca631a3ecd, type: 2}
