@@ -15,8 +15,10 @@ MonoBehaviour:
   skillName: shotOneSkull
   Cooldown: 4
   AfterDelay: 1
-  projectilePrefab: {fileID: 5232396780402959805, guid: 495bbb1c91bc9584193591de9ce893bc, type: 3}
+  projectilePrefab: {fileID: 8234388347607425142, guid: ab45896800aa30843beedde5f200b955, type: 3}
   DamageRatio: 1
   projectileSpeed: 3
   projectileQuantity: 1
   projectileAngle: 0
+  projectileDelay: 0
+  isRandom: 0
