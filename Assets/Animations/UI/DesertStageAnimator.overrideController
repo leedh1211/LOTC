@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DesertStageAnimator
+  m_Controller: {fileID: 9100000, guid: 31eded2b30d843b44afecca0fb049c7b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 4f3962995b6d2cd4aa3d1df52887115a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f6f15245f2eb8334d86cf6b3062e793a, type: 2}

@@ -25,9 +25,10 @@ public class StageSelectUI : MonoBehaviour
    [SerializeField] private AnimationCurve  easeInCurve;
 
    [Space(10f)]
-   [Header("Events")]
    [SerializeField] private IntegerVariableSO selectedStageLevel;
    [SerializeField] private IntegerVariableSO cleardStageLevel;
+   
+   [SerializeField] private StageDataTableSO stageDataTable;
 
    
    private StageSelectUISlot[] slots;
@@ -61,8 +62,7 @@ public class StageSelectUI : MonoBehaviour
          
          Disable();
       });
-      
-      
+
       for (int i = 0; i < slotsParent.childCount; i++)
       {;
          slots[i].Init(i<= cleardStageLevel.RuntimeValue, i == selectedStageLevel.RuntimeValue);
@@ -99,11 +99,12 @@ public class StageSelectUI : MonoBehaviour
    {
          if (enable)
          {
-            slots[selectScrollView.snapIndex].OnSelected(out string stageName);
-      
-            titleText.text = stageName;
+            int snapIndex = selectScrollView.snapIndex;
+            
+            titleText.text = stageDataTable.Datas[snapIndex].StageName;
+            
 
-            bool isCleared = selectScrollView.snapIndex <= cleardStageLevel.RuntimeValue;
+            bool isCleared = snapIndex <= cleardStageLevel.RuntimeValue;
 
             if (selectButton.gameObject.activeSelf != isCleared)
             {

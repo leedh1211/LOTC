@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(fileName = "New TileMap Data", menuName = "ScriptableObjects/TileMapData")]
+[CreateAssetMenu(fileName = "New TileMap Data", menuName = "Scriptable Objects/Data/Tile MapData")]
 public class TileMapData : ScriptableObject
 {
     [SerializeField] private Vector2Int position;

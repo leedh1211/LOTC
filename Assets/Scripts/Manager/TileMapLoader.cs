@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class TileMapLoader : MonoBehaviour
 {
-    [SerializeField] private List<StageData> stageDataList;
+    [SerializeField] private List<StageDataSO> stageDataList;
     [SerializeField] private IntegerVariableSO currentMapIndex;
     private Grid _currentGrid;
     public Grid CurrentGrid

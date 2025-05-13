@@ -14,10 +14,4 @@ public class StageSelectUISlot : MonoBehaviour
     {
         lockedImage.enabled = !isUnlocked;
     }
-    
-    public void OnSelected(out string stageName)
-    {
-        stageName = this.stageName;
-    }
-
 }
