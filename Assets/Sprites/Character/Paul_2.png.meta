@@ -240,6 +240,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Paul_2_Icon
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a7a82dee1d10b4f907f7e9f9336a52
+      internalID: -876869541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -256,6 +277,7 @@ TextureImporter:
       Paul_2_2: -657772881
       Paul_2_3: 483307839
       Paul_2_4: -163859448
+      Paul_2_Icon: -876869541
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
