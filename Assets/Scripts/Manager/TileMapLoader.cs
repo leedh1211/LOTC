@@ -27,7 +27,6 @@ public class TileMapLoader : MonoBehaviour
 
     public void LoadRandomTileMap(int stageLevel)
     {
-        Debug.LogWarning(stageLevel);
         var stageInfo = stageDataList[stageLevel].Stages;
         numberOfMap = stageInfo.Count;
         var currentStage = stageInfo[currentMapIndex.RuntimeValue];
