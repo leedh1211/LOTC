@@ -296,7 +296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1088964207
 Transform:
   m_ObjectHideFlags: 0
@@ -336,6 +336,7 @@ MonoBehaviour:
   monsterList: {fileID: 11400000, guid: 69c2a9259fb8ed44f869a9d89226c4f0, type: 2}
   selectedStageLevel: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
   clearedStageLevel: {fileID: 11400000, guid: ce7e92b087375f846ace2ec2ca4dfc76, type: 2}
+  currentMapIndex: {fileID: 11400000, guid: e7b6c173e6dc6e746b3b708323f16ae0, type: 2}
 --- !u!1 &1728501390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1975790720812704001, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
@@ -611,7 +612,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: c250734c1571be749bb0035898a00142, type: 2}
     - target: {fileID: 207302546448019095, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
       propertyPath: skillDatas.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 207302546448019095, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
       propertyPath: skillDatas.Array.data[0]
@@ -629,6 +630,10 @@ PrefabInstance:
       propertyPath: skillDatas.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: a05062308dd73c34389984268ae312fb, type: 2}
+    - target: {fileID: 207302546448019095, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
+      propertyPath: skillDatas.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: abc5d7db2af72fb47864a85c751e72e0, type: 2}
     - target: {fileID: 1442939973635452182, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

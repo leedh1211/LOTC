@@ -96,6 +96,13 @@ public class SkillSelectMenuUI : MonoBehaviour
                     skillDatas[skillDatas.Count - 1] = skillDatas[i];
                     skillDatas[i] = temp;
                 }
+                else if (skillDatas[i].type == SkillType.ChangeArrow)
+                {
+                    SkillData temp = skillDatas[skillDatas.Count - 2];
+                    skillDatas[skillDatas.Count - 2] = skillDatas[i];
+                    skillDatas[i] = temp;
+
+                }
             }
             
 

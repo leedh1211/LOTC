@@ -40,12 +40,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4699842235364055022}
+  - component: {fileID: -8338068583761206013}
   - component: {fileID: 7173831733015381387}
   - component: {fileID: 5477299952830406784}
   - component: {fileID: 1306943166838551413}
-  - component: {fileID: -6919026949489865552}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: ReflectArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,6 +67,23 @@ Transform:
   - {fileID: 8060244310875391025}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8338068583761206013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072397918168628055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363f961eb15968745994e36b848cfbba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBounce: 3
+  reflectLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  tipPos: {fileID: 8060244310875391025}
 --- !u!212 &7173831733015381387
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -191,15 +208,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-6919026949489865552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3072397918168628055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b9f7e50acc22d844b9d288be72c19a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

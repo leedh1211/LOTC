@@ -424,6 +424,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7094857850508694034, guid: 2db1fa43c1cfd2b46baef2c25f8390fc, type: 3}
   m_PrefabInstance: {fileID: 717420879}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &777955568 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6855172646060971727, guid: 2db1fa43c1cfd2b46baef2c25f8390fc, type: 3}
+  m_PrefabInstance: {fileID: 717420879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59bf7747a582ff45b63ad36cc61f864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &798977329 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 122389734002959321, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
@@ -924,9 +935,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 122389734002959321, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
+      propertyPath: monsterlist.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 122389734002959321, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
       propertyPath: monsterList.Array.data[0]
       value: 
       objectReference: {fileID: 717420880}
+    - target: {fileID: 122389734002959321, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
+      propertyPath: monsterlist.Array.data[0]
+      value: 
+      objectReference: {fileID: 777955568}
+    - target: {fileID: 1295560070204011210, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1295560070204011210, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2904279775362675993, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
       propertyPath: speed
       value: 2
