@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Data;
 using Monster;
 using Monster.ScriptableObject;
 using UnityEngine;
@@ -34,7 +35,7 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private IntegerVariableSO clearedStageLevel;
     [SerializeField] private IntegerVariableSO currentMapIndex;
     [SerializeField] private TransformEventChannelSO rooting;
-
+    [SerializeField] private SpawnDatabaseSO spawnData;
 
     private List<Vector2> _monsterSpawner;
     private void OnEnable()
@@ -75,23 +76,30 @@ public class MainGameController : MonoBehaviour
         door.transform.position = new Vector2(0f, tileMapLoader.MaxY + Camera.main.orthographicSize - 1);
 
         _player = Instantiate(playerPrefab);
-        
         _player.name = "Player";
-        
         _player.transform.position = tileMapLoader.TileMap.PlayerSpawnPosition;
         
         Camera.main.GetComponent<CameraController>().Init(_player.transform);
 
-        monsterList.RuntimeValue = new();
-        
-        for (int i = 0; i < monsterSpawnCount; i++)
+        SpawnRoom(selectedStageLevel.RuntimeValue, currentMapIndex.RuntimeValue);
+    }
+
+
+    void SpawnRoom(int stageLevel, int roomIndex)
+    {
+        StageRoomSpawnDataSO spawnDataSo = spawnData.GetSpawnData(stageLevel, roomIndex);
+
+        if (spawnDataSo == null)
         {
-            var spawnPos = new Vector2(_monsterSpawner[i].x, _monsterSpawner[i].y);
-
-            var monster = monsterFactory.SpawnMonster(MonsterName.Mob1, spawnPos, _player.gameObject);
-            monsterList.RuntimeValue.Add(monster);
+            return;
         }
-
+        monsterList.RuntimeValue = new();
+        foreach (var info in spawnDataSo.spawns)
+        {
+            MonsterController monster = monsterFactory.SpawnMonster(info.monsterName, info.spawnPosition, _player.gameObject);
+            monsterList.RuntimeValue.Add(monster);
+            
+        }
         _player.monsterList = monsterList;
     }
 
