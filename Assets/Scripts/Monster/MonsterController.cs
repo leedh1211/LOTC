@@ -72,6 +72,7 @@ public class MonsterController : MonoBehaviour
     
     public void TakeDamage(float Damage)
     {
+        Debug.Log("몬스터 피격 성공 Damage"+Damage);
         if (currentHealth < Damage)
         {
             currentHealth = 0;

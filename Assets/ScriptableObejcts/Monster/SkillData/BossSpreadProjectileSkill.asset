@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: bossskill
   Cooldown: 20
   AfterDelay: 1
-  projectilePrefab: {fileID: 5232396780402959805, guid: 495bbb1c91bc9584193591de9ce893bc, type: 3}
+  projectilePrefab: {fileID: 411931802529877162, guid: 0629e0be682bd5145bb31669f4a8f7bf, type: 3}
   DamageRatio: 1
   projectileSpeed: 3
   projectileQuantity: 40
