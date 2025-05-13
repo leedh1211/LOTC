@@ -67,6 +67,8 @@ public class MainGameController : MonoBehaviour
         player.name = "Player";
         
         player.transform.position = tileMapLoader.TileMap.PlayerSpawnPosition;
+        
+        Camera.main.GetComponent<CameraController>().Init(player.transform);
 
         monsterList.RuntimeValue = new();
         

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 
 public class TileMapLoader : MonoBehaviour
@@ -44,5 +45,22 @@ public class TileMapLoader : MonoBehaviour
         _tileMap = data;
         Vector3 worldPos = new Vector3(data.Position.x, data.Position.y, 0);
         _currentGrid = Instantiate(data.GridMap, worldPos, Quaternion.identity);
+        
+        CameraBoundSetting();
+    }
+    
+    private void CameraBoundSetting()
+    {
+        Debug.Log("=======바운드 세팅=======");
+        Tilemap tileMap = _tileMap.GridMap.transform.Find("Collider").GetComponent<Tilemap>();
+        if (tileMap != null)
+        {
+            var bounds = tileMap.cellBounds;
+            float minY = bounds.yMin + Camera.main.orthographicSize;
+            float maxY = bounds.yMax - Camera.main.orthographicSize;
+            
+            Camera.main.GetComponent<CameraController>().
+                SetBound(minY, maxY);
+        }
     }
 }
