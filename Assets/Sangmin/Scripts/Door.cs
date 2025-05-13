@@ -7,7 +7,7 @@ public class Door : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             OpenDoor();
         }
@@ -15,7 +15,6 @@ public class Door : MonoBehaviour
 
     private void OpenDoor()
     {
-        Debug.Log("Door opened!");
-        // SceneManager.LoadScene();
+        SceneManager.LoadScene("NEWSampleGameScene");
     }
 }
