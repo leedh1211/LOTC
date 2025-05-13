@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: ReflectArrow
   skillInfo: 
-  icon: {fileID: 0}
+  icon: {fileID: 1122387811, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
   type: 1
   combinable: 
