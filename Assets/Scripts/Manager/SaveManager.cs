@@ -32,7 +32,9 @@ public class SaveManager : Singleton<SaveManager>
         Gold.RuntimeValue = CurrentSave.Gold;
         SelectedStage.RuntimeValue = CurrentSave.SelectedStage;
         ClearedStage.RuntimeValue = CurrentSave.ClearedStage;
-        
+        PermanentStat.RuntimeValue = CurrentSave.PlayerStat;
+
+
     }
     public void Save()
     {

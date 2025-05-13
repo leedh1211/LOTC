@@ -46,10 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSpawnCount: 5
-  tileMapLoader: {fileID: 0}
-  monsterFactory: {fileID: 0}
+  tileMapLoader: {fileID: 7754994277986610595, guid: 69b48101cf3dcc5468f6d6fdd1be282f, type: 3}
+  monsterFactory: {fileID: 593685554011583298, guid: 9fc0e5548c4fb254492792bcca9af99d, type: 3}
   gameOverPanel: {fileID: 0}
   gameClearPanel: {fileID: 0}
+  door: {fileID: 3259113867621108191, guid: 89b11fe165d9f314ca31b4b0e8c3d647, type: 3}
   exitButton: {fileID: 0}
   playerPrefab: {fileID: 122389734002959321, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
   playerDeathEvent: {fileID: 11400000, guid: 3cf4ae26588ef9b4b9ba0e6d171465fa, type: 2}
@@ -58,6 +59,7 @@ MonoBehaviour:
   selectedStageLevel: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
   clearedStageLevel: {fileID: 11400000, guid: ce7e92b087375f846ace2ec2ca4dfc76, type: 2}
   currentMapIndex: {fileID: 11400000, guid: e7b6c173e6dc6e746b3b708323f16ae0, type: 2}
+  rooting: {fileID: 11400000, guid: c2c6e0aa6200360429d51fca631a3ecd, type: 2}
 --- !u!114 &8551687755325018089
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,8 @@ public enum SkillType
     Shot,
     ChangeArrow,
     State,
-    Orbit
+    Orbit,
+    Sequnce
 }
 
 [CreateAssetMenu(menuName = "Skill/SkillData")]

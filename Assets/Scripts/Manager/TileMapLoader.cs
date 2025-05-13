@@ -22,6 +22,20 @@ public class TileMapLoader : MonoBehaviour
         get { return _tileMap; }
     }
 
+    private float _minY;
+
+    public float MinY
+    {
+        get { return _minY; }
+    }
+
+    private float _maxY;
+
+    public float MaxY
+    {
+        get { return _maxY; }
+    }
+
     public int numberOfMap = 0;
 
 
@@ -61,11 +75,11 @@ public class TileMapLoader : MonoBehaviour
         if (tileMap != null)
         {
             var bounds = tileMap.cellBounds;
-            float minY = bounds.yMin + Camera.main.orthographicSize;
-            float maxY = bounds.yMax - Camera.main.orthographicSize;
+            _minY = bounds.yMin + Camera.main.orthographicSize;
+            _maxY = bounds.yMax - Camera.main.orthographicSize;
             
             Camera.main.GetComponent<CameraController>().
-                SetBound(minY, maxY);
+                SetBound(_minY, _maxY);
         }
     }
 }
