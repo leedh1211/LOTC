@@ -26,16 +26,16 @@ public class ArrowBase : MonoBehaviour
         startPosition = transform.position;
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x)*Mathf.Rad2Deg-90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
-        Debug.Log($"[ArrowBase] InitµÈ ÀÌµ¿ ¹æÇâ: {moveDirection}");
+        Debug.Log($"[ArrowBase] Initï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½: {moveDirection}");
 
         StartCoroutine(CheckArrowdistance());
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (((1 << other.gameObject.layer) & (1 << 7)) != 0)
+        if (((1 << other.gameObject.layer) & (1 << 7)) != 0 && other.CompareTag("M_hitbox"))
         {
-            MonsterController monsterControll = other.GetComponent<MonsterController>();
+            MonsterController monsterControll = other.GetComponentInParent<MonsterController>();
             if (monsterControll != null)
             {
                 monsterControll.TakeDamage(power);
@@ -47,7 +47,7 @@ public class ArrowBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        // moveDirection ¹æÇâÀ¸·Î ÀÌµ¿
+        // moveDirection ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         transform.position += moveDirection * speed * Time.deltaTime;
 
 
@@ -56,7 +56,7 @@ public class ArrowBase : MonoBehaviour
     }
 
 
-    //ÄÚ·çÆ¾À¸·Î »ç°Å¸® Ã¤Å©
+    //ï¿½Ú·ï¿½Æ¾ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ Ã¤Å©
 
     protected IEnumerator CheckArrowdistance()
     {
@@ -73,15 +73,15 @@ public class ArrowBase : MonoBehaviour
 
     }
 }
-   //·çÆ® ¿¬»êÀÌ¶ó¼­ ´À¸®´Ù 
-   //sqrMagnitude´Â Á¦°ö°ªÀÌ ¸®ÅÏÀÌ µÇ±â ¶§¹®¿¡ ¿¬»êÀÌ Á»´õ ºü¸£´Ù. 
+   //ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+   //sqrMagnitudeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. 
 
 
-//°¢µµ º¯°æÇÏ´Â°Å °í¹Î
-//¹°¸®¿£Áø rigidbody2d¸¦ ´Ü¼øÈ÷ Á¢ÃËÇÏ´Â ¿ëµµ·Î »ç¿ëÇÏ´Â°Ô ÁÁ°í
-//¹Ý»ç´Â ¹Ý»ç°¢°ø½ÄÀ» ±¸ÇöÇØ¼­ »ç¿ëÇÏ´Â°Ô ÁÁÀ»µíÇÏ´Ù. 
+//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Â°ï¿½ ï¿½ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ rigidbody2dï¿½ï¿½ ï¿½Ü¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´Â°ï¿½ ï¿½ï¿½ï¿½ï¿½
+//ï¿½Ý»ï¿½ï¿½ ï¿½Ý»ç°¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. 
 
-//pc¿¡¼­ 150fps¹ØÀ¸·Î ¶³¾îÁö¸é Ã¤Å©¸¦ ÇØ¾ßÇÑ´Ù. ±× ¿Ü´Â Å©°Ô »ý°¢ÇÏÁö ¾Ê¾ÆµµµÈ´Ù. 
-//ÇÁ·¹ÀÓÀÌ ÀÏÁ¤ÇÏ´Ù°¡ ÇÇÅ©Ä¡´Â ºÎºÐÀ» È®ÀÎ ÇØ¾ßÇÑ´Ù. ¸¹ÀÌ »ý±â¸é GC¹ß»ýÇÏ´ÂÁö È®ÀÎÇÏ°í 
-//Ctrl +7 ¹öÆ° ÀÚÁÖ È®ÀÎÇÏÀÚ. 
-//°ÔÀÓºä ÃÖ´ë·Î ÇÏ°í ÇÏ±â 
+//pcï¿½ï¿½ï¿½ï¿½ 150fpsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤Å©ï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½Ñ´ï¿½. ï¿½ï¿½ ï¿½Ü´ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æµï¿½ï¿½È´ï¿½. 
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Ù°ï¿½ ï¿½ï¿½Å©Ä¡ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½ È®ï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½Ñ´ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ GCï¿½ß»ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï°ï¿½ 
+//Ctrl +7 ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. 
+//ï¿½ï¿½ï¿½Óºï¿½ ï¿½Ö´ï¿½ï¿½ ï¿½Ï°ï¿½ ï¿½Ï±ï¿½ 

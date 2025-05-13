@@ -9,7 +9,6 @@ namespace Monster
 
         public void SetFill(float ratio)
         {
-            Debug.Log($"FillAmount: {fillImage.fillAmount}");
             fillImage.fillAmount = Mathf.Clamp01(ratio);
         }
     }

@@ -1,0 +1,13 @@
+﻿fileFormatVersion: 2
+guid: 800b5dcbabb446d5bb56702c79354dad
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - monsterEventChannel: {instanceID: 0}
+  - rootingChannel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
