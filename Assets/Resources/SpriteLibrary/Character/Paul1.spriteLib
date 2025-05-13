@@ -21,22 +21,22 @@ MonoBehaviour:
       m_Hash: 379395835
       m_Sprite: {fileID: 0}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -1751820622, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
+      m_SpriteOverride: {fileID: -352715408, guid: 4291a751e0af9574da58379458041ee9, type: 3}
     - m_Name: idle_1
       m_Hash: 563752557
       m_Sprite: {fileID: 0}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -1751820622, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
+      m_SpriteOverride: {fileID: -352715408, guid: 4291a751e0af9574da58379458041ee9, type: 3}
     - m_Name: idle_2
       m_Hash: 949190615
       m_Sprite: {fileID: 0}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -1751820622, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
+      m_SpriteOverride: {fileID: -352715408, guid: 4291a751e0af9574da58379458041ee9, type: 3}
     - m_Name: idle_3
       m_Hash: 261377857
       m_Sprite: {fileID: 0}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -1751820622, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
+      m_SpriteOverride: {fileID: -352715408, guid: 4291a751e0af9574da58379458041ee9, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 4
   - m_Name: Move
@@ -47,24 +47,24 @@ MonoBehaviour:
       m_Hash: 91806215
       m_Sprite: {fileID: 0}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -1199931347, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
+      m_SpriteOverride: {fileID: -1375113770, guid: 4291a751e0af9574da58379458041ee9, type: 3}
     - m_Name: move_1
       m_Hash: 847243921
       m_Sprite: {fileID: 0}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 1258068113, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
+      m_SpriteOverride: {fileID: -442772350, guid: 4291a751e0af9574da58379458041ee9, type: 3}
     - m_Name: move_2
       m_Hash: 729201451
       m_Sprite: {fileID: 0}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -103535726, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
+      m_SpriteOverride: {fileID: -1195911349, guid: 4291a751e0af9574da58379458041ee9, type: 3}
     - m_Name: move_3
       m_Hash: 477203389
       m_Sprite: {fileID: 0}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -1277185988, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
+      m_SpriteOverride: {fileID: -307190708, guid: 4291a751e0af9574da58379458041ee9, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 4
   m_PrimaryLibraryGUID: 8ea1a0878762fc040a80ff3c6b3b0488
-  m_ModificationHash: 638827287820001849
+  m_ModificationHash: 638827288125258047
   m_Version: 1
