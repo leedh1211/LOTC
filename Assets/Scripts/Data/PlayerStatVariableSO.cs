@@ -4,6 +4,6 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "PlayerStatVariable", menuName = "Scriptable Objects/Variable/Player Stat")]
-public class PlayerStatVariableSO : GenericVariableSO<PlayerStat>
+public class PlayerStatVariableSO : GenericVariableSO<PlayerpermanentStat>
 {
 }
