@@ -61,6 +61,7 @@ public class MainGameController : MonoBehaviour
     private void Init()
     {
         _monsterSpawner = tileMapLoader.TileMap.SpawnArea;
+        monsterSpawnCount = _monsterSpawner.Count;
 
         Player player = Instantiate(playerPrefab);
         
@@ -74,7 +75,7 @@ public class MainGameController : MonoBehaviour
         
         for (int i = 0; i < monsterSpawnCount; i++)
         {
-            var spawnArea = _monsterSpawner[Random.Range(0, _monsterSpawner.Count)];
+            var spawnArea = _monsterSpawner[i];
             var randomX = Random.Range(spawnArea.x - spawnArea.width / 2, spawnArea.x + spawnArea.width / 2);
             var randomY = Random.Range(spawnArea.y - spawnArea.height / 2, spawnArea.y + spawnArea.height / 2);
             var spawnPos = new Vector2(randomX, randomY);
