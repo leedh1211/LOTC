@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,7 +44,7 @@ public class SkillSelectMenuUI : MonoBehaviour
     {
         SettingSkillUI();
         skillMenuPanel.SetActive(true);
-       // Time.timeScale = 0f;
+        Time.timeScale = 0f;
     }
     
     private void OnSkillSelected(string skillName)
@@ -64,6 +65,12 @@ public class SkillSelectMenuUI : MonoBehaviour
         skillMenu1.onClick.AddListener(() => OnSkillSelected(s1));
         skillMenu2.onClick.AddListener(() => OnSkillSelected(s2));
         skillMenu3.onClick.AddListener(() => OnSkillSelected(s3));
+
+
+        skillMenu1.GetComponentInChildren<TextMeshProUGUI>().text = s1.name;
+        skillMenu2.GetComponentInChildren<TextMeshProUGUI>().text = s2.name;
+        skillMenu3.GetComponentInChildren<TextMeshProUGUI>().text = s3.name;
+
 
 
 

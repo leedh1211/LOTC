@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterList: {fileID: 11400000, guid: 69c2a9259fb8ed44f869a9d89226c4f0, type: 2}
-  orbitPrefab: {fileID: 0}
+  orbitPrefab: {fileID: 6574067752759211410, guid: e107382ec4e579640902bceb8dad8b8b, type: 3}
   playerVisual: {fileID: 8626990803830669826}
 --- !u!114 &5372241949254709475
 MonoBehaviour:
