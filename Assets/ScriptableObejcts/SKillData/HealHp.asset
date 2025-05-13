@@ -15,4 +15,5 @@ MonoBehaviour:
   SkillName: Healing
   skillInfo: HealingHp
   icon: {fileID: 0}
-  type: 2
+  type: 0
+  combinable: 
