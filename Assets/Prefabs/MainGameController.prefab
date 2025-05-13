@@ -56,4 +56,4 @@ MonoBehaviour:
   monsterList: {fileID: 11400000, guid: 69c2a9259fb8ed44f869a9d89226c4f0, type: 2}
   selectedStageLevel: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
   clearedStageLevel: {fileID: 11400000, guid: ce7e92b087375f846ace2ec2ca4dfc76, type: 2}
-  currentMapIndex: {fileID: 0}
+  currentMapIndex: {fileID: 11400000, guid: e7b6c173e6dc6e746b3b708323f16ae0, type: 2}
