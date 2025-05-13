@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 150
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -685410237, guid: fd2932ab513865e448c14bb8b7925820, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -181,12 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8ef8faef774924bbabc48df419f2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitObjects:
-  - {fileID: 9189341244339101789}
-  - {fileID: 6591768054164943426}
-  radis: 2
   targetPos: {fileID: 0}
   speed: 180
+  radis: 2
 --- !u!1 &9094515707637626895
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,8 +259,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 150
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -685410237, guid: fd2932ab513865e448c14bb8b7925820, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
