@@ -13,7 +13,7 @@ public class CustomizePage : MonoBehaviour
     void Start()
     {
         if (customizeDataTable.TryGetCustomizeData(currentCustomId.RuntimeValue, out var image))
-            previewImage.sprite = image.IconImage;
+            previewImage.sprite = image.PreviewImage;
         for (int i = 0; i < customizeDataTable.GetCustomizeDataCount();i++)
         {
             var slot = Instantiate<CustomizePageSlot>(slotPrefab, itemsParent);
@@ -30,12 +30,12 @@ public class CustomizePage : MonoBehaviour
         {
             if (customizeDataTable.TryGetCustomizeData(id, out var data))
             {
-                previewImage.sprite = data.IconImage;
+                previewImage.sprite = data.PreviewImage;
                 currentCustomId.RuntimeValue = id;
                 SaveManager.Instance.Save();
             }
             else
-                Debug.Log("ÇØ´ç Ä¿½ºÅÍ¸¶ÀÌÂ¡Àº Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù");
+                Debug.Log("ï¿½Ø´ï¿½ Ä¿ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½");
         }
         else
             purchasePopup.Init(id,OnPurchase);

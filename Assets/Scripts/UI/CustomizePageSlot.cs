@@ -6,15 +6,18 @@ public class CustomizePageSlot : MonoBehaviour
 {
     private CustomizeData data;
     private Button button;
-    private Image image;
+    
+    [SerializeField] private Image iconImage;
 
     public void Init(CustomizeData customizeData, Action<int> onClickAction = null)
     {
         button = GetComponent<Button>();
-        image = GetComponent<Image>();
         data = customizeData;
 
-        image.sprite = data.IconImage;
+        iconImage.sprite = data.IconImage;
+        
+        iconImage.SetNativeSize();
+        
         button.onClick.AddListener(() =>
         {
             onClickAction?.Invoke(data.Id);
