@@ -15,5 +15,5 @@ MonoBehaviour:
   SkillName: SequnceShot
   skillInfo: 
   icon: {fileID: 0}
-  type: 0
+  type: 4
   combinable: 

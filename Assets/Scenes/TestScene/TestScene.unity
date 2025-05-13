@@ -280,6 +280,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &998620625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6274791357902945257, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
+  m_PrefabInstance: {fileID: 2179388442179604148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1088964206
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1088964207
 Transform:
   m_ObjectHideFlags: 0
@@ -593,6 +598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 7754994277986610595, guid: 69b48101cf3dcc5468f6d6fdd1be282f, type: 3}
+      propertyPath: currentMapIndex
+      value: 
+      objectReference: {fileID: 11400000, guid: e7b6c173e6dc6e746b3b708323f16ae0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -654,6 +663,10 @@ PrefabInstance:
       propertyPath: onLevelUp
       value: 
       objectReference: {fileID: 11400000, guid: c250734c1571be749bb0035898a00142, type: 2}
+    - target: {fileID: 1804218875215123910, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
+      propertyPath: skillSelect
+      value: 
+      objectReference: {fileID: 998620625}
     - target: {fileID: 1804218875215123910, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
       propertyPath: testGainExp
       value: 50

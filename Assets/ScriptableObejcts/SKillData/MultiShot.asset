@@ -16,3 +16,4 @@ MonoBehaviour:
   skillInfo: arrorPlus
   icon: {fileID: 21300000, guid: 4c3aebf28e3b9ca49b934f9dd208c7bb, type: 3}
   type: 0
+  combinable: 
