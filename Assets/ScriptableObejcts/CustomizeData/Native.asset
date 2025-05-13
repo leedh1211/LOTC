@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e94965468bc725c4c844c3f639b76009, type: 3}
-  m_Name: Ninja
+  m_Name: Native
   m_EditorClassIdentifier: 
-  id: 3
-  name: Ninja
-  spriteLibraryAsset: {fileID: 7108339969198208228, guid: 39df459fef5f87f468a80e7b50b27edf, type: 3}
-  iconImage: {fileID: 1427562322, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
+  id: 1
+  name: Native
+  spriteLibraryAsset: {fileID: 7108339969198208228, guid: e9f9c3d5018d9774c93e56470b9a37c5, type: 3}
+  iconImage: {fileID: -616333776, guid: 904aea80c0bef80488113a51d9e9a760, type: 3}

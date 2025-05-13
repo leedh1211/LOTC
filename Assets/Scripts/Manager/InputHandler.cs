@@ -29,27 +29,6 @@ public class InputHandler : MonoSingleton<InputHandler>
             joystick.OnPointerUp();
             joystick.gameObject.SetActive(false);
         }*/
-        //테스트 용도
-        if(Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            customizeController.SetCustomize("Angel");
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            customizeController.SetCustomize("Ninja");
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            customizeController.BuyCustomizeItem(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            customizeController.BuyCustomizeItem(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad5))
-        {
-            SaveManager.Instance.Save();
-        }
     }
     public void OnMove(Vector2 vector2)
     {
