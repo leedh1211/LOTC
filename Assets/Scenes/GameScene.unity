@@ -280,62 +280,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1088964206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1088964207}
-  - component: {fileID: 1088964208}
-  m_Layer: 0
-  m_Name: MainGameController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1088964207
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088964206}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1088964208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088964206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0097bbbd30c4c2243ab0cd843df43149, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterSpawnCount: 5
-  tileMapLoader: {fileID: 467080833}
-  monsterFactory: {fileID: 2141874007}
-  gameOverPanel: {fileID: 1728501390}
-  gameClearPanel: {fileID: 367804373}
-  exitButton: {fileID: 3552876}
-  playerPrefab: {fileID: 122389734002959321, guid: 902bb4a66421d0f4dbf0da61387a29a6, type: 3}
-  playerDeathEvent: {fileID: 11400000, guid: 3cf4ae26588ef9b4b9ba0e6d171465fa, type: 2}
-  killedMonster: {fileID: 11400000, guid: 31be2c046fb2f8e40a93be2976e1680d, type: 2}
-  monsterList: {fileID: 11400000, guid: 69c2a9259fb8ed44f869a9d89226c4f0, type: 2}
-  selectedStageLevel: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
-  clearedStageLevel: {fileID: 11400000, guid: ce7e92b087375f846ace2ec2ca4dfc76, type: 2}
 --- !u!1 &1728501390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1975790720812704001, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
@@ -548,6 +492,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f848180ed7410eb3b394d00e3e09b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1064577471990407172
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3795585602113468783, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795585602113468783, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795585602113468783, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795585602113468783, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795585602113468783, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795585602113468783, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795585602113468783, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795585602113468783, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795585602113468783, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795585602113468783, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929489256966903974, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: m_Name
+      value: MainGameController
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: exitButton
+      value: 
+      objectReference: {fileID: 3552876}
+    - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 1728501390}
+    - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: tileMapLoader
+      value: 
+      objectReference: {fileID: 467080833}
+    - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: gameClearPanel
+      value: 
+      objectReference: {fileID: 367804373}
+    - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: monsterFactory
+      value: 
+      objectReference: {fileID: 2141874007}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
 --- !u!1001 &1253834045129136853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -717,7 +738,7 @@ SceneRoots:
   - {fileID: 404544066}
   - {fileID: 1823395626}
   - {fileID: 883562087}
-  - {fileID: 1088964207}
+  - {fileID: 1064577471990407172}
   - {fileID: 2141874006}
   - {fileID: 1253834045129136853}
   - {fileID: 395148979}
