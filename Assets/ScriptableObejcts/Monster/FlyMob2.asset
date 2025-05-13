@@ -17,7 +17,11 @@ MonoBehaviour:
   monsterStatData: {fileID: 11400000, guid: 0a8125b1ee28eff45b9bcde09617d205, type: 2}
   skillData:
   - {fileID: 11400000, guid: 0f1efc3c95b140c44827d888ab77c676, type: 2}
-  AnimatorOverrideController: {fileID: 22100000, guid: 295b6c08db517cd4b8407baf6cf5f1c8, type: 2}
+  AnimatorOverrideController: {fileID: 22100000, guid: d42f18739742fd0428d59b8b6ef0400f, type: 2}
   SpriteOverride: {fileID: 21300000, guid: d330c76166e23604c9c44f212607ad5c, type: 3}
   goldQuantity: 1
   isFly: 1
+  colliderSizeX: 0.8
+  colliderSizeY: 1.2
+  colliderOffX: 0
+  colliderOffY: -0.2

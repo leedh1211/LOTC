@@ -10,12 +10,12 @@ namespace Monster.AI
         private Node[,] grid;
         private Vector3Int origin;
 
-        private void Awake()
-        {
-            InitGridFromTilemap();
-        }
+        // private void Start()
+        // {
+        //     InitGridFromTilemap();
+        // }
 
-        private void InitGridFromTilemap()
+        public void InitGridFromTilemap()
         {
             var bounds = tilemap.cellBounds;
             origin = bounds.min;
@@ -35,6 +35,17 @@ namespace Monster.AI
 
         public Node GetNodeFromWorld(Vector2 worldPos)
         {
+            if (tilemap == null)
+            {
+                Debug.LogError("[GridManager] tilemap is null. InitGridFromTilemap()가 호출되지 않았습니다.");
+                return null;
+            }
+
+            if (grid == null)
+            {
+                Debug.LogError("[GridManager] grid is null. InitGridFromTilemap()가 아직 호출되지 않았습니다.");
+                return null;
+            }
             Vector3Int cell = tilemap.WorldToCell(worldPos);
             int ix = cell.x - origin.x;
             int iy = cell.y - origin.y;
@@ -68,5 +79,18 @@ namespace Monster.AI
         }
 
         public Node[,] GetGrid() => grid;
+        
+        public Vector2Int WorldToGrid(Vector2 worldPos)
+        {
+            Vector3Int cell = tilemap.WorldToCell(worldPos);
+            int x = cell.x - origin.x;
+            int y = cell.y - origin.y;
+            return new Vector2Int(x, y);
+        }
+        
+        public void SetTilemap(Tilemap tilemap)
+        {
+            this.tilemap = tilemap;
+        }
     }
 }

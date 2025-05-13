@@ -22,7 +22,7 @@ public class AreaSkillController : MonoBehaviour
         _trigger.radius    = _range;
 
         // 시작하고 일정 시간 뒤에 제거
-        StartCoroutine(Lifecycle());
+        // StartCoroutine(Lifecycle());
     }
 
     private IEnumerator Lifecycle()
@@ -36,16 +36,26 @@ public class AreaSkillController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         var player = other.GetComponent<PlayerController>();
+    //         if (player != null)
+    //         {
+    //             Debug.Log("Player entered");
+    //             //플레이어 공격 함수 추가       
+    //         }
+    //             
+    //     }
+    // }
+
+    public void DoImpact()
     {
-        if (other.CompareTag("Player"))
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _range, LayerMask.GetMask("Player"));
+        foreach (var hit in hits)
         {
-            var player = other.GetComponent<PlayerController>();
-            if (player != null)
-            {
-                //플레이어 공격 함수 추가       
-            }
-                
+            Debug.Log("Player hit");
         }
     }
 }
