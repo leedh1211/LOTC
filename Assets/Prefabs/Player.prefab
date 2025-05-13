@@ -182,7 +182,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   delay: 0.647
-  power: 100
+  power: 1
   speed: 5
   attackRange: 10
   projectileCount: 1

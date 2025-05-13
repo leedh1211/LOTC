@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-public abstract class GenericVariableSO<T> : ScriptableObject,ISerializationCallbackReceiver
+public abstract class GenericVariableSO<T> : ScriptableObject, ISerializationCallbackReceiver
 {
     [SerializeField] T InitialValue;
 
