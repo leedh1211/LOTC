@@ -16,16 +16,19 @@ public class SkillSelectMenuUI : MonoBehaviour
     [SerializeField] private GameObject skillMenuPanel;
 
 
-
-
-
+    private void Start()
+    {
+        levelUpEvent.OnEventRaised += ShowPanel;
+       
+    }
 
     private void OnEnable()
     {
-        levelUpEvent.OnEventRaised += ShowPanel;
+       
              
     }
-
+    /*
+     * 
     private void OnDisable()
     {
         levelUpEvent.OnEventRaised -= ShowPanel;
@@ -34,12 +37,13 @@ public class SkillSelectMenuUI : MonoBehaviour
         skillMenu2.onClick.RemoveAllListeners();
         skillMenu3.onClick.RemoveAllListeners();
     }
+     */
 
     private void ShowPanel()
     {
         SettingSkillUI();
         skillMenuPanel.SetActive(true);
-        Time.timeScale = 0f;
+       // Time.timeScale = 0f;
     }
     
     private void OnSkillSelected(string skillName)

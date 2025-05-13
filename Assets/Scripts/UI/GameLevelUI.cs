@@ -7,6 +7,8 @@ using TMPro;
 
 public class GameLevelUI : MonoBehaviour
 {
+    [SerializeField] private GameObject skillSelect;
+
     [SerializeField] private TextMeshProUGUI levelText;
 
     [SerializeField] private Slider slider;
@@ -21,6 +23,8 @@ public class GameLevelUI : MonoBehaviour
     private float _currentExp = 0;
 
     private float _maxExp = 100;
+
+   
     
     
     private Coroutine _sliderCoroutine;
@@ -105,6 +109,7 @@ public class GameLevelUI : MonoBehaviour
         
         levelText.text = $"Lv {displayLevel += 1}";
 
+      
         onLevelUp.Raise();
         
         yield return new WaitForSeconds(0.2f);
