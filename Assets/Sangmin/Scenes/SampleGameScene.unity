@@ -290,6 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1088964207}
   - component: {fileID: 1088964208}
+  - component: {fileID: 1088964209}
   m_Layer: 0
   m_Name: MainGameController
   m_TagString: Untagged
@@ -336,6 +337,19 @@ MonoBehaviour:
   monsterList: {fileID: 11400000, guid: 69c2a9259fb8ed44f869a9d89226c4f0, type: 2}
   selectedStageLevel: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
   clearedStageLevel: {fileID: 11400000, guid: ce7e92b087375f846ace2ec2ca4dfc76, type: 2}
+--- !u!114 &1088964209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088964206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99856a06f8e390741a3b3b83a628e42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileMapData: {fileID: 0}
 --- !u!1 &1728501390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1975790720812704001, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}

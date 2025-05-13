@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class MainGameController : MonoBehaviour
 {
-    [SerializeField] private int monsterSpawnCount = 5;
+    [SerializeField] private int monsterSpawnCount = 0;
 
 
     [SerializeField] private TileMapLoader tileMapLoader;
@@ -31,7 +31,7 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private IntegerVariableSO selectedStageLevel;
     [SerializeField] private IntegerVariableSO clearedStageLevel;
 
-    private List<Rect> _monsterSpawner;
+    private List<Vector2> _monsterSpawner;
     private void OnEnable()
     {
         playerDeathEvent.OnEventRaised += GameOver;
@@ -62,6 +62,7 @@ public class MainGameController : MonoBehaviour
     {
         _monsterSpawner = tileMapLoader.TileMap.SpawnArea;
         monsterSpawnCount = _monsterSpawner.Count;
+        GetComponent<TileMapDataViewer>().tileMapData = tileMapLoader.TileMap;
 
         Player player = Instantiate(playerPrefab);
         
@@ -75,15 +76,9 @@ public class MainGameController : MonoBehaviour
         
         for (int i = 0; i < monsterSpawnCount; i++)
         {
-            var spawnArea = _monsterSpawner[i];
-            var randomX = Random.Range(spawnArea.x - spawnArea.width / 2, spawnArea.x + spawnArea.width / 2);
-            var randomY = Random.Range(spawnArea.y - spawnArea.height / 2, spawnArea.y + spawnArea.height / 2);
-            var spawnPos = new Vector2(randomX, randomY);
+            var spawnPos = new Vector2(_monsterSpawner[i].x, _monsterSpawner[i].y);
 
             var monster = monsterFactory.SpawnMonster(MonsterName.Mob1, spawnPos, player.gameObject);
-            
-            Debug.Log($"{randomX}, {randomY}");
-
             monsterList.RuntimeValue.Add(monster);
         }
 

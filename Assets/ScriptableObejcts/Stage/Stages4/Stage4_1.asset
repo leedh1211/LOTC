@@ -15,9 +15,14 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   gridMap: {fileID: 6211390892777435489, guid: c77a12998170b1443b3d26b21ab44d5e, type: 3}
   spawnArea:
-  - serializedVersion: 2
-    x: 0
-    y: 13
-    width: 6
-    height: 6
-  playerSpawnPosition: {x: 0, y: 0}
+  - {x: 0, y: 13}
+  - {x: 0.5, y: 15}
+  - {x: -1, y: 12}
+  - {x: 0, y: 10}
+  - {x: 0.5, y: 8}
+  - {x: -0.5, y: 6}
+  - {x: 0, y: 2}
+  - {x: 1, y: 2}
+  - {x: -1, y: 1}
+  - {x: -2, y: 2}
+  playerSpawnPosition: {x: 0, y: -3}
