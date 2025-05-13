@@ -9,8 +9,8 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] private IntegerEventChannelSO expGainedEvent;
     [SerializeField] private IntegerEventChannelSO expChangedEvent;
-    
-    
+
+   
     private int _currentExp = 0;
 
     private void OnEnable()
@@ -28,9 +28,11 @@ public class LevelController : MonoBehaviour
         Init(0);
     }
 
+   
     private void OnExpGained(int exp)
     {
         expChangedEvent.Raise(exp);
+        
         _currentExp = (_currentExp + exp) % maxExp;
     }
 

@@ -28,6 +28,8 @@ public class SkillManager : Singleton<SkillManager> //�̱���
 
         ApplySkillEffect(effect,context); //Apply skill
 
+        TryCombine(data, context); //combineSKill
+
     }
 
 
