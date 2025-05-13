@@ -19,8 +19,8 @@ public class TileMapData : ScriptableObject
         get { return gridMap; }
     }
 
-    [SerializeField] private List<Rect> spawnArea;
-    public List<Rect> SpawnArea
+    [SerializeField] private List<Vector2> spawnArea;
+    public List<Vector2> SpawnArea
     {
         get { return spawnArea; }
     }
