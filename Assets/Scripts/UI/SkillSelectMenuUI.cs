@@ -68,9 +68,9 @@ public class SkillSelectMenuUI : MonoBehaviour
         skillMenu2.GetComponent<Image>().sprite = s2.icon;
         skillMenu3.GetComponent<Image>().sprite= s3.icon;
 
-        skillMenu1.GetComponentInChildren<TextMeshProUGUI>().text = s1.name;
-        skillMenu2.GetComponentInChildren<TextMeshProUGUI>().text = s2.name;
-        skillMenu3.GetComponentInChildren<TextMeshProUGUI>().text = s3.name;
+        skillMenu1.GetComponentInChildren<TextMeshProUGUI>().text = s1.SkillName;
+        skillMenu2.GetComponentInChildren<TextMeshProUGUI>().text = s2.SkillName;
+        skillMenu3.GetComponentInChildren<TextMeshProUGUI>().text = s3.SkillName;
 
 
 

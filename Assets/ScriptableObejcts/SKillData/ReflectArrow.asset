@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499fd734ea08f4d4ea007382cff1fb3d, type: 3}
   m_Name: ReflectArrow
   m_EditorClassIdentifier: 
-  SkillName: ReflectArrow
+  SkillName: "\uBC18\uC0AC\uD654\uC0B4"
   skillInfo: 
   icon: {fileID: 1122387811, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
   type: 1
