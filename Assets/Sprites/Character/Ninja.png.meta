@@ -240,6 +240,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Ninja_Icon
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c3793b0e21c343478ac7de85593ad2d
+      internalID: 1427562322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -256,6 +277,7 @@ TextureImporter:
       Native_2: 1258068113
       Native_3: -103535726
       Native_4: -1277185988
+      Ninja_Icon: 1427562322
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
