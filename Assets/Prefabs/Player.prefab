@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 394234505624449839}
   - component: {fileID: 122389734002959321}
   - component: {fileID: 5372241949254709475}
-  m_Layer: 0
+  - component: {fileID: -4730607987301967523}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,6 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterList: {fileID: 11400000, guid: 69c2a9259fb8ed44f869a9d89226c4f0, type: 2}
+  orbitPrefab: {fileID: 0}
   playerVisual: {fileID: 8626990803830669826}
 --- !u!114 &5372241949254709475
 MonoBehaviour:
@@ -78,7 +80,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVisual: {fileID: 8626990803830669826}
   customizeDataTable: {fileID: 11400000, guid: 49d78e0b7bb04f94db8eb33f63a31dfd, type: 2}
-  OwnedCustomizeItem: {fileID: 11400000, guid: a6deeda6b90b5014bae24734c08218db, type: 2}
+  currentCustomId: {fileID: 11400000, guid: c0666e01150970c43b5057d5eabe3fc1, type: 2}
+--- !u!61 &-4730607987301967523
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3545877382265174006}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &5683885534661695011
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,17 +223,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062edc2c59085ee4f81c3e376ffbda98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetlayer:
+    serializedVersion: 2
+    m_Bits: 128
   delay: 0.647
   power: 100
   speed: 5
   attackRange: 10
-  targetlayer:
-    serializedVersion: 2
-    m_Bits: 128
-  ArrowPrefabs: {fileID: 3072397918168628055, guid: 662dad48b0ceeef469c89132b2f7a67a, type: 3}
   projectileCount: 1
+  ArrowPrefabs: {fileID: 3072397918168628055, guid: 662dad48b0ceeef469c89132b2f7a67a, type: 3}
   firePoint: {fileID: 7525496220870391985}
   spreadAngle: 15
+  shotCount: 1
+  isSequnce: 0
   player: {fileID: 122389734002959321}
   joystickPos: {fileID: 11400000, guid: 2229266326ba9d04083f3c010c1798df, type: 2}
 --- !u!1 &9215501162485253429
@@ -277,8 +326,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fc57a112d6123fc4fb37e8601cf232d8, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -1751820622, guid: 904aea80c0bef80488113a51d9e9a760, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -323,9 +372,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CategoryHash: 0.009161512
-  m_labelHash: 1.0447735e-18
+  m_labelHash: 2.538427e-25
   m_SpriteKey: 0
-  m_SpriteHash: 957872243
+  m_SpriteHash: 235981029
 --- !u!114 &9082849987551806235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 39df459fef5f87f468a80e7b50b27edf, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: e9f9c3d5018d9774c93e56470b9a37c5, type: 3}
 --- !u!1001 &6160207576469101053
 PrefabInstance:
   m_ObjectHideFlags: 0

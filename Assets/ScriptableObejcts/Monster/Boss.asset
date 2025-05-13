@@ -20,4 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9c697366e784d244f9a448bcf548a9d4, type: 2}
   AnimatorOverrideController: {fileID: 22100000, guid: cc5d9611ddd81c946b0d75c71fef634a, type: 2}
   SpriteOverride: {fileID: 21300000, guid: 087c596806968274ab1ef1f055e1b576, type: 3}
+  goldQuantity: 10
   isFly: 0

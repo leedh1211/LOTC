@@ -14,6 +14,7 @@ public class SaveManager : Singleton<SaveManager>
     [SerializeField] private IntegerVariableSO Gold;
     [SerializeField] private IntegerVariableSO SelectedStage;
     [SerializeField] private IntegerVariableSO ClearedStage;
+    [SerializeField] private IntegerVariableSO CurrentCustomItemId;
     [SerializeField] private BitArrayVariableSO OwnedCustomizeItem;
     protected override void Awake()
     {
@@ -26,13 +27,19 @@ public class SaveManager : Singleton<SaveManager>
         {
             OwnedCustomizeItem.RuntimeValue[i] = bits[i];
         }
+        CurrentCustomItemId.RuntimeValue = CurrentSave.CurrentCustomizeItem;
+        Gold.RuntimeValue = CurrentSave.Gold;
+        SelectedStage.RuntimeValue = CurrentSave.SelectedStage;
+        ClearedStage.RuntimeValue = CurrentSave.ClearedStage;
+        
     }
     public void Save()
     {
         SaveData data = new SaveData(
             gold: Gold.RuntimeValue,
-            ownedCustomizeItem : SerializeOwnedItems(OwnedCustomizeItem.RuntimeValue),
-            selectedStage : SelectedStage.RuntimeValue,
+            currentCustomizeItem: CurrentCustomItemId.RuntimeValue,
+            ownedCustomizeItem: SerializeOwnedItems(OwnedCustomizeItem.RuntimeValue),
+            selectedStage: SelectedStage.RuntimeValue,
             clearedStage: ClearedStage.RuntimeValue
             );
 
