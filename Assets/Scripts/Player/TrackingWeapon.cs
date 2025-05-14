@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrackingWeapon : MonoBehaviour
 {
     [SerializeField] private Player player;
+
     [SerializeField] private WeaponHandler weaponHandler;
     [SerializeField] private Vector3 defaultLocalPos;
     [SerializeField] private AnimationCurve pullAnimation;
@@ -21,10 +22,14 @@ public class TrackingWeapon : MonoBehaviour
     [SerializeField] float lenghtY;
     
     [SerializeField] float pullDist;
+
+    private bool isPulling;
     
     private Transform target;
 
     private Vector3 dirToTarget;
+
+    private Sprite currentWeaponSprite;
     
     void Update()
     {
@@ -32,29 +37,49 @@ public class TrackingWeapon : MonoBehaviour
         {
             target = player.GetNearestEnemy().transform;
         }
-        
-        spriteRenderer.sprite = baseSprite;
+
+        bool tempPulling = isPulling;
+
+        currentWeaponSprite = baseSprite;
 
         if (joystickPos.RuntimeValue == Vector2.zero)
         {
             if (target != null)
             {
                 dirToTarget = (target.position - player.transform.position).normalized;
+                
+                player.PlayerVisual.FlipSpriteRenderer(dirToTarget.x < 0);
 
                 RotaionWeapon(dirToTarget);
             
                 float pullRatio = weaponHandler.PullRatio;
-
+                
+             
                 if (pullRatio > 0.15f)
                 {
+                    isPulling = true;
+                    
                     PullAnimation(pullRatio);
+                }
+                else
+                {
+                    isPulling = false;
                 }
             }
         }
         else
         {
+            isPulling = false;
+            
             RotaionWeapon(joystickPos.RuntimeValue);
         }
+
+        if (tempPulling != isPulling)
+        {
+            player.Animator.SetBool("isPull", isPulling);
+        }
+        
+        spriteRenderer.sprite = currentWeaponSprite;
     }
 
   
@@ -81,6 +106,7 @@ public class TrackingWeapon : MonoBehaviour
         
         transform.localPosition += pullingDist * dirToPlayer;
         
-        spriteRenderer.sprite = pullSprite;
+        currentWeaponSprite = pullSprite;
+        
     }
 }

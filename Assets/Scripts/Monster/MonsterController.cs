@@ -53,9 +53,8 @@ public class MonsterController : MonoBehaviour
         spriteRenderer.sprite = monsterConfig.SpriteOverride;
         animator.runtimeAnimatorController = monsterConfig.AnimatorOverrideController;
         Vector2 spriteSize = spriteRenderer.bounds.size;
-        float shadowWidth = spriteSize.x * 0.6f;
-        float shadowHeight = spriteSize.y * 0.3f;
-        shadow.localScale = new Vector3(shadowWidth, shadowHeight, 1f);
+        
+        shadow.localScale = new Vector3(spriteSize.x, spriteSize.y, 1f);
         
         if (monsterConfig.monsterType == MonsterType.boss)
         {

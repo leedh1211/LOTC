@@ -261,6 +261,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Ninja_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c88394fe3d4c9438c81248d79dd9e8
+      internalID: 1094372881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -277,6 +298,7 @@ TextureImporter:
       Ninja_2: 1258068113
       Ninja_3: -103535726
       Ninja_4: -1277185988
+      Ninja_5: 1094372881
       Ninja_Icon: 1427562322
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Data;
 using Monster;
-using Monster.ScriptableObject;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class MainGameController : MonoBehaviour
 {
@@ -144,6 +141,7 @@ public class MainGameController : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         Time.timeScale = 0;
+        SaveManager.Instance.Save();
     }
 
     private void GameClear()
@@ -156,5 +154,6 @@ public class MainGameController : MonoBehaviour
         currentMapIndex.RuntimeValue = 0;
         gameClearPanel.gameObject.SetActive(true);
         Time.timeScale = 0;
+        SaveManager.Instance.Save();
     }
 }

@@ -13,7 +13,7 @@ public class SaveData
         SelectedStage = 0;
         ClearedStage = 0;
         CurrentCustomizeItem = 0;
-        OwnedCustomizeItem = "";
+        OwnedCustomizeItem = "1";
         PlayerStat = new PlayerpermanentStat();
     }
     public SaveData(int gold,int currentCustomizeItem, string ownedCustomizeItem, int selectedStage, int clearedStage, PlayerpermanentStat stat)

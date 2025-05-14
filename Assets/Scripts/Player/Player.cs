@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
 {
+    public PlayerVisual PlayerVisual => playerVisual;
+    public Animator Animator => animator;
+    
     private int maxHp = 100;
     private int curHp = 100;
 
@@ -20,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField]private GameObject orbitPrefab;
     
     [SerializeField] private PlayerVisual playerVisual;
+    [SerializeField] private Animator animator;
 
     
     void Awake()
@@ -81,8 +85,6 @@ public class Player : MonoBehaviour
         {
             return null;
         }
-        
-       
     }
 
 
@@ -92,10 +94,6 @@ public class Player : MonoBehaviour
         orbit.transform.SetParent(this.transform);
 
     }
-
-
-
-
 }
 
 

@@ -8,7 +8,7 @@ public class WeaponHandler : MonoBehaviour
         get => curTime / Delay;
     }
 
-    public float Delay { get => delay - permanentStat.RuntimeValue.Delay * 0.1f; set => delay = value; }
+    public float Delay { get => Mathf.Clamp(delay - permanentStat.RuntimeValue.Delay * 0.1f,0.3f,2.0f); set => delay = value; }
     public float Power { get => power + permanentStat.RuntimeValue.Power * 10; set => power = value; }
     public float Speed { get => speed; set => speed = value; }
     public float AttackRange { get => attackRange; set => attackRange = value; }
@@ -73,15 +73,11 @@ public class WeaponHandler : MonoBehaviour
             
             if (isReflect == true)
             {
-
-
                 arrow = Instantiate(ReflectPrfabs, firePoint.position, rot); // ȭ�� ����
-
             }
             else
             {
                 arrow = Instantiate(ArrowPrefabs, firePoint.position, rot); // ȭ�� ����
-
             }
 
             arrow.GetComponent<ArrowBase>()?.Init(Power, speed, attackRange, rotatedDir);
