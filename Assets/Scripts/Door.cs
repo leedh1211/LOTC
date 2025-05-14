@@ -29,7 +29,7 @@ public class Door : MonoBehaviour
 
     private void OpenDoor()
     {
-        FindAnyObjectByType<MainGameController>().NewGame();
+        FindAnyObjectByType<MainGameController>().InitGameState();
         
         Destroy(gameObject);
     }
