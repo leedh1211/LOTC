@@ -9,11 +9,10 @@ using UnityEngine.UI;
 public class StatPage : MonoBehaviour
 {
     private readonly string[] statNames = { "최대 체력", "공격력", "공격 속도" };
-    private readonly Vector3[] lightPos = { new Vector3(-250,292.5f), new Vector3(0, 292.5f), new Vector3(250, 292.5f) };
+    private readonly Vector3[] lightPos = { new Vector3(-285,292.5f), new Vector3(-20, 292.5f), new Vector3(250, 292.5f) };
     [SerializeField] private Button runBtn;
     [SerializeField] private PlayerStatVariableSO permanentStat;
     [SerializeField] private List<Image> statImages;
-    [SerializeField] private List<Image> statIcons;
     [Header("레벨업 이미지 관련")]
     [SerializeField] private Image levelUpImage;
     [SerializeField] private TextMeshProUGUI levelUpText;
@@ -27,6 +26,7 @@ public class StatPage : MonoBehaviour
     [Space(10f),Header("골드")]
     [SerializeField] private IntegerVariableSO gold;
     [SerializeField] private VoidEventChannelSO onGoldChanged;
+    [SerializeField] private TextMeshProUGUI goldText;
     private int price = 500;
     private float spinDuration = 1.5f;
     private float spinInterval = 0.1f;
@@ -52,6 +52,7 @@ public class StatPage : MonoBehaviour
         runBtn.onClick.AddListener(() => RunRoulette());
         UpdateStatTexts();
         lightImg.gameObject.SetActive(false);
+        goldText.text = price.ToString();
     }
 
     public void RunRoulette()
@@ -93,7 +94,7 @@ public class StatPage : MonoBehaviour
 
         statUpgraders[finalIndex]?.Invoke();
         SaveManager.Instance.Save();
-        levelUpStatImage.sprite = statIcons[finalIndex].sprite;
+        levelUpStatImage.sprite = statImages[finalIndex].sprite;
         levelUpText.text = statNames[finalIndex] + "증가!";
         var startPos = levelUpImage.rectTransform.anchoredPosition;
         levelUpImage.gameObject.SetActive(true);
