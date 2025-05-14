@@ -9,22 +9,20 @@ using UnityEngine.UI;
 
 public class StatPage : MonoBehaviour
 {
-    private readonly string[] statNames = { "�ִ� ü��", "���ݷ�", "���� �ӵ�" };
+    private readonly string[] statNames = { "최대 체력", "공격력", "공격 속도" };
     private readonly Vector3[] lightPos = { new Vector3(-285,292.5f), new Vector3(-20, 292.5f), new Vector3(250, 292.5f) };
     [SerializeField] private Button runBtn;
     [SerializeField] private PlayerStatVariableSO permanentStat;
     [SerializeField] private List<Image> statImages;
-    [Header("������ �̹��� ����")]
     [SerializeField] private Image levelUpImage;
     [SerializeField] private TextMeshProUGUI levelUpText;
     [SerializeField] private Image levelUpStatImage;
-    [Header("�̹��� �ؽ�Ʈ")]
     [SerializeField] private TextMeshProUGUI maxHpText;
     [SerializeField] private TextMeshProUGUI powerText;
     [SerializeField] private TextMeshProUGUI delayText;
     [Space(10f)]
     [SerializeField] private Image lightImg;
-    [Space(10f),Header("���")]
+    [Space(10f)]
     [SerializeField] private IntegerVariableSO gold;
     [SerializeField] private VoidEventChannelSO onGoldChanged;
     [SerializeField] private TextMeshProUGUI goldText;
@@ -60,7 +58,7 @@ public class StatPage : MonoBehaviour
     {
         if (gold.RuntimeValue < price)
         {
-            Debug.Log("��� ����");
+            Debug.Log("돈 부족");
             return;
         }
         gold.RuntimeValue -= price;
@@ -97,7 +95,7 @@ public class StatPage : MonoBehaviour
         statUpgraders[finalIndex]?.Invoke();
         SaveManager.Instance.Save();
         levelUpStatImage.sprite = statImages[finalIndex].sprite;
-        levelUpText.text = statNames[finalIndex] + "����!";
+        levelUpText.text = statNames[finalIndex] + "증가!";
         var startPos = levelUpImage.rectTransform.anchoredPosition;
         levelUpImage.gameObject.SetActive(true);
         UpdateStatTexts();
@@ -155,8 +153,8 @@ public class StatPage : MonoBehaviour
     }
     private void UpdateStatTexts()
     {
-        maxHpText.text = $"Lv.{permanentStat.RuntimeValue.MaxHp}\n �ִ� ü��";
-        powerText.text = $"Lv.{permanentStat.RuntimeValue.Power}\n ���ݷ�";
-        delayText.text = $"Lv.{permanentStat.RuntimeValue.Delay}\n ���� �ӵ�";
+        maxHpText.text = $"Lv.{permanentStat.RuntimeValue.MaxHp}\n 최대 체력";
+        powerText.text = $"Lv.{permanentStat.RuntimeValue.Power}\n 공격력";
+        delayText.text = $"Lv.{permanentStat.RuntimeValue.Delay}\n 공격 속도";
     }
 }

@@ -43,13 +43,4 @@ public class FadeUI : MonoBehaviour
 
         canvas.enabled = !isFadeIn;
     }
-    void OnEnable()
-    {
-        Debug.Log("[CanvasDebug] Canvas OnEnable");
-    }
-
-    void OnDisable()
-    {
-        Debug.Log("[CanvasDebug] Canvas OnDisable");
-    }
 }
