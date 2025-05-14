@@ -151,18 +151,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010650553, y: 0.015215039}
+  m_Offset: {x: 0, y: 0.08}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3125, y: 1.3125}
+    pivot: {x: 0.485755, y: 0.41571698}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 0.07, y: 0.21}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09130107, y: 0.6603656}
+  m_Size: {x: 0.12, y: 1.04}
   m_EdgeRadius: 0
 --- !u!50 &1306943166838551413
 Rigidbody2D:
@@ -203,3 +203,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9f7e50acc22d844b9d288be72c19a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffectPrefab: {fileID: 8597090565942747280, guid: cfdf3c51760213846b3e82ab1aa38889, type: 3}
+  spriteRenderer: {fileID: 7173831733015381387}
+  disableCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

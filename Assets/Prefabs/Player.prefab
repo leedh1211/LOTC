@@ -329,7 +329,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 2135384345, guid: d0eadc247f5f50d42a656dd9a5b27772, type: 3}
+  m_Sprite: {fileID: -1424018842, guid: 2d2a74ae4b05f754d8fcfa68327be8e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
     m_Bits: 128
   delay: 0.647
   power: 50
-  speed: 5
+  speed: 10
   attackRange: 10
   projectileCount: 1
   ArrowPrefabs: {fileID: 3072397918168628055, guid: 662dad48b0ceeef469c89132b2f7a67a, type: 3}
@@ -410,8 +410,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   spriteRenderer: {fileID: 3179107071694041703}
-  baseSprite: {fileID: 495732295, guid: d0eadc247f5f50d42a656dd9a5b27772, type: 3}
-  pullSprite: {fileID: 2135384345, guid: d0eadc247f5f50d42a656dd9a5b27772, type: 3}
+  baseSprite: {fileID: 130034081, guid: 2d2a74ae4b05f754d8fcfa68327be8e0, type: 3}
+  pullSprite: {fileID: -1424018842, guid: 2d2a74ae4b05f754d8fcfa68327be8e0, type: 3}
   joystickPos: {fileID: 11400000, guid: 2229266326ba9d04083f3c010c1798df, type: 2}
   lenghtX: 0.7
   lenghtY: 0.7
