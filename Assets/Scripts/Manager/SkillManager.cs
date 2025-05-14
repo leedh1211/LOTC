@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
+using Manager;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -26,6 +27,7 @@ public class SkillManager : Singleton<SkillManager> //�̱���
             Debug.Log("there is no skill");
         }
 
+        AchievementManager.Instance.AddProgress(3, 1);
         ApplySkillEffect(effect,context); //Apply skill
 
         TryCombine(data, context); //combineSKill
