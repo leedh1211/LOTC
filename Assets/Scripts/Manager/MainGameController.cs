@@ -18,6 +18,7 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject gameClearPanel;
     [SerializeField] private GameObject door;
+    private GameObject _door;
     
     [SerializeField] private Button exitButton;
     
@@ -70,7 +71,9 @@ public class MainGameController : MonoBehaviour
         GetComponent<TileMapDataViewer>().tileMapData = tileMapLoader.TileMap;
 
         Debug.LogWarning(tileMapLoader.MaxY);
-        door.transform.position = new Vector2(0f, tileMapLoader.MaxY + Camera.main.orthographicSize - 1);
+        _door = Instantiate(door);
+        _door.transform.position = new Vector2(0f, tileMapLoader.MaxY + Camera.main.orthographicSize - 5);
+        _door.SetActive(false);
 
         _player = Instantiate(playerPrefab);
         _player.name = "Player";
@@ -131,7 +134,7 @@ public class MainGameController : MonoBehaviour
     private void OpenTheDoor()
     {
         Debug.LogWarning("오픈더도아");
-        door.SetActive(true);
+        _door.SetActive(true);
     }
 
     private void GameOver()

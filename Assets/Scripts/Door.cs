@@ -15,6 +15,6 @@ public class Door : MonoBehaviour
 
     private void OpenDoor()
     {
-        SceneManager.LoadScene("NEWSampleGameScene");
+        SceneManager.LoadScene("GameScene");
     }
 }
