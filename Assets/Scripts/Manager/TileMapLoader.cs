@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Monster.AI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
@@ -12,6 +13,7 @@ public class TileMapLoader : MonoBehaviour
     [SerializeField] private List<StageDataSO> stageDataList;
     [SerializeField] private IntegerVariableSO currentMapIndex;
     [SerializeField] private GridManager gridManager;
+
     private Grid _currentGrid;
     public Grid CurrentGrid
     {
@@ -40,11 +42,14 @@ public class TileMapLoader : MonoBehaviour
 
     public int numberOfMap = 0;
 
+    public string StageName = "";
+
 
     public void LoadRandomTileMap(int stageLevel)
     {
         var stageInfo = stageDataList[stageLevel].Stages;
         numberOfMap = stageInfo.Count;
+        StageName = stageDataList[stageLevel].StageName;
         var currentStage = stageInfo[currentMapIndex.RuntimeValue];
 
         if (stageInfo == null || currentStage.Maps.Count == 0)
