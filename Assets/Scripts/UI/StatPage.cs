@@ -5,6 +5,7 @@ using System.Reflection;
 using Manager;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class StatPage : MonoBehaviour
@@ -35,8 +36,19 @@ public class StatPage : MonoBehaviour
     [SerializeField] private AnimationCurve easeOutCurve;
     private List<ProgressTweener> imageTweeners = new List<ProgressTweener>();
     private ProgressTweener levelUpImageTweener;
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip RewaraudioClip;
+    [SerializeField]
+    private AudioClip SpainAudio;
+    [SerializeField]
+    private AudioMixerGroup MixerGroup;
+    private AudioSource audioSource;
+
+
     private void Start()
     {
+        
         foreach (var img in statImages)
             imageTweeners.Add(new ProgressTweener(this));
         levelUpImageTweener = new(this);
@@ -52,6 +64,8 @@ public class StatPage : MonoBehaviour
         UpdateStatTexts();
         lightImg.gameObject.SetActive(false);
         goldText.text = price.ToString();
+
+        audioSource = gameObject.AddComponent<AudioSource>();  
     }
 
     public void RunRoulette()
@@ -71,6 +85,7 @@ public class StatPage : MonoBehaviour
     }
     private IEnumerator SpinRoulette()
     {
+        PlayRotationAudio();
         float timer = 0f;
         int currentIndex = 0;
         int count = statImages.Count;
@@ -99,6 +114,7 @@ public class StatPage : MonoBehaviour
         var startPos = levelUpImage.rectTransform.anchoredPosition;
         levelUpImage.gameObject.SetActive(true);
         UpdateStatTexts();
+        PlayRewardAudio();
         levelUpImageTweener.SetCurve(easeOutCurve).Play((ratio) =>
                 {
                     levelUpImage.rectTransform.anchoredPosition = 
@@ -157,4 +173,22 @@ public class StatPage : MonoBehaviour
         powerText.text = $"Lv.{permanentStat.RuntimeValue.Power}\n 공격력";
         delayText.text = $"Lv.{permanentStat.RuntimeValue.Delay}\n 공격 속도";
     }
+
+    private void PlayRewardAudio()
+    {
+        if (RewaraudioClip != null)
+        {
+            audioSource.PlayOneShot(RewaraudioClip);
+        }
+
+    }
+
+    private void PlayRotationAudio()
+    {
+        if (SpainAudio != null)
+        {
+            audioSource.PlayOneShot(SpainAudio);
+        }
+    }
+
 }
