@@ -34,7 +34,7 @@ public class SaveManager : Singleton<SaveManager>
             OwnedCustomizeItem.RuntimeValue[i] = bits[i];
         }
         CurrentCustomItemId.RuntimeValue = CurrentSave.CurrentCustomizeItem;
-        Gold.RuntimeValue = CurrentSave.Gold;
+        //Gold.RuntimeValue = CurrentSave.Gold;
         SelectedStage.RuntimeValue = CurrentSave.SelectedStage;
         ClearedStage.RuntimeValue = CurrentSave.ClearedStage;
         PermanentStat.RuntimeValue = CurrentSave.PlayerStat;

@@ -27,7 +27,7 @@ public class LobbyMainUI : MonoBehaviour
     {
         SetStageInfo(selectedStageLevel.RuntimeValue);
         
-        startButton.onClick.AddListener(() => GameManager.Instance.StartMainGame());
+        startButton.onClick.AddListener(() => SceneLoadManager.Instance.LoadScene("GameScene"));
     }
 
     private void Start()

@@ -18,6 +18,7 @@ public class CustomizePage : MonoBehaviour
     {
         if (customizeDataTable.TryGetCustomizeData(currentCustomId.RuntimeValue, out var image))
             previewImage.sprite = image.PreviewImage;
+        
         for (int i = 0; i < customizeDataTable.GetCustomizeDataCount();i++)
         {
             var slot = Instantiate<CustomizePageSlot>(slotPrefab, itemsParent);
