@@ -17,6 +17,6 @@ public class GameManager : Singleton<GameManager>
 
     public void StartMainGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneLoadManager.Instance.LoadScene("GameScene");
     }
 }

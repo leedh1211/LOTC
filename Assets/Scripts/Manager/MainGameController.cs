@@ -2,6 +2,7 @@ using Data;
 using Monster;
 using System.Collections;
 using System.Collections.Generic;
+using Manager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -111,6 +112,7 @@ public class MainGameController : MonoBehaviour
 
         if (monsterList.Count != 0) return;
         
+        AchievementManager.Instance.AddProgress(5,1);
         Debug.LogWarning("클리어!!!!");
         currentMapIndex.RuntimeValue++;
         StartCoroutine(DelayEvent());
