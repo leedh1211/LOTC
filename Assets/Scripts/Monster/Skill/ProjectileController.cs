@@ -6,15 +6,22 @@ namespace Monster.Skill
 {
     public class ProjectileController : MonoBehaviour
     {
+        public float Damage => damage;
+        
         Vector2 direction;
         private float damage;
         private float speed;
+        private Rigidbody2D rigidbody2D;
 
         public void Init(Vector2 dir, float projectileSpeed, float projectileDamage)
         {
             direction = dir;
             speed = projectileSpeed;
             damage = projectileDamage;
+            if (TryGetComponent(out Rigidbody2D body))
+            {
+                rigidbody2D = body;
+            }
         }
 
 
@@ -34,7 +41,6 @@ namespace Monster.Skill
 
         public void FixedUpdate()
         {
-            Rigidbody2D rigidbody2D = this.GetComponent<Rigidbody2D>();
             rigidbody2D.velocity = direction.normalized * speed;
         }
 

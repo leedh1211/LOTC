@@ -1,12 +1,12 @@
+using System;
 using Data;
 using Monster;
 using System.Collections;
 using System.Collections.Generic;
 using Manager;
+using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MainGameController : MonoBehaviour
@@ -44,26 +44,81 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameClearGoldText;
 
     private List<Vector2> _monsterSpawner;
-    private void OnEnable()
-    {
-        playerDeathEvent.OnEventRaised += GameOver;
-        killedMonster.OnEventRaised += KillMonster;
-    }
+    
+    private int displayLevel = 1;
+    
+    private float _currentExp = 0;
 
-    private void OnDisable()
-    {
-        playerDeathEvent.OnEventRaised -= GameOver;
-        killedMonster.OnEventRaised -= KillMonster;
-    }
+    private float _maxExp = 30;
+
+
+    [SerializeField] private IntegerVariableSO gameLevel;
+    [SerializeField] private FloatEventChannelSO onGainExp;
+    [SerializeField] private VoidEventChannelSO onLevelUp;
+    [SerializeField] private FloatVariableSO gameExp;
+    
+    [SerializeField] private GameLevelUI levelUI;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private UnityEngine.UI.Image expImage;
 
 
     private void Start()
     {
+        playerDeathEvent.OnEventRaised += GameOver;
+        killedMonster.OnEventRaised += KillMonster;
+        onGainExp.OnEventRaised += GainExp;
+
+        NewGame();
+    }
+
+    private void OnDestroy()
+    {
+        playerDeathEvent.OnEventRaised -= GameOver;
+        killedMonster.OnEventRaised -= KillMonster;
+        onGainExp.OnEventRaised -= GainExp;
+    }
+
+
+    public void NewGame()
+    {
         tileMapLoader.LoadRandomTileMap(selectedStageLevel.RuntimeValue);
         
         Init();
+
+        _currentExp = gameExp.RuntimeValue;
+        
+        expImage.fillAmount = _currentExp / _maxExp;
+        
+        levelText.text = "Lv " + (gameLevel.RuntimeValue + 1).ToString();
     }
 
+
+    private void Update()
+    {
+        if (_currentExp >= _maxExp)
+        {
+            var remain = _currentExp - _maxExp;
+
+            _currentExp = remain;
+
+            gameLevel.RuntimeValue ++;
+
+            levelText.text = "Lv " + (gameLevel.RuntimeValue + 1).ToString();
+            
+            onLevelUp.Raise();
+            
+            expImage.fillAmount = _currentExp / _maxExp;
+        }
+
+        gameExp.RuntimeValue = _currentExp;
+    }
+
+    void GainExp(float exp)
+    {
+        _currentExp += exp;
+        
+        expImage.fillAmount = _currentExp / _maxExp;
+    }
 
 
     private void Init()
@@ -77,7 +132,7 @@ public class MainGameController : MonoBehaviour
         _door.transform.position = new Vector2(0f, tileMapLoader.MaxY + Camera.main.orthographicSize - 5);
         _door.SetActive(false);
 
-        _player = Instantiate(playerPrefab);
+        _player = FindAnyObjectByType<Player>();
         _player.name = "Player";
         _player.transform.position = tileMapLoader.TileMap.PlayerSpawnPosition;
         
@@ -96,6 +151,7 @@ public class MainGameController : MonoBehaviour
             return;
         }
         monsterList.RuntimeValue = new();
+        
         foreach (var info in spawnDataSo.spawns)
         {
             MonsterController monster = monsterFactory.SpawnMonster(info.monsterName, info.spawnPosition, _player.gameObject);

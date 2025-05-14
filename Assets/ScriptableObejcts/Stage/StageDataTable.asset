@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: StageDataTable
   m_EditorClassIdentifier: 
   datas:
-  - {fileID: 11400000, guid: cb992f07914eb1c40a5d854f4b6705a5, type: 2}
-  - {fileID: 11400000, guid: f4e68a4b85f55e7458b16b7382a6f46d, type: 2}
-  - {fileID: 11400000, guid: a43397f03c606f84f832e7fd93b5ac89, type: 2}
+  - {fileID: 11400000, guid: fe6a96ee2dbf7e749bf9746c3f0ccf24, type: 2}
+  - {fileID: 11400000, guid: 2aaecbb8f11c671459889cff0ed62322, type: 2}
+  - {fileID: 11400000, guid: 1b6877ec062b440408989babcdc988e8, type: 2}

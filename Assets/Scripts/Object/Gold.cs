@@ -30,6 +30,7 @@ public class Gold : MonoBehaviour
     [Space(10f)]
     [Header("VariableSO")]
     [SerializeField] private IntegerVariableSO gold;
+    [SerializeField] private FloatEventChannelSO gainExp;
 
     private ProgressTweener chaseTweener;
     
@@ -87,6 +88,8 @@ public class Gold : MonoBehaviour
                         AchievementManager.Instance.AddProgress(6, gold.RuntimeValue);
                         AchievementManager.Instance.AddProgress(7, gold.RuntimeValue);
                         gameObject.SetActive(false);
+                        
+                        gainExp.Raise(goldAmount);
                     }).SetCurve(easeInCurve);
                 
             }).SetCurve(easeOutCurve);

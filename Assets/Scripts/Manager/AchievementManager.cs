@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Data;
+using UI;
 using UnityEngine;
 
 namespace Manager
@@ -11,7 +12,7 @@ namespace Manager
         private List<AchievementSO> achievements;
         private Dictionary<int, AchievementStatus> statusDict = new();
         
-        // public static AchievementManager instance;
+        [SerializeField] private AchievementUI achievementUI;
         
         public void Init(List<AchievementStatus> loadedStatuses)
         {
@@ -28,17 +29,6 @@ namespace Manager
                 }
             }
         }
-        
-        // public void Awake()
-        // {
-        //     if (instance != null)
-        //     {
-        //         Destroy(gameObject);
-        //         return;
-        //     }
-        //     instance = this;
-        //     DontDestroyOnLoad(gameObject);
-        // }
 
         public void AddProgress(int seq, int amount)
         {
@@ -49,17 +39,16 @@ namespace Manager
             if (so == null) return;
             
             status.currentProgress += amount;
+            Debug.Log("[업적 관련 작업 실행] seq : "+seq+"amount : "+amount);
             
             if (status.currentLevel >= so.levels.Length) return;
             
             int required = so.levels[status.currentLevel];
             if (status.currentProgress >= required)
             {
-                status.currentProgress = 0;
                 status.currentLevel++;
                 CompleteAchievements(so);
             }
-            Debug.Log("[업적 관련 작업 실행] seq : "+seq+"amount : "+amount);
         }
         
         public void ChangeProgress(int seq, int amount)
@@ -71,23 +60,24 @@ namespace Manager
             if (so == null) return;
             
             status.currentProgress = amount;
+            Debug.Log("[업적 관련 작업 실행] seq : "+seq+"amount : "+amount);
             
             if (status.currentLevel >= so.levels.Length) return;
             
             int required = so.levels[status.currentLevel];
             if (status.currentProgress >= required)
             {
-                status.currentProgress = 0;
                 status.currentLevel++;
                 CompleteAchievements(so);
             }
-            Debug.Log("[업적 관련 작업 실행] seq : "+seq+"amount : "+amount);
+
         }
 
 
         public void CompleteAchievements(AchievementSO achievement)
         {
             Debug.Log("[업적 완수]"+achievement.title+"\n"+achievement.description);
+            achievementUI.ShowAchievement(achievement);
         }
         
         public List<AchievementStatus> GetStatusesForSave()

@@ -7,6 +7,9 @@ using TMPro;
 
 public class GameLevelUI : MonoBehaviour
 {
+    public TextMeshProUGUI LevelText => levelText;
+    
+    
     [SerializeField] private GameObject skillSelect;
 
     [SerializeField] private TextMeshProUGUI levelText;
@@ -16,13 +19,15 @@ public class GameLevelUI : MonoBehaviour
     [SerializeField] private float testGainExp;
     
     [SerializeField] private VoidEventChannelSO onLevelUp;
+    [SerializeField] private FloatEventChannelSO gainExp;
+
 
 
     private int displayLevel = 1;
     
     private float _currentExp = 0;
 
-    private float _maxExp = 100;
+    private float _maxExp = 20;
 
    
     
@@ -30,19 +35,18 @@ public class GameLevelUI : MonoBehaviour
     private Coroutine _sliderCoroutine;
 
 
-    private void Start()
+    /*private void Start()
     {
+
         levelText.text = $"Lv {displayLevel}";
         slider.value = 0;
     }
+    */
 
-  
-    private void Update()
+    
+
+    private void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            OnGainExp(testGainExp);
-        }
     }
 
     private void OnGainExp(float gainExp)

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
+    [SerializeField] private Image healthBar;
     [SerializeField] private IntegerEventChannelSO playerHitEvent;
     [SerializeField] private IntegerEventChannelSO playerHealEvent;
     [SerializeField] private VoidEventChannelSO playerDeathEvent;
@@ -30,9 +30,8 @@ public class HealthBarUI : MonoBehaviour
     private void Start()
     {
         _currentHp = maxHp;
-        slider.minValue = 0;
-        slider.maxValue = maxHp;
-        slider.value = _currentHp;
+
+        healthBar.fillAmount = _currentHp / maxHp;
     }
 
     private void TakeDamage(int damage)
@@ -72,11 +71,11 @@ public class HealthBarUI : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float newValue = Mathf.Lerp(startValue, targetValue, elapsed / duration);
-            slider.value = newValue;
+            healthBar.fillAmount = newValue;
             yield return null;
         }
 
-        slider.value = targetValue;
+        healthBar.fillAmount = targetValue;
         _currentHp = to;
         _sliderCoroutine = null;
     }

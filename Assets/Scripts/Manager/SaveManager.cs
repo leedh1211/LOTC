@@ -22,10 +22,11 @@ public class SaveManager : Singleton<SaveManager>
     [SerializeField] private PlayerStatVariableSO PermanentStat;
     
     private List<AchievementStatus> Achievements;
+   
     protected override void Awake()
     {
         base.Awake();
-        CurrentSave = Load();
+        /*CurrentSave = Load();
 
         OwnedCustomizeItem.RuntimeValue = new BitArray(CustomizeDataTable.GetCustomizeDataCount());
         var bits = DeserializeOwnedItems(CurrentSave.OwnedCustomizeItem);
@@ -40,11 +41,11 @@ public class SaveManager : Singleton<SaveManager>
         PermanentStat.RuntimeValue = CurrentSave.PlayerStat;
         Achievements = CurrentSave.AchievementStatus;
         
-        AchievementManager.Instance.Init(Achievements);
+       AchievementManager.Instance.Init(Achievements);*/
     }
     public void Save()
     {
-        Achievements = AchievementManager.Instance.GetStatusesForSave();
+        /*Achievements = AchievementManager.Instance.GetStatusesForSave();
         
         SaveData data = new SaveData(
             gold: Gold.RuntimeValue,
@@ -58,7 +59,7 @@ public class SaveManager : Singleton<SaveManager>
         
         string json = JsonConvert.SerializeObject(data, Formatting.Indented); 
 
-        File.WriteAllText(SavePath, json);
+        File.WriteAllText(SavePath, json);*/
     }
     public SaveData Load()
     {

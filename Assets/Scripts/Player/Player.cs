@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
+using Monster.Skill;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
@@ -24,6 +27,8 @@ public class Player : MonoBehaviour
     
     [SerializeField] private PlayerVisual playerVisual;
     [SerializeField] private Animator animator;
+    
+    [SerializeField] private Image healthBar;
 
     
     void Awake()
@@ -33,10 +38,12 @@ public class Player : MonoBehaviour
         //Weapon
         weapon = GetComponentInChildren<WeaponHandler>();
     }
-    private void Start()
+
+    private void Update()
     {
-        Debug.Log(MaxHp);
+        healthBar.fillAmount = (float)curHp / (float)maxHp;
     }
+
 
     public void SetSkillData(SkillData data)
     {
@@ -93,6 +100,18 @@ public class Player : MonoBehaviour
         GameObject orbit =  Instantiate(orbitPrefab);
         orbit.transform.SetParent(this.transform);
 
+    }
+
+    [SerializeField] private HitFeedbackPannel feedbackPannel;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out ProjectileController projectileController))
+        {
+            feedbackPannel.enabled = true;
+            
+            curHp -= (int)projectileController.Damage;
+        }
     }
 }
 
