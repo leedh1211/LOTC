@@ -17,7 +17,7 @@ MonoBehaviour:
   mainAnimator: {fileID: 0}
   stages:
   - Maps:
-    - {fileID: 11400000, guid: eaa9e51d343424e41899f68df98a96b5, type: 2}
+    - {fileID: 11400000, guid: 6119d8d4961c84047aa9a54b1a7e6926, type: 2}
   - Maps:
     - {fileID: 11400000, guid: bc62eab5e48f24645b6307ad08d23b40, type: 2}
   - Maps:
