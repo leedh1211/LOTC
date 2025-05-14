@@ -266,6 +266,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e27ca3cb406af540bf39126ca5d545c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &653878421 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1651987663440263228, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
+  m_PrefabInstance: {fileID: 2179388442179604148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &883562086
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,15 +308,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1460636736 stripped
+--- !u!114 &939060972 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5121435098419987997, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7200475745956201112, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
   m_PrefabInstance: {fileID: 2179388442179604148}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1360657289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7701407661339660385, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
+  m_PrefabInstance: {fileID: 2179388442179604148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1471018320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8615360525629160423, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
+  m_PrefabInstance: {fileID: 2179388442179604148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1728501390 stripped
@@ -593,11 +626,15 @@ PrefabInstance:
     - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
       propertyPath: exitButton
       value: 
-      objectReference: {fileID: 1460636736}
+      objectReference: {fileID: 0}
     - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 1728501390}
+    - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: gameOverState
+      value: 
+      objectReference: {fileID: 1471018320}
     - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
       propertyPath: tileMapLoader
       value: 
@@ -607,9 +644,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 367804373}
     - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: gameClearState
+      value: 
+      objectReference: {fileID: 653878421}
+    - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
       propertyPath: monsterFactory
       value: 
       objectReference: {fileID: 2141874007}
+    - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: gameOverGoldText
+      value: 
+      objectReference: {fileID: 939060972}
+    - target: {fileID: 9191922180610961209, guid: 9dafc58d2545ce94fa4f7cf20e73bfc9, type: 3}
+      propertyPath: gameClearGoldText
+      value: 
+      objectReference: {fileID: 1360657289}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -689,7 +738,7 @@ PrefabInstance:
     - target: {fileID: 7754994277986610595, guid: 69b48101cf3dcc5468f6d6fdd1be282f, type: 3}
       propertyPath: stageDataList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: cb992f07914eb1c40a5d854f4b6705a5, type: 2}
+      objectReference: {fileID: 11400000, guid: fe6a96ee2dbf7e749bf9746c3f0ccf24, type: 2}
     - target: {fileID: 7754994277986610595, guid: 69b48101cf3dcc5468f6d6fdd1be282f, type: 3}
       propertyPath: stageDataList.Array.data[1]
       value: 
