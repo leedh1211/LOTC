@@ -691,6 +691,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 844397598}
     m_Modifications:
+    - target: {fileID: 306650970599359810, guid: 5485f5036862b5f458424f88c255b338, type: 3}
+      propertyPath: scaleOption.max.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 306650970599359810, guid: 5485f5036862b5f458424f88c255b338, type: 3}
+      propertyPath: scaleOption.max.y
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 308119616558279580, guid: 5485f5036862b5f458424f88c255b338, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
