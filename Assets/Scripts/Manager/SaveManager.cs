@@ -22,6 +22,7 @@ public class SaveManager : Singleton<SaveManager>
     [SerializeField] private PlayerStatVariableSO PermanentStat;
     
     private List<AchievementStatus> Achievements;
+   
     protected override void Awake()
     {
         base.Awake();
@@ -40,7 +41,7 @@ public class SaveManager : Singleton<SaveManager>
         PermanentStat.RuntimeValue = CurrentSave.PlayerStat;
         Achievements = CurrentSave.AchievementStatus;
         
-        AchievementManager.Instance.Init(Achievements);
+       // AchievementManager.Instance.Init(Achievements);
     }
     public void Save()
     {
