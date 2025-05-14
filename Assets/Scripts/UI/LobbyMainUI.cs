@@ -24,13 +24,14 @@ public class LobbyMainUI : MonoBehaviour
     private void Awake()
     {
         SetStageInfo(selectedStageLevel.RuntimeValue);
-      
+        
         startButton.onClick.AddListener(() => GameManager.Instance.StartMainGame());
-        onGoldChanged.OnEventRaised += SetGoldText;
     }
 
     private void Start()
     {
+        onGoldChanged.OnEventRaised += SetGoldText;
+
         snapScrollView.DirectUpdateItemList(1);
         SetGoldText();
     }
