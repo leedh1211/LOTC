@@ -9,16 +9,22 @@ using UnityEngine.UI;
 public class StatPage : MonoBehaviour
 {
     private readonly string[] statNames = { "최대 체력", "공격력", "공격 속도" };
+    private readonly Vector3[] lightPos = { new Vector3(-250,292.5f), new Vector3(0, 292.5f), new Vector3(250, 292.5f) };
     [SerializeField] private Button runBtn;
     [SerializeField] private PlayerStatVariableSO permanentStat;
     [SerializeField] private List<Image> statImages;
+    [SerializeField] private List<Image> statIcons;
+    [Header("레벨업 이미지 관련")]
     [SerializeField] private Image levelUpImage;
     [SerializeField] private TextMeshProUGUI levelUpText;
     [SerializeField] private Image levelUpStatImage;
+    [Header("이미지 텍스트")]
     [SerializeField] private TextMeshProUGUI maxHpText;
     [SerializeField] private TextMeshProUGUI powerText;
     [SerializeField] private TextMeshProUGUI delayText;
     [Space(10f)]
+    [SerializeField] private Image lightImg;
+    [Space(10f),Header("골드")]
     [SerializeField] private IntegerVariableSO gold;
     [SerializeField] private VoidEventChannelSO onGoldChanged;
     private int price = 500;
@@ -45,6 +51,7 @@ public class StatPage : MonoBehaviour
         runBtn.onClick.RemoveAllListeners();
         runBtn.onClick.AddListener(() => RunRoulette());
         UpdateStatTexts();
+        lightImg.gameObject.SetActive(false);
     }
 
     public void RunRoulette()
@@ -66,7 +73,7 @@ public class StatPage : MonoBehaviour
         float timer = 0f;
         int currentIndex = 0;
         int count = statImages.Count;
-
+        lightImg.gameObject.SetActive(true);
         SetAnimation(-1); 
 
         while (timer < spinDuration)
@@ -86,8 +93,7 @@ public class StatPage : MonoBehaviour
 
         statUpgraders[finalIndex]?.Invoke();
         SaveManager.Instance.Save();
-        levelUpStatImage.sprite = statImages[finalIndex].sprite;
-        levelUpStatImage.color = statImages[finalIndex].color;
+        levelUpStatImage.sprite = statIcons[finalIndex].sprite;
         levelUpText.text = statNames[finalIndex] + "증가!";
         var startPos = levelUpImage.rectTransform.anchoredPosition;
         levelUpImage.gameObject.SetActive(true);
@@ -102,12 +108,15 @@ public class StatPage : MonoBehaviour
     }
     private void SetAnimation(int highlightIndex)
     {
+        if(highlightIndex != -1)
+            lightImg.transform.localPosition = lightPos[highlightIndex];
         for (int i = 0; i < statImages.Count; i++)
         {
             int index = i;
             var image = statImages[index];
             var color = image.color;
 
+            
             color.a = (index == highlightIndex) ? 1f : 0.3f;
             image.color = color;
             Vector3 vec = new Vector3(0.7f, 0.7f);
