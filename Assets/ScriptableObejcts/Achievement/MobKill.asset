@@ -15,5 +15,5 @@ MonoBehaviour:
   seq: 4
   title: "\uBAAC\uC2A4\uD130 \uCC98\uCE58"
   description: "\uBAAC\uC2A4\uD130\uB97C {Level}\uB9C8\uB9AC \uCC98\uCE58\uD558\uC600\uC2B5\uB2C8\uB2E4."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5558b66f06125e145a0b693a7b303afb, type: 3}
   levels: 0a0000003200000064000000

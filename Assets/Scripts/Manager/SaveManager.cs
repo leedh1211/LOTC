@@ -22,6 +22,7 @@ public class SaveManager : Singleton<SaveManager>
     [SerializeField] private PlayerStatVariableSO PermanentStat;
     
     private List<AchievementStatus> Achievements;
+   
     protected override void Awake()
     {
         base.Awake();
@@ -34,13 +35,13 @@ public class SaveManager : Singleton<SaveManager>
             OwnedCustomizeItem.RuntimeValue[i] = bits[i];
         }
         CurrentCustomItemId.RuntimeValue = CurrentSave.CurrentCustomizeItem;
-        Gold.RuntimeValue = CurrentSave.Gold;
+        //Gold.RuntimeValue = CurrentSave.Gold;
         SelectedStage.RuntimeValue = CurrentSave.SelectedStage;
         ClearedStage.RuntimeValue = CurrentSave.ClearedStage;
         PermanentStat.RuntimeValue = CurrentSave.PlayerStat;
         Achievements = CurrentSave.AchievementStatus;
         
-        AchievementManager.Instance.Init(Achievements);
+       // AchievementManager.Instance.Init(Achievements);
     }
     public void Save()
     {

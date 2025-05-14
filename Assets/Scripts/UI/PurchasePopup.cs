@@ -19,5 +19,4 @@ public class PurchasePopup : MonoBehaviour
         });
         cancelBtn.onClick.AddListener(()=>gameObject.SetActive(false));
     }
-
 }
