@@ -6,6 +6,8 @@ namespace Monster.Skill
 {
     public class ProjectileController : MonoBehaviour
     {
+        public float Damage => damage;
+        
         Vector2 direction;
         private float damage;
         private float speed;

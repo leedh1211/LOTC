@@ -4319,6 +4319,7 @@ MonoBehaviour:
   slider: {fileID: 9077998512191414439}
   testGainExp: 50
   onLevelUp: {fileID: 11400000, guid: c250734c1571be749bb0035898a00142, type: 2}
+  gainExp: {fileID: 11400000, guid: 87cd9e727dc2a714ca5fcd155428d839, type: 2}
 --- !u!1 &8483193980485390929
 GameObject:
   m_ObjectHideFlags: 0

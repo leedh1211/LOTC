@@ -26,7 +26,7 @@ public class SaveManager : Singleton<SaveManager>
     protected override void Awake()
     {
         base.Awake();
-        CurrentSave = Load();
+        /*CurrentSave = Load();
 
         OwnedCustomizeItem.RuntimeValue = new BitArray(CustomizeDataTable.GetCustomizeDataCount());
         var bits = DeserializeOwnedItems(CurrentSave.OwnedCustomizeItem);
@@ -35,17 +35,17 @@ public class SaveManager : Singleton<SaveManager>
             OwnedCustomizeItem.RuntimeValue[i] = bits[i];
         }
         CurrentCustomItemId.RuntimeValue = CurrentSave.CurrentCustomizeItem;
-        //Gold.RuntimeValue = CurrentSave.Gold;
+        Gold.RuntimeValue = CurrentSave.Gold;
         SelectedStage.RuntimeValue = CurrentSave.SelectedStage;
         ClearedStage.RuntimeValue = CurrentSave.ClearedStage;
         PermanentStat.RuntimeValue = CurrentSave.PlayerStat;
         Achievements = CurrentSave.AchievementStatus;
         
-       // AchievementManager.Instance.Init(Achievements);
+       AchievementManager.Instance.Init(Achievements);*/
     }
     public void Save()
     {
-        Achievements = AchievementManager.Instance.GetStatusesForSave();
+        /*Achievements = AchievementManager.Instance.GetStatusesForSave();
         
         SaveData data = new SaveData(
             gold: Gold.RuntimeValue,
@@ -59,7 +59,7 @@ public class SaveManager : Singleton<SaveManager>
         
         string json = JsonConvert.SerializeObject(data, Formatting.Indented); 
 
-        File.WriteAllText(SavePath, json);
+        File.WriteAllText(SavePath, json);*/
     }
     public SaveData Load()
     {

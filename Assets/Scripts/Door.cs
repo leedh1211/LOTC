@@ -29,6 +29,8 @@ public class Door : MonoBehaviour
 
     private void OpenDoor()
     {
-        SceneManager.LoadScene("GameScene");
+        FindAnyObjectByType<MainGameController>().NewGame();
+        
+        Destroy(gameObject);
     }
 }

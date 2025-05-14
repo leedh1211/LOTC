@@ -17,5 +17,7 @@ MonoBehaviour:
   spawns:
   - monsterName: 2
     spawnPosition: {x: -2, y: 3}
-  - monsterName: 5
+  - monsterName: 1
+    spawnPosition: {x: 2, y: 3}
+  - monsterName: 0
     spawnPosition: {x: 2, y: 3}

@@ -21,14 +21,14 @@ public class SkillSelectMenuUI : MonoBehaviour
     private void Start()
     {
         levelUpEvent.OnEventRaised += ShowPanel;
-       
     }
 
-    private void OnEnable()
+    private void OnDestroy()
     {
-       
-             
+        levelUpEvent.OnEventRaised -= ShowPanel;
     }
+
+
     /*
      * 
     private void OnDisable()

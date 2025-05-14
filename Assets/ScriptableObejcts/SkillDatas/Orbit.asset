@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: "\uACF5\uC804\uC2A4\uD0AC"
   skillInfo: 
-  icon: {fileID: 1286913863, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
+  icon: {fileID: 211138306, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
   type: 3
   combinable: 
