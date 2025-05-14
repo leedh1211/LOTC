@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Manager;
 using Monster;
 using Monster.AI;
 using Monster.ScriptableObject;
@@ -98,6 +99,11 @@ public class MonsterController : MonoBehaviour
             monsterDropPrefab = monsterDropPrefab
         };
         killedMonster.Raise(this);
+        AchievementManager.Instance.AddProgress(4, 1);
+        if (monsterConfig.monsterType == MonsterType.boss)
+        {
+            AchievementManager.Instance.AddProgress(1, 1);    
+        }
         Destroy(gameObject);
     }
 }

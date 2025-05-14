@@ -16,23 +16,25 @@ public class RefectArrow : ArrowBase
 
     protected override void Update()
     {
-        // base.Update(); //µÎ¹ø¾¿ ¿òÁ÷¿©¼­ ÀÌ»óÇÑ°Å¿´´Ù.. 
+        if (isDisable) return;
+        
+        // base.Update(); //ï¿½Î¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Ñ°Å¿ï¿½ï¿½ï¿½.. 
         float moveDistance = speed * Time.deltaTime;
 
-        //ÅÚ·¹Æ÷Æ®
+        //ï¿½Ú·ï¿½ï¿½ï¿½Æ®
         RaycastHit2D hit = Physics2D.Raycast(tipPos.position, transform.up, 0.2f, reflectLayer);
         if (hit.collider)
         {
-            moveDirection = Vector3.Reflect(transform.up, hit.normal);//¹æÇâ¿¡¼­ hitnormal.
-                                                                      // transform.position = hit.point + hit.normal * 0.01f; ¿©±â¼­ ÅÚ·¹Æ÷Æ® ÇØ¼­ Ãæµ¹ÀÌ»ý±ä´Ù. 
+            moveDirection = Vector3.Reflect(transform.up, hit.normal);//ï¿½ï¿½ï¿½â¿¡ï¿½ï¿½ hitnormal.
+                                                                      // transform.position = hit.point + hit.normal * 0.01f; ï¿½ï¿½ï¿½â¼­ ï¿½Ú·ï¿½ï¿½ï¿½Æ® ï¿½Ø¼ï¿½ ï¿½æµ¹ï¿½Ì»ï¿½ï¿½ï¿½ï¿½. 
 
             curBonce++;
-            //ºÎµúÃÆ´Ù.
+            //ï¿½Îµï¿½ï¿½Æ´ï¿½.
 
             if (curBonce > maxBounce)
             {
                 Destroy(gameObject);
-                //³ªÁß¿¡ Ç®¸µ ÇÒ²¨¾ß 
+                //ï¿½ï¿½ï¿½ß¿ï¿½ Ç®ï¿½ï¿½ ï¿½Ò²ï¿½ï¿½ï¿½ 
             }
 
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90f;
@@ -60,7 +62,7 @@ public class RefectArrow : ArrowBase
         Gizmos.DrawRay(tipPos.position, transform.up * 0.2f);
         if (moveDirection == Vector3.zero)
         {
-            Debug.LogWarning("moveDirectionÀÌ zeroÀÔ´Ï´Ù. Ray°¡ ±×·ÁÁöÁö ¾Ê¾Æ¿ä.");
+            Debug.LogWarning("moveDirectionï¿½ï¿½ zeroï¿½Ô´Ï´ï¿½. Rayï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æ¿ï¿½.");
             return;
         }
     }

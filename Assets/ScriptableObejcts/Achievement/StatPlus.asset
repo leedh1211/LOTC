@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42d65dc64cf477f979221dfbf9f21a1, type: 3}
+  m_Name: StatPlus
+  m_EditorClassIdentifier: 
+  seq: 2
+  title: "\uC2A4\uD0EF\uAD6C\uB9E4\uC5C5\uC801"
+  description: "\uC2A4\uD0EF\uC744 {Level}\uD68C \uB9CC\uD07C \uAD6C\uB9E4\uD558\uC600\uC2B5\uB2C8\uB2E4."
+  icon: {fileID: 0}
+  levels: 01000000050000000a000000

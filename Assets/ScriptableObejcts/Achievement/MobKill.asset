@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42d65dc64cf477f979221dfbf9f21a1, type: 3}
+  m_Name: MobKill
+  m_EditorClassIdentifier: 
+  seq: 4
+  title: "\uBAAC\uC2A4\uD130 \uCC98\uCE58"
+  description: "\uBAAC\uC2A4\uD130\uB97C {Level}\uB9C8\uB9AC \uCC98\uCE58\uD558\uC600\uC2B5\uB2C8\uB2E4."
+  icon: {fileID: 0}
+  levels: 0a0000003200000064000000
