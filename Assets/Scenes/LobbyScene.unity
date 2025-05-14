@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootedGold: {fileID: 11400000, guid: eb2a592254021e149825d5e13a2a1458, type: 2}
-  gold: {fileID: 0}
+  gold: {fileID: 11400000, guid: 647b62941e3931343b553575da104cad, type: 2}
 --- !u!4 &1387953211
 Transform:
   m_ObjectHideFlags: 0
