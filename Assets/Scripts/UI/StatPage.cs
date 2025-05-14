@@ -8,16 +8,20 @@ using UnityEngine.UI;
 
 public class StatPage : MonoBehaviour
 {
+    private readonly string[] statNames = { "최대 체력", "공격력", "공격 속도" };
     [SerializeField] private Button runBtn;
     [SerializeField] private PlayerStatVariableSO permanentStat;
     [SerializeField] private List<Image> statImages;
     [SerializeField] private Image levelUpImage;
     [SerializeField] private TextMeshProUGUI levelUpText;
     [SerializeField] private Image levelUpStatImage;
-    private readonly string[] statNames = { "최대 체력", "공격력", "공격 속도" };
     [SerializeField] private TextMeshProUGUI maxHpText;
     [SerializeField] private TextMeshProUGUI powerText;
     [SerializeField] private TextMeshProUGUI delayText;
+    [Space(10f)]
+    [SerializeField] private IntegerVariableSO gold;
+    [SerializeField] private VoidEventChannelSO onGoldChanged;
+    private int price = 500;
     private float spinDuration = 1.5f;
     private float spinInterval = 0.1f;
 
@@ -45,6 +49,13 @@ public class StatPage : MonoBehaviour
 
     public void RunRoulette()
     {
+        if (gold.RuntimeValue < price)
+        {
+            Debug.Log("골드 부족");
+            return;
+        }
+        gold.RuntimeValue -= price;
+        onGoldChanged.Raise();
         if (rouletteCoroutine != null)
             StopCoroutine(rouletteCoroutine);
 
@@ -56,7 +67,7 @@ public class StatPage : MonoBehaviour
         int currentIndex = 0;
         int count = statImages.Count;
 
-        SetAnimation(-1); // 모두 흐리게
+        SetAnimation(-1); 
 
         while (timer < spinDuration)
         {

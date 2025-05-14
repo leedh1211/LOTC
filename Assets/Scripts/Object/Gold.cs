@@ -26,7 +26,10 @@ public class Gold : MonoBehaviour
     [Header("Events")]
     [SerializeField] private TransformEventChannelSO rooting;
     [SerializeField] private IntegerEventChannelSO rootedGold;
-
+    [SerializeField] private VoidEventChannelSO onGoldChanged;
+    [Space(10f)]
+    [Header("VariableSO")]
+    [SerializeField] private IntegerVariableSO gold;
 
     private ProgressTweener chaseTweener;
     
@@ -80,7 +83,8 @@ public class Gold : MonoBehaviour
                     () =>
                     {
                         rootedGold.Raise(goldAmount);
-                        
+                        gold.RuntimeValue += goldAmount;
+                        onGoldChanged.Raise();
                         gameObject.SetActive(false);
                     }).SetCurve(easeInCurve);
                 

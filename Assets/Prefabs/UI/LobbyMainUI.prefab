@@ -557,6 +557,8 @@ MonoBehaviour:
   maxHpText: {fileID: 3960714475597171643}
   powerText: {fileID: 4107960792825069712}
   delayText: {fileID: 1507158597992587709}
+  gold: {fileID: 11400000, guid: 647b62941e3931343b553575da104cad, type: 2}
+  onGoldChanged: {fileID: 11400000, guid: e0a08bc57546f2746a6283252978bd8b, type: 2}
   easeOutCurve:
     serializedVersion: 2
     m_Curve:
@@ -2485,11 +2487,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapScrollView: {fileID: 9067928883711815990}
   stageText: {fileID: 5567458595152107129}
+  goldText: {fileID: 3591144743118528613}
   stageImage: {fileID: 7812038655746057125}
   stageAnimator: {fileID: 8987857007347243045}
   startButton: {fileID: 4534792607059580614}
   stageDataTable: {fileID: 11400000, guid: 8ddae8c83b9a8a448838681166193706, type: 2}
   selectedStageLevel: {fileID: 11400000, guid: 46857d918fefa8443830bdb58ed9467c, type: 2}
+  gold: {fileID: 11400000, guid: 647b62941e3931343b553575da104cad, type: 2}
+  onGoldChanged: {fileID: 11400000, guid: e0a08bc57546f2746a6283252978bd8b, type: 2}
 --- !u!1 &6083673917692969730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,6 +2561,8 @@ MonoBehaviour:
   customizeDataTable: {fileID: 11400000, guid: 49d78e0b7bb04f94db8eb33f63a31dfd, type: 2}
   currentCustomId: {fileID: 11400000, guid: c0666e01150970c43b5057d5eabe3fc1, type: 2}
   ownedCustomItem: {fileID: 11400000, guid: a6deeda6b90b5014bae24734c08218db, type: 2}
+  gold: {fileID: 11400000, guid: 647b62941e3931343b553575da104cad, type: 2}
+  onGoldChanged: {fileID: 11400000, guid: e0a08bc57546f2746a6283252978bd8b, type: 2}
 --- !u!1 &6503779748578040009
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   name: Archer
+  price: 150
   spriteLibraryAsset: {fileID: 7108339969198208228, guid: 7275e344e8e61a5429eee33aad598828, type: 3}
   iconImage: {fileID: 981316760, guid: 6685c1cc18e163f4eac8b49be8ebb6d3, type: 3}
   previewImage: {fileID: -727378795, guid: 6685c1cc18e163f4eac8b49be8ebb6d3, type: 3}
