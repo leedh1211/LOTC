@@ -1,3 +1,5 @@
+/*
+ * 
 using Data;
 using Monster;
 using System.Collections;
@@ -163,3 +165,4 @@ public class MainGameController : MonoBehaviour
         SaveManager.Instance.Save();
     }
 }
+ */

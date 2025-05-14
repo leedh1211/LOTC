@@ -1,4 +1,5 @@
-using Newtonsoft.Json;
+//*
+ /*/using Newtonsoft.Json;
 using System.Collections;
 using System.IO;
 using System.Text;
@@ -47,7 +48,7 @@ public class SaveManager : Singleton<SaveManager>
             stat: PermanentStat.RuntimeValue
             );
 
-        string json = JsonConvert.SerializeObject(data, Formatting.Indented); 
+       // string json = JsonConvert.SerializeObject(data, Formatting.Indented); 
 
         File.WriteAllText(SavePath, json);
     }
@@ -79,3 +80,4 @@ public class SaveManager : Singleton<SaveManager>
         return bits;
     }
 }
+*/
