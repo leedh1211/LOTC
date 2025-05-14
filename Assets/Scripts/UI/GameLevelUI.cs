@@ -17,6 +17,8 @@ public class GameLevelUI : MonoBehaviour
     
     [SerializeField] private VoidEventChannelSO onLevelUp;
 
+    [SerializeField] private TransformEventChannelSO rooting;
+
 
     private int displayLevel = 1;
     
@@ -35,6 +37,7 @@ public class GameLevelUI : MonoBehaviour
         levelText.text = $"Lv {displayLevel}";
         slider.value = 0;
     }
+    
 
   
     private void Update()
