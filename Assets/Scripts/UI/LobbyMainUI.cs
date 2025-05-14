@@ -1,7 +1,5 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LobbyMainUI : MonoBehaviour
@@ -26,14 +24,13 @@ public class LobbyMainUI : MonoBehaviour
     private void Awake()
     {
         SetStageInfo(selectedStageLevel.RuntimeValue);
-        
+      
         startButton.onClick.AddListener(() => GameManager.Instance.StartMainGame());
+        onGoldChanged.OnEventRaised += SetGoldText;
     }
 
     private void Start()
     {
-        onGoldChanged.OnEventRaised += SetGoldText;
-
         snapScrollView.DirectUpdateItemList(1);
         SetGoldText();
     }

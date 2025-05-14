@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using Data;
-
 [System.Serializable]
 public class SaveData
 {
@@ -10,7 +7,6 @@ public class SaveData
     public int CurrentCustomizeItem { get; set; }
     public string OwnedCustomizeItem { get; set; }
     public PlayerpermanentStat PlayerStat { get; set; }
-    public List<AchievementStatus> AchievementStatus { get; set; } = new List<AchievementStatus>();
     public SaveData()
     {
         Gold = 0;
@@ -19,9 +15,8 @@ public class SaveData
         CurrentCustomizeItem = 0;
         OwnedCustomizeItem = "1";
         PlayerStat = new PlayerpermanentStat();
-        AchievementStatus = new List<AchievementStatus>();
     }
-    public SaveData(int gold,int currentCustomizeItem, string ownedCustomizeItem, int selectedStage, int clearedStage, PlayerpermanentStat stat, List<AchievementStatus> achievementStatus)
+    public SaveData(int gold,int currentCustomizeItem, string ownedCustomizeItem, int selectedStage, int clearedStage, PlayerpermanentStat stat)
     {
         Gold = gold;
         CurrentCustomizeItem = currentCustomizeItem;
@@ -29,7 +24,6 @@ public class SaveData
         SelectedStage = selectedStage;
         ClearedStage = clearedStage;
         PlayerStat = stat;
-        AchievementStatus = achievementStatus;
     }
 }
     

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Manager;
 using UnityEngine;
 
 public class Gold : MonoBehaviour
@@ -27,6 +26,7 @@ public class Gold : MonoBehaviour
     [Header("Events")]
     [SerializeField] private TransformEventChannelSO rooting;
     [SerializeField] private IntegerEventChannelSO rootedGold;
+    [SerializeField] private VoidEventChannelSO onGoldChanged;
     [Space(10f)]
     [Header("VariableSO")]
     [SerializeField] private IntegerVariableSO gold;
@@ -84,8 +84,7 @@ public class Gold : MonoBehaviour
                     {
                         rootedGold.Raise(goldAmount);
                         gold.RuntimeValue += goldAmount;
-                        AchievementManager.Instance.AddProgress(6, gold.RuntimeValue);
-                        AchievementManager.Instance.AddProgress(7, gold.RuntimeValue);
+                        onGoldChanged.Raise();
                         gameObject.SetActive(false);
                     }).SetCurve(easeInCurve);
                 

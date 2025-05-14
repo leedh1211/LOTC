@@ -863,10 +863,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainGameCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6500396980815387719, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7114059325812491323, guid: 05c17e80305c47e4aa07442c5601f5e3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

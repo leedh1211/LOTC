@@ -1,10 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Data;
-using Manager;
 using UnityEngine;
 
 public class SaveManager : Singleton<SaveManager>
@@ -20,8 +17,6 @@ public class SaveManager : Singleton<SaveManager>
     [SerializeField] private IntegerVariableSO CurrentCustomItemId;
     [SerializeField] private BitArrayVariableSO OwnedCustomizeItem;
     [SerializeField] private PlayerStatVariableSO PermanentStat;
-    
-    private List<AchievementStatus> Achievements;
     protected override void Awake()
     {
         base.Awake();
@@ -38,24 +33,20 @@ public class SaveManager : Singleton<SaveManager>
         SelectedStage.RuntimeValue = CurrentSave.SelectedStage;
         ClearedStage.RuntimeValue = CurrentSave.ClearedStage;
         PermanentStat.RuntimeValue = CurrentSave.PlayerStat;
-        Achievements = CurrentSave.AchievementStatus;
-        
-        AchievementManager.Instance.Init(Achievements);
+
+
     }
     public void Save()
     {
-        Achievements = AchievementManager.Instance.GetStatusesForSave();
-        
         SaveData data = new SaveData(
             gold: Gold.RuntimeValue,
             currentCustomizeItem: CurrentCustomItemId.RuntimeValue,
             ownedCustomizeItem: SerializeOwnedItems(OwnedCustomizeItem.RuntimeValue),
             selectedStage: SelectedStage.RuntimeValue,
             clearedStage: ClearedStage.RuntimeValue,
-            stat: PermanentStat.RuntimeValue,
-            achievementStatus : Achievements
+            stat: PermanentStat.RuntimeValue
             );
-        
+
         string json = JsonConvert.SerializeObject(data, Formatting.Indented); 
 
         File.WriteAllText(SavePath, json);

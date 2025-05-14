@@ -1,4 +1,3 @@
-using Manager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,9 +52,7 @@ public class CustomizePage : MonoBehaviour
             Debug.Log("골드 부족");
             return;
         }
-        AchievementManager.Instance.AddProgress(2, 1);
         gold.RuntimeValue -= data.Price;
-        AchievementManager.Instance.ChangeProgress(6,gold.RuntimeValue);
         ownedCustomItem.RuntimeValue[id - 1] = true;
         SaveManager.Instance.Save();
         onGoldChanged.Raise();

@@ -2,30 +2,31 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StatPage : MonoBehaviour
 {
-    private readonly string[] statNames = { "ìµœëŒ€ ì²´ë ¥", "ê³µê²©ë ¥", "ê³µê²© ì†ë„" };
-    private readonly Vector3[] lightPos = { new Vector3(-285,292.5f), new Vector3(-20, 292.5f), new Vector3(250, 292.5f) };
+    private readonly string[] statNames = { "ÃÖ´ë Ã¼·Â", "°ø°İ·Â", "°ø°İ ¼Óµµ" };
+    private readonly Vector3[] lightPos = { new Vector3(-250,292.5f), new Vector3(0, 292.5f), new Vector3(250, 292.5f) };
     [SerializeField] private Button runBtn;
     [SerializeField] private PlayerStatVariableSO permanentStat;
     [SerializeField] private List<Image> statImages;
+    [SerializeField] private List<Image> statIcons;
+    [Header("·¹º§¾÷ ÀÌ¹ÌÁö °ü·Ã")]
     [SerializeField] private Image levelUpImage;
     [SerializeField] private TextMeshProUGUI levelUpText;
     [SerializeField] private Image levelUpStatImage;
+    [Header("ÀÌ¹ÌÁö ÅØ½ºÆ®")]
     [SerializeField] private TextMeshProUGUI maxHpText;
     [SerializeField] private TextMeshProUGUI powerText;
     [SerializeField] private TextMeshProUGUI delayText;
     [Space(10f)]
     [SerializeField] private Image lightImg;
-    [Space(10f)]
+    [Space(10f),Header("°ñµå")]
     [SerializeField] private IntegerVariableSO gold;
     [SerializeField] private VoidEventChannelSO onGoldChanged;
-    [SerializeField] private TextMeshProUGUI goldText;
     private int price = 500;
     private float spinDuration = 1.5f;
     private float spinInterval = 0.1f;
@@ -51,18 +52,16 @@ public class StatPage : MonoBehaviour
         runBtn.onClick.AddListener(() => RunRoulette());
         UpdateStatTexts();
         lightImg.gameObject.SetActive(false);
-        goldText.text = price.ToString();
     }
 
     public void RunRoulette()
     {
         if (gold.RuntimeValue < price)
         {
-            Debug.Log("ëˆ ë¶€ì¡±");
+            Debug.Log("°ñµå ºÎÁ·");
             return;
         }
         gold.RuntimeValue -= price;
-        AchievementManager.Instance.ChangeProgress(6,gold.RuntimeValue);
         onGoldChanged.Raise();
         if (rouletteCoroutine != null)
             StopCoroutine(rouletteCoroutine);
@@ -94,8 +93,8 @@ public class StatPage : MonoBehaviour
 
         statUpgraders[finalIndex]?.Invoke();
         SaveManager.Instance.Save();
-        levelUpStatImage.sprite = statImages[finalIndex].sprite;
-        levelUpText.text = statNames[finalIndex] + "ì¦ê°€!";
+        levelUpStatImage.sprite = statIcons[finalIndex].sprite;
+        levelUpText.text = statNames[finalIndex] + "Áõ°¡!";
         var startPos = levelUpImage.rectTransform.anchoredPosition;
         levelUpImage.gameObject.SetActive(true);
         UpdateStatTexts();
@@ -153,8 +152,8 @@ public class StatPage : MonoBehaviour
     }
     private void UpdateStatTexts()
     {
-        maxHpText.text = $"Lv.{permanentStat.RuntimeValue.MaxHp}\n ìµœëŒ€ ì²´ë ¥";
-        powerText.text = $"Lv.{permanentStat.RuntimeValue.Power}\n ê³µê²©ë ¥";
-        delayText.text = $"Lv.{permanentStat.RuntimeValue.Delay}\n ê³µê²© ì†ë„";
+        maxHpText.text = $"Lv.{permanentStat.RuntimeValue.MaxHp}\n ÃÖ´ë Ã¼·Â";
+        powerText.text = $"Lv.{permanentStat.RuntimeValue.Power}\n °ø°İ·Â";
+        delayText.text = $"Lv.{permanentStat.RuntimeValue.Delay}\n °ø°İ ¼Óµµ";
     }
 }

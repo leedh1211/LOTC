@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.97, y: -6.97, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 315fd3b9da720e84ea48db25f2b4a22e, type: 3}
+  m_Sprite: {fileID: 837747132, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -153,4 +153,5 @@ MonoBehaviour:
     m_RotationOrder: 4
   rooting: {fileID: 11400000, guid: c2c6e0aa6200360429d51fca631a3ecd, type: 2}
   rootedGold: {fileID: 11400000, guid: eb2a592254021e149825d5e13a2a1458, type: 2}
+  onGoldChanged: {fileID: 11400000, guid: e0a08bc57546f2746a6283252978bd8b, type: 2}
   gold: {fileID: 11400000, guid: 647b62941e3931343b553575da104cad, type: 2}

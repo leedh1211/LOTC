@@ -9,20 +9,12 @@ using UnityEngine.EventSystems;
 public class ArrowBase : MonoBehaviour
 {
     private WaitForSeconds ws = new WaitForSeconds(0.3f);
-
-    protected bool isDisable;
-
     protected float power;
     protected float speed;
     protected float range;
 
     protected Vector3 moveDirection;
     protected Vector3 startPosition;
-
-
-    [SerializeField] private GameObject hitEffectPrefab;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private AnimationCurve disableCurve;
 
     public virtual void Init(float _power, float _speed, float _range , Vector3 _dir)
     {
@@ -46,21 +38,8 @@ public class ArrowBase : MonoBehaviour
             MonsterController monsterControll = other.GetComponentInParent<MonsterController>();
             if (monsterControll != null)
             {
-                isDisable = true;
-
                 monsterControll.TakeDamage(power);
-                
-                ProgressTweener disableTweener = new(this);
-
-                disableTweener.Play(
-                    (ratio) => spriteRenderer.color = new Color(1, 1, 1, 1 - ratio),
-                    0.33f,
-                    () =>
-                    {
-                        Destroy(gameObject);
-                    });
-                
-                Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+                Destroy(gameObject);
             }
         }
     }
@@ -69,13 +48,12 @@ public class ArrowBase : MonoBehaviour
     protected virtual void Update()
     {
         // moveDirection �������� �̵�
-        if (!isDisable)
-        {
-            transform.position += moveDirection * speed * Time.deltaTime;
-        }
-    }
+        transform.position += moveDirection * speed * Time.deltaTime;
 
- 
+
+      
+     
+    }
 
 
     //�ڷ�ƾ���� ��Ÿ� äũ
