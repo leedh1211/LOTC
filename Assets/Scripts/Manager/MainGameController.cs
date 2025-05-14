@@ -3,8 +3,10 @@ using Monster;
 using System.Collections;
 using System.Collections.Generic;
 using Manager;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MainGameController : MonoBehaviour
@@ -21,7 +23,6 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private GameObject door;
     private GameObject _door;
     
-    [SerializeField] private Button exitButton;
     
     [SerializeField] private Player playerPrefab;
     private Player _player;
@@ -33,8 +34,14 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private IntegerVariableSO selectedStageLevel;
     [SerializeField] private IntegerVariableSO clearedStageLevel;
     [SerializeField] private IntegerVariableSO currentMapIndex;
+    [SerializeField] private IntegerVariableSO totalGold;
     [SerializeField] private TransformEventChannelSO rooting;
     [SerializeField] private SpawnDatabaseSO spawnData;
+    
+    [SerializeField] private TextMeshProUGUI gameOverState;
+    [SerializeField] private TextMeshProUGUI gameOverGoldText;
+    [SerializeField] private TextMeshProUGUI gameClearState;
+    [SerializeField] private TextMeshProUGUI gameClearGoldText;
 
     private List<Vector2> _monsterSpawner;
     private void OnEnable()
@@ -55,12 +62,6 @@ public class MainGameController : MonoBehaviour
         tileMapLoader.LoadRandomTileMap(selectedStageLevel.RuntimeValue);
         
         Init();
-        
-        exitButton.onClick.AddListener(()=>
-        {
-            Time.timeScale = 1;
-            SceneManager.LoadScene("LobbyScene");
-        });
     }
 
 
@@ -113,7 +114,6 @@ public class MainGameController : MonoBehaviour
         if (monsterList.Count != 0) return;
         
         AchievementManager.Instance.AddProgress(5,1);
-        Debug.LogWarning("클리어!!!!");
         currentMapIndex.RuntimeValue++;
         StartCoroutine(DelayEvent());
         if (currentMapIndex.RuntimeValue >= tileMapLoader.numberOfMap)
@@ -135,12 +135,13 @@ public class MainGameController : MonoBehaviour
 
     private void OpenTheDoor()
     {
-        Debug.LogWarning("오픈더도아");
         _door.SetActive(true);
     }
 
     private void GameOver()
     {
+        gameOverState.text = tileMapLoader.StageName;
+        gameOverGoldText.text = totalGold.RuntimeValue.ToString();
         gameOverPanel.SetActive(true);
         Time.timeScale = 0;
         SaveManager.Instance.Save();
@@ -153,6 +154,9 @@ public class MainGameController : MonoBehaviour
             clearedStageLevel.RuntimeValue++;
         }
 
+        gameClearState.text = tileMapLoader.StageName;
+        gameClearGoldText.text = totalGold.RuntimeValue.ToString();
+        
         currentMapIndex.RuntimeValue = 0;
         gameClearPanel.gameObject.SetActive(true);
         Time.timeScale = 0;

@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameClearUI : MonoBehaviour
 {
     [SerializeField] private GameObject gameClearPanel;
-    public void NextGame()
-    {
-        gameClearPanel.SetActive(false);
-        Debug.Log("Next Stage");
-    }
 
     public void ExitGame()
     {
         gameClearPanel.SetActive(false);
-        Debug.Log("Lobby");
+        Time.timeScale = 1;
+        SceneManager.LoadScene("LobbyScene");
     }
 }
