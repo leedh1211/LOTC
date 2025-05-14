@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Stage1
   m_EditorClassIdentifier: 
   stageName: "\uC232"
-  mainImage: {fileID: 0}
-  mainAnimator: {fileID: 0}
+  mainImage: {fileID: 624881274, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
+  mainAnimator: {fileID: 22100000, guid: fa7e7dd19cf500e43b31fd2281959685, type: 2}
   stages:
   - Maps:
     - {fileID: 11400000, guid: 6119d8d4961c84047aa9a54b1a7e6926, type: 2}

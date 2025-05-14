@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121dbdfadbb7ba84e95ade23e99c6c04, type: 3}
   m_Name: Stage2
   m_EditorClassIdentifier: 
-  stageName: "\uC232"
-  mainImage: {fileID: 0}
-  mainAnimator: {fileID: 0}
+  stageName: "\uC0AC\uB9C9"
+  mainImage: {fileID: 1647411172, guid: 9232d733f4edff049b3285cb585d938d, type: 3}
+  mainAnimator: {fileID: 22100000, guid: 23f187746c7dfa149aefb5d35f011bcb, type: 2}
   stages:
   - Maps:
     - {fileID: 11400000, guid: 6119d8d4961c84047aa9a54b1a7e6926, type: 2}
