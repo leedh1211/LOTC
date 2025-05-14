@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76983be3393f0e04fa26062805c7bcdd, type: 3}
+  m_Name: Map1_4
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0}
+  gridMap: {fileID: 431310707506012294, guid: 5e9aaa1b59afc404daf51ed7ea01034e, type: 3}
+  spawnArea: []
+  playerSpawnPosition: {x: 0, y: 0}
