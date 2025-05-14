@@ -26,6 +26,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         yield return SceneManager.LoadSceneAsync(sceneName);
 
+        yield return new WaitForSeconds(0.5f);
         yield return screenFadeUI.Fade(true,0.2f);
 
     }
