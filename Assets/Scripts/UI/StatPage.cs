@@ -2,28 +2,29 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StatPage : MonoBehaviour
 {
-    private readonly string[] statNames = { "ÃÖ´ë Ã¼·Â", "°ø°Ý·Â", "°ø°Ý ¼Óµµ" };
+    private readonly string[] statNames = { "ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½", "ï¿½ï¿½ï¿½Ý·ï¿½", "ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½" };
     private readonly Vector3[] lightPos = { new Vector3(-285,292.5f), new Vector3(-20, 292.5f), new Vector3(250, 292.5f) };
     [SerializeField] private Button runBtn;
     [SerializeField] private PlayerStatVariableSO permanentStat;
     [SerializeField] private List<Image> statImages;
-    [Header("·¹º§¾÷ ÀÌ¹ÌÁö °ü·Ã")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private Image levelUpImage;
     [SerializeField] private TextMeshProUGUI levelUpText;
     [SerializeField] private Image levelUpStatImage;
-    [Header("ÀÌ¹ÌÁö ÅØ½ºÆ®")]
+    [Header("ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®")]
     [SerializeField] private TextMeshProUGUI maxHpText;
     [SerializeField] private TextMeshProUGUI powerText;
     [SerializeField] private TextMeshProUGUI delayText;
     [Space(10f)]
     [SerializeField] private Image lightImg;
-    [Space(10f),Header("°ñµå")]
+    [Space(10f),Header("ï¿½ï¿½ï¿½")]
     [SerializeField] private IntegerVariableSO gold;
     [SerializeField] private VoidEventChannelSO onGoldChanged;
     [SerializeField] private TextMeshProUGUI goldText;
@@ -59,10 +60,11 @@ public class StatPage : MonoBehaviour
     {
         if (gold.RuntimeValue < price)
         {
-            Debug.Log("°ñµå ºÎÁ·");
+            Debug.Log("ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
             return;
         }
         gold.RuntimeValue -= price;
+        AchievementManager.Instance.ChangeProgress(6,gold.RuntimeValue);
         onGoldChanged.Raise();
         if (rouletteCoroutine != null)
             StopCoroutine(rouletteCoroutine);
@@ -95,7 +97,7 @@ public class StatPage : MonoBehaviour
         statUpgraders[finalIndex]?.Invoke();
         SaveManager.Instance.Save();
         levelUpStatImage.sprite = statImages[finalIndex].sprite;
-        levelUpText.text = statNames[finalIndex] + "Áõ°¡!";
+        levelUpText.text = statNames[finalIndex] + "ï¿½ï¿½ï¿½ï¿½!";
         var startPos = levelUpImage.rectTransform.anchoredPosition;
         levelUpImage.gameObject.SetActive(true);
         UpdateStatTexts();
@@ -153,8 +155,8 @@ public class StatPage : MonoBehaviour
     }
     private void UpdateStatTexts()
     {
-        maxHpText.text = $"Lv.{permanentStat.RuntimeValue.MaxHp}\n ÃÖ´ë Ã¼·Â";
-        powerText.text = $"Lv.{permanentStat.RuntimeValue.Power}\n °ø°Ý·Â";
-        delayText.text = $"Lv.{permanentStat.RuntimeValue.Delay}\n °ø°Ý ¼Óµµ";
+        maxHpText.text = $"Lv.{permanentStat.RuntimeValue.MaxHp}\n ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½";
+        powerText.text = $"Lv.{permanentStat.RuntimeValue.Power}\n ï¿½ï¿½ï¿½Ý·ï¿½";
+        delayText.text = $"Lv.{permanentStat.RuntimeValue.Delay}\n ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½";
     }
 }

@@ -1101,6 +1101,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1387953211}
   - component: {fileID: 1387953210}
+  - component: {fileID: 1387953212}
+  - component: {fileID: 1387953213}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1136,6 +1138,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1387953212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387953209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e8b513d1d746c6b161e37a80869e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1387953213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387953209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97342c7477f544d5a8b56c9ea3532739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievements:
+  - {fileID: 11400000, guid: b8731c9757de35b4f9ee74fef3b907ce, type: 2}
+  - {fileID: 11400000, guid: 353a1a65808d9c54fb328a945dea5028, type: 2}
+  - {fileID: 11400000, guid: 7d99ab9932845924e9b57419e2d0225f, type: 2}
+  - {fileID: 11400000, guid: 9849602887b6b654fbad49687124f928, type: 2}
+  - {fileID: 11400000, guid: afeed9cfd56146c48b7ee04249d04274, type: 2}
+  - {fileID: 11400000, guid: f0b45e3d8431cf64dbe5ac18750c1658, type: 2}
+  - {fileID: 11400000, guid: 01d6df99112534b4797bd8dbeb0cfea8, type: 2}
 --- !u!114 &1549531165 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1436878746481929517, guid: 02fe8769985100546bb712d5d58945d2, type: 3}
