@@ -954,11 +954,11 @@ PrefabInstance:
     - target: {fileID: 7754994277986610595, guid: 69b48101cf3dcc5468f6d6fdd1be282f, type: 3}
       propertyPath: stageDataList.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: f4e68a4b85f55e7458b16b7382a6f46d, type: 2}
+      objectReference: {fileID: 11400000, guid: fe6a96ee2dbf7e749bf9746c3f0ccf24, type: 2}
     - target: {fileID: 7754994277986610595, guid: 69b48101cf3dcc5468f6d6fdd1be282f, type: 3}
       propertyPath: stageDataList.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: a43397f03c606f84f832e7fd93b5ac89, type: 2}
+      objectReference: {fileID: 11400000, guid: fe6a96ee2dbf7e749bf9746c3f0ccf24, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1163,15 +1163,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1996123734953004832, guid: 6da24294d1e5efd4498f17370ed26f9b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8575696
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1996123734953004832, guid: 6da24294d1e5efd4498f17370ed26f9b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8052506
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1996123734953004832, guid: 6da24294d1e5efd4498f17370ed26f9b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4145737
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1996123734953004832, guid: 6da24294d1e5efd4498f17370ed26f9b, type: 3}
       propertyPath: m_LocalRotation.w

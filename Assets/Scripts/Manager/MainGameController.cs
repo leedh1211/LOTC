@@ -5,9 +5,6 @@ using System.Collections.Generic;
 using Manager;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class MainGameController : MonoBehaviour
 {
@@ -96,6 +93,7 @@ public class MainGameController : MonoBehaviour
             return;
         }
         monsterList.RuntimeValue = new();
+        
         foreach (var info in spawnDataSo.spawns)
         {
             MonsterController monster = monsterFactory.SpawnMonster(info.monsterName, info.spawnPosition, _player.gameObject);

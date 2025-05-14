@@ -10,46 +10,53 @@ using Random = UnityEngine.Random;
 
 public class TileMapLoader : MonoBehaviour
 {
+    public Grid CurrentGrid
+    {
+        get { return _currentGrid; }
+    }
+    
+    public TileMapData TileMap
+    {
+        get { return _tileMap; }
+    }
+    
+    public float MinY
+    {
+        get { return _minY; }
+    }
+    
+    public float MaxY
+    {
+        get { return _maxY; }
+    }
+    
+    public int numberOfMap = 0;
+
+    public string StageName = "";
+
+    
     [SerializeField] private List<StageDataSO> stageDataList;
     [SerializeField] private IntegerVariableSO currentMapIndex;
     [SerializeField] private GridManager gridManager;
 
     private Grid _currentGrid;
-    public Grid CurrentGrid
-    {
-        get { return _currentGrid; }
-    }
+  
     private TileMapData _tileMap;
-
-    public TileMapData TileMap
-    {
-        get { return _tileMap; }
-    }
 
     private float _minY;
 
-    public float MinY
-    {
-        get { return _minY; }
-    }
-
     private float _maxY;
 
-    public float MaxY
-    {
-        get { return _maxY; }
-    }
-
-    public int numberOfMap = 0;
-
-    public string StageName = "";
 
 
     public void LoadRandomTileMap(int stageLevel)
     {
         var stageInfo = stageDataList[stageLevel].Stages;
+        
         numberOfMap = stageInfo.Count;
+        
         StageName = stageDataList[stageLevel].StageName;
+        
         var currentStage = stageInfo[currentMapIndex.RuntimeValue];
 
         if (stageInfo == null || currentStage.Maps.Count == 0)
@@ -58,8 +65,11 @@ public class TileMapLoader : MonoBehaviour
             return;
         }
         
+        
         int randomIndex = Random.Range(0, currentStage.Maps.Count);
+        
         var selectedTileMapData = currentStage.Maps[randomIndex];
+        
         LoadTileMap(selectedTileMapData);
     }
 
