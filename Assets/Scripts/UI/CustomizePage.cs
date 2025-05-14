@@ -10,6 +10,9 @@ public class CustomizePage : MonoBehaviour
     [SerializeField] private CustomizeDataTable customizeDataTable;
     [SerializeField] private IntegerVariableSO currentCustomId;
     [SerializeField] private BitArrayVariableSO ownedCustomItem;
+
+    [SerializeField] private IntegerVariableSO gold;
+    [SerializeField] private VoidEventChannelSO onGoldChanged;
     void Start()
     {
         if (customizeDataTable.TryGetCustomizeData(currentCustomId.RuntimeValue, out var image))
@@ -42,7 +45,16 @@ public class CustomizePage : MonoBehaviour
     }
     private void OnPurchase(int id)
     {
+        if (!customizeDataTable.TryGetCustomizeData(id, out var data))
+            return;
+        if (gold.RuntimeValue < data.Price)
+        {
+            Debug.Log("골드 부족");
+            return;
+        }
+        gold.RuntimeValue -= data.Price;
         ownedCustomItem.RuntimeValue[id - 1] = true;
         SaveManager.Instance.Save();
+        onGoldChanged.Raise();
     }
 }

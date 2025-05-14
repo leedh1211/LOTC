@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   name: Ninja
+  price: 200
   spriteLibraryAsset: {fileID: 7108339969198208228, guid: 39df459fef5f87f468a80e7b50b27edf, type: 3}
   iconImage: {fileID: 1427562322, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
   previewImage: {fileID: -1751820622, guid: 32f8c7ce2070af94da6c1c5744305a12, type: 3}
