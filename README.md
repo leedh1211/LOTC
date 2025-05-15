@@ -15,61 +15,49 @@
 12. [Trouble Shooting](#trouble-shooting)
     
 ## 👨‍🏫 프로젝트 소개
-
+궁수의 전설을 2d 탑뷰로 바꿔 제작한 프로젝트 입니다.
 
 ## 팀소개
+![image](https://github.com/user-attachments/assets/7834ca27-127f-42bf-8919-47ef3b7d3495)
 
 
 ## 프로젝트 계기
-
+궁수의 전설을 모작하여 스킬의 확장성 구현, 맵 확장, 몬스터 구현 등을 위하여 작성했습니다.
 
 ## 💜 주요기능
 
-- 기능 1
+- 디자인 패턴
+  - Singleton Pattern
+  - Observer Pattern 
+- Object Pool 
 
-- 기능 2
+- A* 알고리즘을 통한 몬스터 to player이동
 
-- 기능 3
-
-- 기능 4
+- Scriptable Object를 이용한 이벤트 및 필드 구현
 
 
 ## ⏲️ 개발기간
-- 2025-05-08
+- 2025-05-08 ~ 2025-05-15
 
 ## 📚️ 기술스택
 
 ### ✔️ Language
-
-
-### ✔️ Version Control
+- C#
 
 ### ✔️ IDE
-
-### ✔️ Framework
-
-### ✔️ Deploy
-
-
-### ✔️  DBMS
-
-## 서비스 구조
-
-
+- Visual Studio
+- Raider
+  
+### ✔️ Engine
+- Unity
 
 ## 와이어프레임
+![image](https://github.com/user-attachments/assets/52f0b477-e251-46dc-8b0d-1ab29e26e6cc)
 
 
+![image](https://github.com/user-attachments/assets/e87da0b2-1b3e-4055-b241-c29a07613603)
 
-## API 명세서
+![image](https://github.com/user-attachments/assets/cbda9c3d-2e9d-4e3d-bb00-0e1e335dfe0f)
 
+![image](https://github.com/user-attachments/assets/37c51415-094a-4a7c-b163-70ae7c19ed05)
 
-## ERD
-
-
-## 프로젝트 파일 구조
-
-
-
-
-## Trouble Shooting
