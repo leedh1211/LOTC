@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94965468bc725c4c844c3f639b76009, type: 3}
+  m_Name: Native
+  m_EditorClassIdentifier: 
+  id: 1
+  name: Native
+  spriteLibraryAsset: {fileID: 7108339969198208228, guid: e9f9c3d5018d9774c93e56470b9a37c5, type: 3}
+  iconImage: {fileID: -616333776, guid: 904aea80c0bef80488113a51d9e9a760, type: 3}
+  previewImage: {fileID: -1751820622, guid: 904aea80c0bef80488113a51d9e9a760, type: 3}

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb7b6efa71a420e8e5a3cfc8db7c5cd, type: 3}
+  m_Name: Mob2
+  m_EditorClassIdentifier: 
+  monsterName: 1
+  monsterType: 0
+  monsterStatData: {fileID: 11400000, guid: 0a8125b1ee28eff45b9bcde09617d205, type: 2}
+  skillData:
+  - {fileID: 11400000, guid: 0f1efc3c95b140c44827d888ab77c676, type: 2}
+  AnimatorOverrideController: {fileID: 22100000, guid: 85b79ee9d68ba3a459143eafe1b049b9, type: 2}
+  SpriteOverride: {fileID: 21300000, guid: 3bdc2fba20812be4d8f2d88001d8d10b, type: 3}
+  goldQuantity: 1
+  isFly: 0
+  colliderSizeX: 1.6
+  colliderSizeY: 1.9
+  colliderOffX: 0
+  colliderOffY: -0.3
