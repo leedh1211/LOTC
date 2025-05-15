@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     private Vector2 moveDirection;
     private PlayerVisual playerVisual;
     

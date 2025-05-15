@@ -155,6 +155,8 @@ MonoBehaviour:
   orbitPrefab: {fileID: 6574067752759211410, guid: e107382ec4e579640902bceb8dad8b8b, type: 3}
   playerVisual: {fileID: 8626990803830669826}
   animator: {fileID: 5967754813555393192}
+  healthBar: {fileID: 0}
+  feedbackPannel: {fileID: 0}
 --- !u!114 &5372241949254709475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +201,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.1}

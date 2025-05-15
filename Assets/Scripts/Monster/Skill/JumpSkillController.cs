@@ -105,9 +105,9 @@ namespace Monster.Skill
             Collider2D[] hits = Physics2D.OverlapCircleAll(jumpTargetPos, impactRadius, LayerMask.GetMask("Player"));
             foreach (var hit in hits)
             {
-                if (hit.TryGetComponent(out PlayerController player))
+                if (hit.TryGetComponent(out Player player))
                 {
-                    // 플레이어 공격 함수 추가 필요
+                    player.TakeDamage(jumpDamage);
                 }
             }
         }

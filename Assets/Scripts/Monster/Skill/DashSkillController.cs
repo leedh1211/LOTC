@@ -62,9 +62,9 @@ namespace Monster.Skill
 
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                if (other.TryGetComponent(out PlayerController player))
+                if (other.TryGetComponent(out Player player))
                 {
-                    Debug.Log("체력깎기"+damage);
+                    player.TakeDamage(damage);
                 }
 
                 EndDash();

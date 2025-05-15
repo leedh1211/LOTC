@@ -4,28 +4,21 @@ using Monster;
 using System.Collections;
 using System.Collections.Generic;
 using Manager;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MainGameController : MonoBehaviour
 {
-    [SerializeField] private int monsterSpawnCount = 0;
-
-
     [SerializeField] private TileMapLoader tileMapLoader;
     
     [SerializeField] private MonsterFactory monsterFactory;
     
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject gameClearPanel;
-    [SerializeField] private GameObject door;
-    private GameObject _door;
     
     
     [SerializeField] private Player playerPrefab;
-    private Player _player;
 
     
     [SerializeField] private VoidEventChannelSO playerDeathEvent;
@@ -38,28 +31,32 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private TransformEventChannelSO rooting;
     [SerializeField] private SpawnDatabaseSO spawnData;
     
-    [SerializeField] private TextMeshProUGUI gameOverState;
-    [SerializeField] private TextMeshProUGUI gameOverGoldText;
-    [SerializeField] private TextMeshProUGUI gameClearState;
-    [SerializeField] private TextMeshProUGUI gameClearGoldText;
-
-    private List<Vector2> _monsterSpawner;
     
-    private int displayLevel = 1;
+    
+    [Space(10f)]
+    [SerializeField] private GameOverUI gameOverUI;
+    [SerializeField] private GameClearUI gameClearUI;
+    [SerializeField] private GameLevelUI levelUI;
+
+    [Space(10f)]
+    [SerializeField] private FloatEventChannelSO onGainExp;
+    [SerializeField] private VoidEventChannelSO onLevelUp;
+    
+
+    //프리팹은 이름에 프리팹 달기
+    [SerializeField] private GameObject doorPrefab;
+
+    [SerializeField] private TileMapDataViewer mapDataViewer;
+    
+    private Player _player;
+
+    private GameObject _door;
+
+    private int level = 1;
     
     private float _currentExp = 0;
 
     private float _maxExp = 30;
-
-
-    [SerializeField] private IntegerVariableSO gameLevel;
-    [SerializeField] private FloatEventChannelSO onGainExp;
-    [SerializeField] private VoidEventChannelSO onLevelUp;
-    [SerializeField] private FloatVariableSO gameExp;
-    
-    [SerializeField] private GameLevelUI levelUI;
-    [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private UnityEngine.UI.Image expImage;
 
 
     private void Start()
@@ -68,7 +65,11 @@ public class MainGameController : MonoBehaviour
         killedMonster.OnEventRaised += KillMonster;
         onGainExp.OnEventRaised += GainExp;
 
-        NewGame();
+        levelUI.InitLevelText(level);
+        
+        //매서드 이름 명확히!
+        //Init();
+        InitGameState();
     }
 
     private void OnDestroy()
@@ -79,61 +80,46 @@ public class MainGameController : MonoBehaviour
     }
 
 
-    public void NewGame()
+    void GainExp(float exp)
     {
-        tileMapLoader.LoadRandomTileMap(selectedStageLevel.RuntimeValue);
+        _currentExp += exp;
         
-        Init();
-
-        _currentExp = gameExp.RuntimeValue;
-        
-        expImage.fillAmount = _currentExp / _maxExp;
-        
-        levelText.text = "Lv " + (gameLevel.RuntimeValue + 1).ToString();
-    }
-
-
-    private void Update()
-    {
         if (_currentExp >= _maxExp)
         {
             var remain = _currentExp - _maxExp;
 
             _currentExp = remain;
 
-            gameLevel.RuntimeValue ++;
-
-            levelText.text = "Lv " + (gameLevel.RuntimeValue + 1).ToString();
+            level++;
+            
+            levelUI.InitLevelText(level);
             
             onLevelUp.Raise();
-            
-            expImage.fillAmount = _currentExp / _maxExp;
         }
-
-        gameExp.RuntimeValue = _currentExp;
-    }
-
-    void GainExp(float exp)
-    {
-        _currentExp += exp;
         
-        expImage.fillAmount = _currentExp / _maxExp;
+        levelUI.FillExpImage(_currentExp, _maxExp);
     }
 
 
-    private void Init()
+    public void InitGameState()
     {
-        _monsterSpawner = tileMapLoader.TileMap.SpawnArea;
-        monsterSpawnCount = _monsterSpawner.Count;
-        GetComponent<TileMapDataViewer>().tileMapData = tileMapLoader.TileMap;
+        tileMapLoader.LoadRandomTileMap(selectedStageLevel.RuntimeValue);
 
-        Debug.LogWarning(tileMapLoader.MaxY);
-        _door = Instantiate(door);
+        //가급적 직접 참조 하기!
+        //GetComponent<TileMapDataViewer>().tileMapData = tileMapLoader.TileMap;
+        mapDataViewer.tileMapData = tileMapLoader.TileMap;
+        
+        _door = Instantiate(doorPrefab);
+        
         _door.transform.position = new Vector2(0f, tileMapLoader.MaxY + Camera.main.orthographicSize - 5);
+        
         _door.SetActive(false);
+        
 
         _player = FindAnyObjectByType<Player>();
+        
         _player.name = "Player";
+        
         _player.transform.position = tileMapLoader.TileMap.PlayerSpawnPosition;
         
         Camera.main.GetComponent<CameraController>().Init(_player.transform);
@@ -180,25 +166,19 @@ public class MainGameController : MonoBehaviour
     
     private IEnumerator DelayEvent()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
 
         rooting.Raise(_player.transform);
 
         yield return new WaitForSeconds(1.5f);
 
-        OpenTheDoor();
-    }
-
-    private void OpenTheDoor()
-    {
         _door.SetActive(true);
     }
 
+
     private void GameOver()
     {
-        gameOverState.text = tileMapLoader.StageName;
-        gameOverGoldText.text = totalGold.RuntimeValue.ToString();
-        gameOverPanel.SetActive(true);
+        gameOverUI.OnGameOver(tileMapLoader.StageName, totalGold.RuntimeValue);
         Time.timeScale = 0;
         SaveManager.Instance.Save();
     }
@@ -210,11 +190,9 @@ public class MainGameController : MonoBehaviour
             clearedStageLevel.RuntimeValue++;
         }
 
-        gameClearState.text = tileMapLoader.StageName;
-        gameClearGoldText.text = totalGold.RuntimeValue.ToString();
+        gameClearUI.OnGameClear(totalGold.RuntimeValue, tileMapLoader.StageName);
         
         currentMapIndex.RuntimeValue = 0;
-        gameClearPanel.gameObject.SetActive(true);
         Time.timeScale = 0;
         SaveManager.Instance.Save();
     }

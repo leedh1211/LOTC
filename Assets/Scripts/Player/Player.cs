@@ -11,17 +11,19 @@ public class Player : MonoBehaviour
     public PlayerVisual PlayerVisual => playerVisual;
     public Animator Animator => animator;
     
-    private int maxHp = 100;
-    private int curHp = 100;
+    private float maxHp = 100;
+    private float curHp = 100;
 
     [SerializeField] private PlayerStatVariableSO permanentStat;
-    public int MaxHp {  get { return maxHp + permanentStat.RuntimeValue.MaxHp*10; } }
-    public int CurHp { get { return curHp + permanentStat.RuntimeValue.MaxHp*10; } }
+    public float MaxHp {  get { return maxHp + permanentStat.RuntimeValue.MaxHp*10; } }
+    public float CurHp { get { return curHp + permanentStat.RuntimeValue.MaxHp*10; } }
+    
     public MonsterListVariableSO monsterList;
 
     private PlayerController playerController;
 
     private WeaponHandler weapon;
+    
     [Header("OrbitSkill")]
     [SerializeField]private GameObject orbitPrefab;
     
@@ -35,13 +37,14 @@ public class Player : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         playerController.Init(playerVisual);
+        
         //Weapon
         weapon = GetComponentInChildren<WeaponHandler>();
     }
 
     private void Update()
     {
-        healthBar.fillAmount = (float)curHp / (float)maxHp;
+        healthBar.fillAmount = CurHp / MaxHp;
     }
 
 
@@ -108,10 +111,15 @@ public class Player : MonoBehaviour
     {
         if (other.TryGetComponent(out ProjectileController projectileController))
         {
-            feedbackPannel.enabled = true;
-            
-            curHp -= (int)projectileController.Damage;
+            TakeDamage(projectileController.Damage);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        feedbackPannel.enabled = true;
+
+        curHp -= (int)damage;
     }
 }
 
