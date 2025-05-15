@@ -1,4 +1,5 @@
 using Manager;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,11 @@ public class CustomizePage : MonoBehaviour
     [SerializeField] private CustomizeDataTable customizeDataTable;
     [SerializeField] private IntegerVariableSO currentCustomId;
     [SerializeField] private BitArrayVariableSO ownedCustomItem;
-
+    
     [SerializeField] private IntegerVariableSO gold;
     [SerializeField] private VoidEventChannelSO onGoldChanged;
+
+    private List<CustomizePageSlot> slotList = new List<CustomizePageSlot>();
     void Start()
     {
         if (customizeDataTable.TryGetCustomizeData(currentCustomId.RuntimeValue, out var image))
@@ -24,8 +27,9 @@ public class CustomizePage : MonoBehaviour
             var slot = Instantiate<CustomizePageSlot>(slotPrefab, itemsParent);
             if(customizeDataTable.TryGetCustomizeData(i + 1,out var data))
             {
-                slot.Init(data,OnSlotClicked);
+                slot.Init(data, ownedCustomItem.RuntimeValue[i], OnSlotClicked);
             }
+            slotList.Add(slot);
         }
     }
 
@@ -59,6 +63,7 @@ public class CustomizePage : MonoBehaviour
         AchievementManager.Instance.ChangeProgress(6,gold.RuntimeValue);
         ownedCustomItem.RuntimeValue[id - 1] = true;
         SaveManager.Instance.Save();
+        slotList[id - 1].MarkAsPurchased();
         onGoldChanged.Raise();
     }
 }
