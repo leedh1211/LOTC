@@ -23,21 +23,27 @@ namespace UI
         private void Awake()
         {
             // UI 패널 위치 설정 (상단 밖 → 상단 안)
-            panel.SetActive(false);
+            // panel.SetActive(false);
             visiblePos = pavelRectTransform.anchoredPosition;
             hiddenPos = visiblePos + new Vector2(0, 200); // 위로 숨기기
             pavelRectTransform.anchoredPosition = hiddenPos;
         }
 
-        public void ShowAchievement(AchievementSO achievement)
+        public void ShowAchievement(AchievementSO achievement, AchievementStatus status)
         {
             panel.SetActive(true);
             iconImage.sprite = achievement.icon;
             titleText.text = achievement.title;
-            descriptionText.text = achievement.description;
+            descriptionText.text = MakeDesc(achievement, status);
 
             StopAllCoroutines();
             StartCoroutine(ShowRoutine());
+        }
+        
+        public string MakeDesc(AchievementSO achievement , AchievementStatus status)
+        {
+            int requiredValue = achievement.levels[status.currentLevel-1];
+            return achievement.description.Replace("{Level}", requiredValue.ToString());
         }
 
         private IEnumerator ShowRoutine()

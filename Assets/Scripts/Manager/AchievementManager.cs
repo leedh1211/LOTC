@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Data;
 using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Manager
 {
@@ -10,13 +11,23 @@ namespace Manager
     {
         [SerializeField]
         private List<AchievementSO> achievements;
+        [SerializeField] private GameObject ToastHUDPrefab;
         private Dictionary<int, AchievementStatus> statusDict = new();
         
-        [SerializeField] private AchievementUI achievementUI;
+        private AchievementUI achievementUI;
         
+        // public void Start()
+        // {
+        //     if (achievementUI == null)
+        //     {
+        //         GameObject HUD = Instantiate(ToastHUDPrefab);
+        //         achievementUI = HUD.GetComponentInChildren<AchievementUI>();
+        //     }
+        // }
+
         public void Init(List<AchievementStatus> loadedStatuses)
         {
-            /*foreach (var so in achievements)
+            foreach (var so in achievements)
             {
                 var loaded = loadedStatuses.Find(s => s.seq == so.seq);
                 if (loaded == null)
@@ -27,12 +38,12 @@ namespace Manager
                 {
                     statusDict[so.seq] = loaded;
                 }
-            }*/
+            }
         }
 
         public void AddProgress(int seq, int amount)
         {
-            /*if (!statusDict.ContainsKey(seq)) return;
+            if (!statusDict.ContainsKey(seq)) return;
 
             var status = statusDict[seq];
             var so = achievements.Find(a => a.seq == seq);
@@ -47,13 +58,12 @@ namespace Manager
             if (status.currentProgress >= required)
             {
                 status.currentLevel++;
-                CompleteAchievements(so);
-            }*/
+                CompleteAchievements(so,status);
+            }
         }
         
         public void ChangeProgress(int seq, int amount)
         {
-            /*
             if (!statusDict.ContainsKey(seq)) return;
 
             var status = statusDict[seq];
@@ -69,17 +79,21 @@ namespace Manager
             if (status.currentProgress >= required)
             {
                 status.currentLevel++;
-                CompleteAchievements(so);
+                CompleteAchievements(so,status);
             }
-            */
 
         }
 
 
-        public void CompleteAchievements(AchievementSO achievement)
+        public void CompleteAchievements(AchievementSO achievement, AchievementStatus status)
         {
-            /*Debug.Log("[업적 완수]"+achievement.title+"\n"+achievement.description);
-            achievementUI.ShowAchievement(achievement);*/
+            Debug.Log("[업적 완수]"+achievement.title+"\n"+achievement.description);
+            if (achievementUI == null)
+            {
+                GameObject HUD = Instantiate(ToastHUDPrefab);
+                achievementUI = HUD.GetComponentInChildren<AchievementUI>();    
+            }
+            achievementUI.ShowAchievement(achievement, status);
         }
         
         public List<AchievementStatus> GetStatusesForSave()

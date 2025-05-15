@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 6504279284431654741}
   - component: {fileID: 4589132735951843034}
   - component: {fileID: 9024635110043437188}
+  - component: {fileID: 3261935793666857849}
   m_Layer: 5
   m_Name: ToastPanel
   m_TagString: Untagged
@@ -421,3 +422,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3261935793666857849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9210317312494877070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19f3203b8b3472c81d0306507369228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 9210317312494877070}
+  pavelRectTransform: {fileID: 6504279284431654741}
+  iconImage: {fileID: 7342156962486527463}
+  titleText: {fileID: 1766631560551097997}
+  descriptionText: {fileID: 7573169091162758062}
+  slideDuration: 0.5
+  stayDuration: 2
