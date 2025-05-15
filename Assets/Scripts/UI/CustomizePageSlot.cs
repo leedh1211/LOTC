@@ -13,7 +13,7 @@ public class CustomizePageSlot : MonoBehaviour
     public void Init(CustomizeData customizeData, bool isbought, Action<int> onClickAction = null)
     {
         button = GetComponent<Button>();
-        goldTxt.text = isbought ? "±¸¸Å ¿Ï·á" : customizeData.Price.ToString();
+        goldTxt.text = isbought ? "êµ¬ë§¤ì™„ë£Œ" : customizeData.Price.ToString();
         data = customizeData;
 
         iconImage.sprite = data.IconImage;
@@ -27,6 +27,6 @@ public class CustomizePageSlot : MonoBehaviour
     }
     public void MarkAsPurchased()
     {
-        goldTxt.text =  "±¸¸Å ¿Ï·á";
+        goldTxt.text =  "êµ¬ë§¤ì™„ë£Œ";
     }
 }

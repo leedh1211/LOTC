@@ -16,7 +16,7 @@ namespace Manager
         
         public void Init(List<AchievementStatus> loadedStatuses)
         {
-            foreach (var so in achievements)
+            /*foreach (var so in achievements)
             {
                 var loaded = loadedStatuses.Find(s => s.seq == so.seq);
                 if (loaded == null)
@@ -27,12 +27,12 @@ namespace Manager
                 {
                     statusDict[so.seq] = loaded;
                 }
-            }
+            }*/
         }
 
         public void AddProgress(int seq, int amount)
         {
-            if (!statusDict.ContainsKey(seq)) return;
+            /*if (!statusDict.ContainsKey(seq)) return;
 
             var status = statusDict[seq];
             var so = achievements.Find(a => a.seq == seq);
@@ -48,11 +48,12 @@ namespace Manager
             {
                 status.currentLevel++;
                 CompleteAchievements(so);
-            }
+            }*/
         }
         
         public void ChangeProgress(int seq, int amount)
         {
+            /*
             if (!statusDict.ContainsKey(seq)) return;
 
             var status = statusDict[seq];
@@ -70,14 +71,15 @@ namespace Manager
                 status.currentLevel++;
                 CompleteAchievements(so);
             }
+            */
 
         }
 
 
         public void CompleteAchievements(AchievementSO achievement)
         {
-            Debug.Log("[업적 완수]"+achievement.title+"\n"+achievement.description);
-            achievementUI.ShowAchievement(achievement);
+            /*Debug.Log("[업적 완수]"+achievement.title+"\n"+achievement.description);
+            achievementUI.ShowAchievement(achievement);*/
         }
         
         public List<AchievementStatus> GetStatusesForSave()
