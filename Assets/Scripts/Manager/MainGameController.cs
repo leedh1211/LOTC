@@ -14,11 +14,7 @@ public class MainGameController : MonoBehaviour
     
     [SerializeField] private MonsterFactory monsterFactory;
     
-    [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private GameObject gameClearPanel;
-    
-    
-    [SerializeField] private Player playerPrefab;
+    [SerializeField] private TileMapDataViewer mapDataViewer;
 
     
     [SerializeField] private VoidEventChannelSO playerDeathEvent;
@@ -30,7 +26,6 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private IntegerVariableSO totalGold;
     [SerializeField] private TransformEventChannelSO rooting;
     [SerializeField] private SpawnDatabaseSO spawnData;
-    
     
     
     [Space(10f)]
@@ -45,8 +40,8 @@ public class MainGameController : MonoBehaviour
 
     //프리팹은 이름에 프리팹 달기
     [SerializeField] private GameObject doorPrefab;
+    [SerializeField] private Player playerPrefab;
 
-    [SerializeField] private TileMapDataViewer mapDataViewer;
     
     private Player _player;
 

@@ -1150,12 +1150,12 @@ GameObject:
   - component: {fileID: 599407845208811574}
   - component: {fileID: 3004521954437254418}
   m_Layer: 5
-  m_Name: GameOverPopup
+  m_Name: GameOverUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &599407845208811574
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1189,7 +1189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc8d462528b08741a6bb6b81817d42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverPanel: {fileID: 5728676662425613967}
   stageNameText: {fileID: 8615360525629160423}
   goldNumberText: {fileID: 7200475745956201112}
 --- !u!1 &1989712542051376374
@@ -1809,12 +1808,12 @@ GameObject:
   - component: {fileID: 8580585053963513858}
   - component: {fileID: 9038727044369315011}
   m_Layer: 5
-  m_Name: GameClearPopup
+  m_Name: GameClearUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8580585053963513858
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1848,7 +1847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3efab5525e010b4ba3bfc9cc2ce370f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameClearPanel: {fileID: 4095627408483676425}
   stageNameText: {fileID: 1651987663440263228}
   goldNumberText: {fileID: 7701407661339660385}
 --- !u!1 &4342460278365442324
@@ -4471,7 +4469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelText: {fileID: 8394234883106409332}
-  expImage: {fileID: 0}
+  expImage: {fileID: 4561714948200146010}
 --- !u!1 &8483193980485390929
 GameObject:
   m_ObjectHideFlags: 0
