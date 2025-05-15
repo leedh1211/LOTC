@@ -4,9 +4,7 @@ using Monster;
 using System.Collections;
 using System.Collections.Generic;
 using Manager;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MainGameController : MonoBehaviour
 {

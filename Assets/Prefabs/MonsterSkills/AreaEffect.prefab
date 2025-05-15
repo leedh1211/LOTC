@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8602383733288640445}
   m_Layer: 0
   m_Name: AreaEffect
-  m_TagString: Untagged
+  m_TagString: MonsterSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -24,11 +24,6 @@ namespace Monster.Skill
             }
         }
 
-
-        public void Start()
-        {
-        }
-
         public void Update()
         {
             Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);

@@ -7,8 +7,6 @@ public class ReflectEffect : ISKillEffect , IWeaponApplicable
 {
     public void ApplyToWeapon(SkillApplyContext context)
     {
-        context.weaponHandler.IsReflect = true;
-    
+        context.weaponHandler.ReflectCount+=1;
     }
-    
 }

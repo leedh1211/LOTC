@@ -79,9 +79,6 @@ public class SkillSelectMenuUI : MonoBehaviour
 
     private void RandomSkill()
     {
-
-       
-
         for (int i = 0; i < skillDatas.Count; i++)
         {
             SkillData temp = skillDatas[i];

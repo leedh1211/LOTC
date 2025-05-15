@@ -7,8 +7,7 @@ public class MultiShotEffect : ISKillEffect, IWeaponApplicable
 
     public void ApplyToWeapon(SkillApplyContext context)
     {
-        context.weaponHandler.projectileCount += 1; //�� ���� 
-        Debug.Log(" MultiShot �����! ���� ȭ�� ��: " + context.weaponHandler.projectileCount);
+        context.weaponHandler.ProjectileCount += 1; 
     }
 
 }

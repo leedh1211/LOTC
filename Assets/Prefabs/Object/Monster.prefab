@@ -39,7 +39,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219745879073044772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -656,7 +656,6 @@ MonoBehaviour:
   animator: {fileID: 4263842209588387653}
   shadow: {fileID: 3561552923521515418}
   bodyCollider: {fileID: 1874715204635603551}
-  hitBoxCollider: {fileID: 5395586216615096690}
   killedMonster: {fileID: 11400000, guid: 31be2c046fb2f8e40a93be2976e1680d, type: 2}
 --- !u!114 &253071854552416085
 MonoBehaviour:

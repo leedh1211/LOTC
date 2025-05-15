@@ -7,7 +7,6 @@ public class SequnceEffect : ISKillEffect, IWeaponApplicable
 
     public void ApplyToWeapon(SkillApplyContext context)
     {
-        context.weaponHandler.IsSequnce = true;
-        
+        context.weaponHandler.ShotCount += 1;
     }
 }

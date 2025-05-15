@@ -14,27 +14,24 @@ public class RefectArrow : ArrowBase
     private int curBonce = 0;
 
 
-    protected override void Update()
+    // 이제는 사용되지 않습니다.
+    /*protected override void Update()
     {
         if (isDisable) return;
         
-        // base.Update(); //�ι��� �������� �̻��Ѱſ���.. 
         float moveDistance = speed * Time.deltaTime;
 
-        //�ڷ���Ʈ
         RaycastHit2D hit = Physics2D.Raycast(tipPos.position, transform.up, 0.2f, reflectLayer);
+        
         if (hit.collider)
         {
-            moveDirection = Vector3.Reflect(transform.up, hit.normal);//���⿡�� hitnormal.
-                                                                      // transform.position = hit.point + hit.normal * 0.01f; ���⼭ �ڷ���Ʈ �ؼ� �浹�̻����. 
+            moveDirection = Vector3.Reflect(transform.up, hit.normal);
 
             curBonce++;
-            //�ε��ƴ�.
 
             if (curBonce > maxBounce)
             {
                 Destroy(gameObject);
-                //���߿� Ǯ�� �Ҳ��� 
             }
 
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90f;
@@ -45,26 +42,10 @@ public class RefectArrow : ArrowBase
         {
             transform.position += transform.up * moveDistance;
         }
-
-
-
     }
+    
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
-
-    }
-
-
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawRay(tipPos.position, transform.up * 0.2f);
-        if (moveDirection == Vector3.zero)
-        {
-            Debug.LogWarning("moveDirection�� zero�Դϴ�. Ray�� �׷����� �ʾƿ�.");
-            return;
-        }
-    }
-
+    }*/
 }

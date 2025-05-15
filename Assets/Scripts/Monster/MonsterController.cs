@@ -16,9 +16,11 @@ public class MonsterController : MonoBehaviour
     private float maxHealth;
     private float currentHealth;
     private BaseAIController aiController;
-        
-    private float knockBackTimer;
-    private float knockBackCooldown;
+    
+    
+    //쓰지 않는 녀석은 나중에 쓰게 될때 다시 쓰세요!
+    /*private float knockBackTimer;
+    private float knockBackCooldown;*/
 
     [SerializeField] private HPBarController hpBar;
 
@@ -27,8 +29,6 @@ public class MonsterController : MonoBehaviour
     [SerializeField] private Transform shadow;
     
     [SerializeField] private BoxCollider2D bodyCollider;
-    [SerializeField] private BoxCollider2D hitBoxCollider;
-   
 
     [SerializeField] private MonsterEventChannelSO killedMonster;
     
@@ -45,8 +45,8 @@ public class MonsterController : MonoBehaviour
         }
         maxHealth = config.monsterStatData.maxhealth;
         currentHealth = config.monsterStatData.maxhealth;
-        knockBackTimer = config.monsterStatData.knockbackCooldown;
-        knockBackCooldown = config.monsterStatData.knockbackCooldown;
+        /*knockBackTimer = config.monsterStatData.knockbackCooldown;
+        knockBackCooldown = config.monsterStatData.knockbackCooldown;*/
         
         aiController = GetComponent<BaseAIController>();
         aiController.Init(monsterConfig, GetComponent<Rigidbody2D>(), player);
@@ -68,9 +68,6 @@ public class MonsterController : MonoBehaviour
 
         bodyCollider.size = new Vector2(config.colliderSizeX, config.colliderSizeY);
         bodyCollider.offset = new Vector2(config.colliderOffX, config.colliderOffY);
-        hitBoxCollider.size = new Vector2(config.colliderSizeX, config.colliderSizeY);
-        hitBoxCollider.offset = new Vector2(config.colliderOffX, config.colliderOffY);
-        
     }
     
     public void TakeDamage(float Damage)
@@ -87,7 +84,7 @@ public class MonsterController : MonoBehaviour
             currentHealth = Mathf.Max(0, currentHealth);    
         }
         hpBar.SetFill(currentHealth / maxHealth);
-        knockBackTimer = knockBackCooldown;
+        //knockBackTimer = knockBackCooldown;
     }
 
     public void MobDeath()
